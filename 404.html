@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - AutoCare Premium Garage</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Custom Styles for 404 Visuals -->
+  <style>
+    :root {
+      --color-primary-orange: #FF6321;
+      --color-amber: #FFB300;
+      --color-charcoal: #151515;
+      --color-gray: #666666;
+      --color-cream: #F4F4F2;
+      --color-light-gray: #E5E5E5;
+      --color-white: #FFFFFF;
+      --font-grotesk: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* 404 Canvas Styles */
+    .error-canvas-section {
+      background-color: var(--color-cream);
+      padding: 100px 0 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .error-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 60px 40px;
+      position: relative;
+      z-index: 5;
+    }
+    .error-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-primary-orange);
+      background-color: rgba(255, 99, 33, 0.08);
+      padding: 6px 14px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    .error-title-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .error-huge-num {
+      font-family: var(--font-grotesk);
+      font-size: 140px;
+      font-weight: 900;
+      line-height: 0.9;
+      color: var(--color-charcoal);
+      letter-spacing: -4px;
+      user-select: none;
+    }
+    .error-huge-num span {
+      color: var(--color-primary-orange);
+    }
+    
+    /* Gauge mechanical illustration */
+    .gauge-illustration {
+      width: 130px;
+      height: 130px;
+      position: relative;
+      background-color: var(--color-cream);
+      border: 4px solid var(--color-charcoal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .gauge-needle {
+      position: absolute;
+      width: 4px;
+      height: 55px;
+      background-color: var(--color-primary-orange);
+      bottom: 50%;
+      left: calc(50% - 2px);
+      transform-origin: bottom center;
+      transform: rotate(115deg); /* Stalled deep in the red zone */
+      animation: needle-flutter 2s infinite alternate ease-in-out;
+    }
+    .gauge-center-cap {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-color: var(--color-charcoal);
+      border-radius: 50%;
+      z-index: 3;
+    }
+    .gauge-ticks {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px dotted var(--color-gray);
+      opacity: 0.4;
+    }
+    .gauge-redzone {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-right: 4px solid var(--color-primary-orange);
+      border-top: 4px solid var(--color-primary-orange);
+      border-radius: 50%;
+      top: 10px;
+      right: 10px;
+    }
+    
+    @keyframes needle-flutter {
+      0% { transform: rotate(115deg); }
+      100% { transform: rotate(120deg); }
+    }
+
+    .error-msg-headline {
+      font-family: var(--font-grotesk);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 14px;
+    }
+    .error-msg-desc {
+      font-size: 15px;
+      color: var(--color-gray);
+      line-height: 1.6;
+      max-width: 580px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* Search UI */
+    .error-search-box {
+      max-width: 480px;
+      margin: 0 auto 35px auto;
+      border: 1px solid var(--color-light-gray);
+      background-color: var(--color-cream);
+      padding: 5px;
+      display: flex;
+    }
+    .error-search-input {
+      border: 0;
+      background: none;
+      outline: none;
+      padding: 10px 15px;
+      font-size: 14px;
+      flex-grow: 1;
+      color: var(--color-charcoal);
+    }
+    .error-search-btn {
+      background-color: var(--color-charcoal);
+      color: var(--color-white);
+      border: 0;
+      padding: 0 20px;
+      font-family: var(--font-grotesk);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+    .error-search-btn:hover {
+      background-color: var(--color-primary-orange);
+    }
+
+    /* Popular Links */
+    .error-popular-links {
+      margin-bottom: 40px;
+      border-top: 1px solid var(--color-light-gray);
+      padding-top: 30px;
+    }
+    .error-popular-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-gray);
+      margin-bottom: 15px;
+    }
+    .error-links-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .error-link-item a {
+      font-family: var(--font-grotesk);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      text-decoration: none;
+      background-color: var(--color-cream);
+      padding: 8px 16px;
+      border: 1px solid var(--color-light-gray);
+      transition: all 0.3s ease;
+    }
+    .error-link-item a:hover {
+      color: var(--color-white);
+      background-color: var(--color-primary-orange);
+      border-color: var(--color-primary-orange);
+      transform: translateY(-2px);
+    }
+
+    /* Floating Particles */
+    .floating-gear-bg-1 {
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      font-size: 180px;
+      color: var(--color-light-gray);
+      opacity: 0.3;
+      pointer-events: none;
+      animation: spin-clockwise 25s linear infinite;
+    }
+    .floating-gear-bg-2 {
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      font-size: 220px;
+      color: var(--color-light-gray);
+      opacity: 0.3;
+      pointer-events: none;
+      animation: spin-counter-clockwise 30s linear infinite;
+    }
+    @keyframes spin-clockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-counter-clockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    /* Accessibility Support */
+    @media (prefers-reduced-motion: reduce) {
+      .gauge-needle, .floating-gear-bg-1, .floating-gear-bg-2 {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <span class="search-trigger" aria-label="Search button"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle" aria-label="Toggle menu"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <section class="error-canvas-section">
+      <!-- Animated Background Gears -->
+      <i class="bi bi-gear-fill floating-gear-bg-1"></i>
+      <i class="bi bi-gear-fill floating-gear-bg-2"></i>
+
+      <div class="container text-center">
+        <div class="error-container border-light" data-aos="zoom-in">
+          
+          <span class="error-tag">Error Code: 404</span>
+
+          <div class="error-title-wrapper">
+            <div class="error-huge-num">4<span>0</span>4</div>
+            <div class="gauge-illustration">
+              <div class="gauge-ticks"></div>
+              <div class="gauge-redzone"></div>
+              <div class="gauge-needle"></div>
+              <div class="gauge-center-cap"></div>
+            </div>
+          </div>
+
+          <h1 class="error-msg-headline">Engine Stall! Path Disassembled</h1>
+          <p class="error-msg-desc">The requested mechanic lane, parts schematic, or service portal could not be retrieved from our system ledger. It appears this address has been archived or moved to another diagnostic bay.</p>
+
+          <!-- Search Form (UI only) -->
+          <div class="error-search-box">
+            <input type="text" class="error-search-input font-sans" placeholder="Search alternate service bays, pricing plans..." aria-label="Search site">
+            <button class="error-search-btn" type="button" aria-label="Execute Search">Search</button>
+          </div>
+
+          <!-- Popular Links -->
+          <div class="error-popular-links">
+            <div class="error-popular-title">Suggested Diagnostics Nodes</div>
+            <ul class="error-links-list">
+              <li class="error-link-item"><a href="services.html"><i class="bi bi-activity me-1"></i> Diagnostic Lanes</a></li>
+              <li class="error-link-item"><a href="pricing.html"><i class="bi bi-tag-fill me-1"></i> Service Pricing</a></li>
+              <li class="error-link-item"><a href="about.html"><i class="bi bi-info-circle-fill me-1"></i> Our Garage</a></li>
+              <li class="error-link-item"><a href="appointment.html"><i class="bi bi-calendar-check-fill me-1"></i> Arrange Service</a></li>
+              <li class="error-link-item"><a href="contact.html"><i class="bi bi-chat-dots-fill me-1"></i> Contact Dispatch</a></li>
+            </ul>
+          </div>
+
+          <!-- Back and Go Back Buttons -->
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="index.html" onclick="history.back(); return false;" class="btn-premium btn-charcoal btn-ripple text-decoration-none">
+              <i class="bi bi-arrow-left me-2"></i> Go Back Previous
+            </a>
+            <a href="index.html" class="btn-premium btn-orange btn-ripple text-decoration-none">
+              <i class="bi bi-house-door-fill me-2"></i> Return to Garage Hub
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Light Footer -->
+  <footer class="footer-wrapper-premium" id="premium-footer">
+    <div class="footer-top-premium">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-brand-logo mb-4 d-inline-block">
+              <i class="bi bi-wrench-adjustable-circle-fill text-primary-orange"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-brand-desc mb-4">
+              Premium automotive mechanics delivering factory-grade diagnostic precision, OEM-certified parts, and meticulous luxury restoration care.
+            </p>
+            <div class="footer-brand-socials d-flex gap-2">
+              <a href="https://facebook.com" class="social-btn-round" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com" class="social-btn-round" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="social-btn-round" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="social-btn-round" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-col-title">Quick Links</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="about.html"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-arrow-right-short"></i> Portfolio</a></li>
+              <li><a href="gallery.html"><i class="bi bi-arrow-right-short"></i> Photo Gallery</a></li>
+              <li><a href="blog.html"><i class="bi bi-arrow-right-short"></i> Blog & Insights</a></li>
+              <li><a href="shop.html"><i class="bi bi-arrow-right-short"></i> Parts Shop</a></li>
+              <li><a href="contact.html"><i class="bi bi-arrow-right-short"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Services -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-col-title">Our Services</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Engine Overhaul</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Brake Restoration</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Transmission Repair</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Body Paint & Wax</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Suspension Tuning</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Telemetry Scan</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Working Hours & Location -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-col-title">Working Hours</h5>
+            <div class="footer-hours-wrapper mb-4">
+              <div class="hours-item">
+                <span class="days">Monday - Friday</span>
+                <span class="time">7:30 AM - 6:30 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Saturday</span>
+                <span class="time">8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Sunday</span>
+                <span class="time bg-danger text-white rounded px-2">Emergency Only</span>
+              </div>
+            </div>
+            
+            <h5 class="footer-col-title pt-1">Store Location</h5>
+            <p class="footer-contact-text"><i class="bi bi-geo-alt-fill text-primary-orange me-2"></i> 123 Performance Parkway, Racing District, NY 10001</p>
+          </div>
+
+          <!-- Column 5: Contact & Mini Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <h5 class="footer-col-title">Contact Us</h5>
+            <p class="footer-contact-text mb-2"><i class="bi bi-telephone-fill text-primary-orange me-2"></i> +1 (555) 123-4567</p>
+            <p class="footer-contact-text mb-4"><i class="bi bi-envelope-open-fill text-primary-orange me-2"></i> support@autocare-theme.com</p>
+            
+            <h5 class="footer-col-title pt-1">Newsletter Mini Form</h5>
+            <div class="footer-mini-form-container">
+              <form id="footer-newsletter-form" class="position-relative">
+                <input type="email" id="footer-email-input" class="form-control footer-newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="footer-newsletter-submit" aria-label="Submit newsletter"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+              <div id="footer-newsletter-success" class="d-none mt-2 text-success fs-xs fw-bold">
+                <i class="bi bi-check-circle-fill me-1"></i> Subscribed!
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-premium">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="footer-copyright m-0">© 2026 AutoCare. Designed with HTML5 Bootstrap 5. All rights reserved.</p>
+        <div class="footer-bottom-links d-flex gap-3 mt-3 mt-md-0">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="career.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <button id="back-to-top-btn" class="back-to-top-circle" aria-label="Back to Top">
+    <svg class="progress-circle-svg" width="48" height="48" viewBox="0 0 48 48">
+      <circle class="progress-background" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-width="3"></circle>
+      <circle class="progress-active" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-dashoffset="125.66" stroke-width="3"></circle>
+    </svg>
+    <div class="arrow-icon">
+      <i class="bi bi-arrow-up-short"></i>
+    </div>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

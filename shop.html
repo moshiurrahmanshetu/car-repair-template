@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Auto Spare Parts Shop</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Premium Shop Layout Styles -->
+  <style>
+    /* Shop Page-Specific Variable Alignments & Accent overrides */
+    .shop-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 80px 0;
+    }
+    .text-primary-orange {
+      color: var(--color-primary) !important;
+    }
+    .bg-cream {
+      background-color: var(--color-beige) !important;
+    }
+    .hover-primary:hover {
+      color: var(--color-primary) !important;
+    }
+    
+    /* Elegant Sidebar Filter Styles */
+    .shop-sidebar {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .shop-widget-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: 25px;
+    }
+    .shop-widget-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--color-primary);
+    }
+    
+    /* Category Checkboxes & Counts */
+    .filter-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .filter-list li {
+      margin-bottom: 12px;
+    }
+    .filter-list li:last-child {
+      margin-bottom: 0;
+    }
+    .filter-checkbox-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-dark);
+      cursor: pointer;
+    }
+    .filter-checkbox-label input {
+      margin-right: 10px;
+      accent-color: var(--color-primary);
+    }
+    .filter-count {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background-color: var(--color-beige);
+      color: var(--color-gray);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    
+    /* Price Slider Widget Styling */
+    .price-slider-wrapper {
+      padding: 10px 0;
+    }
+    .price-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--color-beige);
+      outline: none;
+      border: none;
+      border-radius: 3px;
+      accent-color: var(--color-primary);
+    }
+    .price-value-box {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    /* Rating Filter Item */
+    .rating-filter-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--color-dark);
+      margin-bottom: 10px;
+    }
+    .rating-filter-item input {
+      accent-color: var(--color-primary);
+    }
+    .rating-filter-item .bi-star-fill {
+      color: #FFB300;
+    }
+    .rating-filter-item .bi-star {
+      color: var(--color-light-gray);
+    }
+
+    /* Premium Product Catalog Cards */
+    .product-card-premium {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: var(--transition-medium);
+    }
+    .product-card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-premium);
+      border-color: var(--color-primary);
+    }
+    .product-image-wrapper {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--color-beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    .product-card-premium:hover .product-image-wrapper img {
+      transform: scale(1.08);
+    }
+    
+    /* Sale and New Badges */
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 5;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      letter-spacing: 0.5px;
+    }
+    .badge-sale {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .badge-new {
+      background-color: var(--color-secondary);
+      color: var(--color-dark);
+    }
+    
+    /* Hover Actions Overlay */
+    .product-card-actions {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition-medium);
+      z-index: 10;
+      border-top: 1px solid var(--color-light-gray);
+    }
+    .product-card-premium:hover .product-card-actions {
+      bottom: 0;
+    }
+    .action-icon-btn {
+      width: 38px;
+      height: 38px;
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: var(--transition-fast);
+      text-decoration: none;
+    }
+    .action-icon-btn:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    
+    /* Product Details box */
+    .product-details-box {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-card-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-gray);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .product-card-sku {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--color-gray);
+      margin-bottom: 8px;
+      opacity: 0.75;
+    }
+    .product-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .product-card-title a {
+      color: inherit;
+    }
+    .product-card-title a:hover {
+      color: var(--color-primary);
+    }
+    .product-card-rating {
+      display: flex;
+      gap: 3px;
+      color: #FFB300;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .product-card-pricing {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .product-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+    .product-old-price {
+      font-size: 14px;
+      text-decoration: line-through;
+      color: var(--color-gray);
+      opacity: 0.6;
+    }
+    
+    /* Card Description (for list view only) */
+    .product-card-desc {
+      font-size: 14px;
+      color: var(--color-gray);
+      margin-bottom: 15px;
+      display: none;
+    }
+    
+    /* List View Overrides */
+    .product-grid-wrapper.list-view .col-product-item {
+      width: 100% !important;
+    }
+    .product-grid-wrapper.list-view .product-card-premium {
+      flex-direction: row;
+      align-items: center;
+    }
+    .product-grid-wrapper.list-view .product-image-wrapper {
+      width: 250px;
+      height: 250px;
+      flex-shrink: 0;
+    }
+    .product-grid-wrapper.list-view .product-card-actions {
+      position: static;
+      background: transparent;
+      padding: 0;
+      border-top: none;
+      justify-content: flex-start;
+      margin-top: 15px;
+    }
+    .product-grid-wrapper.list-view .product-card-desc {
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .product-grid-wrapper.list-view .product-card-premium {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .product-grid-wrapper.list-view .product-image-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+      }
+      .product-grid-wrapper.list-view .product-card-actions {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 12px;
+        border-top: 1px solid var(--color-light-gray);
+        justify-content: center;
+      }
+      .product-grid-wrapper.list-view .product-card-premium:hover .product-card-actions {
+        bottom: 0;
+      }
+    }
+    
+    /* Toolbar Control Styling */
+    .shop-toolbar-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 15px 25px;
+      margin-bottom: 30px;
+    }
+    .toggle-layout-btn {
+      background: none;
+      border: 1px solid var(--color-light-gray);
+      width: 38px;
+      height: 38px;
+      color: var(--color-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+    .toggle-layout-btn.active, .toggle-layout-btn:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+    .toolbar-select-custom {
+      border: 1px solid var(--color-light-gray);
+      padding: 8px 15px;
+      font-size: 14px;
+      color: var(--color-dark);
+      outline: none;
+      background-color: var(--color-white);
+    }
+    
+    /* Featured Products Slider (4 Cards) */
+    .featured-shop-section {
+      background-color: var(--color-beige);
+      padding: 80px 0;
+    }
+    .featured-card-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 20px;
+      height: 100%;
+      text-align: center;
+      transition: var(--transition-medium);
+    }
+    .featured-card-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-premium);
+      border-color: var(--color-primary);
+    }
+    .featured-card-image {
+      aspect-ratio: 1 / 1;
+      background-color: var(--color-beige);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .featured-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-medium);
+    }
+    .featured-card-box:hover .featured-card-image img {
+      transform: scale(1.06);
+    }
+    
+    /* Premium Detail Modal */
+    .modal-quick-view .modal-content {
+      border-radius: 0;
+      border: 1px solid var(--color-dark);
+    }
+    .quick-view-gallery-box {
+      aspect-ratio: 1 / 1;
+      background-color: var(--color-beige);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-light-gray);
+    }
+    .quick-view-gallery-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .qty-input-wrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--color-light-gray);
+      max-width: 120px;
+    }
+    .qty-btn {
+      background: none;
+      border: none;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-dark);
+      font-weight: bold;
+      transition: var(--transition-fast);
+    }
+    .qty-btn:hover {
+      background-color: var(--color-beige);
+    }
+    .qty-num-field {
+      width: 50px;
+      text-align: center;
+      border: none;
+      outline: none;
+      font-weight: bold;
+      color: var(--color-dark);
+    }
+    
+    /* Search sidebar form */
+    .sidebar-search-box {
+      position: relative;
+    }
+    .sidebar-search-input {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border: 1px solid var(--color-light-gray);
+      background-color: var(--color-beige);
+      font-size: 14px;
+      color: var(--color-dark);
+      outline: none;
+      transition: var(--transition-fast);
+    }
+    .sidebar-search-input:focus {
+      background-color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+    .sidebar-search-btn {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--color-gray);
+      padding: 10px;
+      transition: var(--transition-fast);
+    }
+    .sidebar-search-btn:hover {
+      color: var(--color-primary);
+    }
+
+    /* Accessibility reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item ">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item active">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="shop-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z">
+        <div class="row align-items-center">
+          <div class="col-md-8" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">AutoCare Spare Catalog</span>
+            <h1 class="display-5 text-white fw-extrabold mb-3">Premium Auto Spare Parts</h1>
+            <p class="text-white opacity-75 fs-6 mb-0 max-w-xl">Restore performance and durability with certified, high-grade replacement components.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-4 mt-md-0" data-aos="fade-left" data-aos-delay="100">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-primary">Home</a></li>
+                <li class="breadcrumb-item active text-primary-orange" aria-current="page">Spare Parts Shop</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Catalog & Filters Section -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Left Column: Sidebar Filters (col-lg-3) -->
+          <div class="col-lg-3">
+            <aside class="shop-sidebar-wrapper">
+              
+              <!-- Search Widget -->
+              <div class="shop-sidebar" data-aos="fade-up">
+                <h5 class="shop-widget-title">Search Products</h5>
+                <div class="sidebar-search-box">
+                  <input type="text" id="shopSearchInput" class="sidebar-search-input" placeholder="Type name or SKU..." aria-label="Search products">
+                  <button type="button" class="sidebar-search-btn" aria-label="Search"><i class="bi bi-search"></i></button>
+                </div>
+              </div>
+
+              <!-- Categories Widget -->
+              <div class="shop-sidebar" data-aos="fade-up">
+                <h5 class="shop-widget-title">Categories</h5>
+                <ul class="filter-list" id="categoryFilterGroup">
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Engine Parts" class="category-filter-checkbox"> Engine Parts</span>
+                      <span class="filter-count">3</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Brake Parts" class="category-filter-checkbox"> Brake Parts</span>
+                      <span class="filter-count">2</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Filters" class="category-filter-checkbox"> Filters</span>
+                      <span class="filter-count">2</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Batteries" class="category-filter-checkbox"> Batteries</span>
+                      <span class="filter-count">1</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Lubricants" class="category-filter-checkbox"> Lubricants</span>
+                      <span class="filter-count">1</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Accessories" class="category-filter-checkbox"> Accessories</span>
+                      <span class="filter-count">2</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="filter-checkbox-label">
+                      <span><input type="checkbox" value="Tools" class="category-filter-checkbox"> Tools</span>
+                      <span class="filter-count">2</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Price Filter Widget -->
+              <div class="shop-sidebar" data-aos="fade-up">
+                <h5 class="shop-widget-title">Filter By Price</h5>
+                <div class="price-slider-wrapper">
+                  <input type="range" class="price-slider" id="priceRangeSlider" min="10" max="250" value="250">
+                  <div class="price-value-box">
+                    <span>Min: <strong>$10</strong></span>
+                    <span>Max Limit: <strong class="text-primary-orange" id="priceRangeValue">$250</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rating Filter Widget -->
+              <div class="shop-sidebar" data-aos="fade-up">
+                <h5 class="shop-widget-title">Customer Rating</h5>
+                <div id="ratingFilterGroup">
+                  <div class="rating-filter-item">
+                    <input type="radio" name="ratingFilter" value="all" checked id="rating_all">
+                    <label for="rating_all" class="m-0 fs-xs fw-bold text-dark">Show All</label>
+                  </div>
+                  <div class="rating-filter-item">
+                    <input type="radio" name="ratingFilter" value="4.8" id="rating_4_8">
+                    <label for="rating_4_8" class="m-0 d-flex align-items-center gap-1">
+                      <span class="fs-xs fw-bold">4.8 & Up</span>
+                      <span><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                    </label>
+                  </div>
+                  <div class="rating-filter-item">
+                    <input type="radio" name="ratingFilter" value="4.6" id="rating_4_6">
+                    <label for="rating_4_6" class="m-0 d-flex align-items-center gap-1">
+                      <span class="fs-xs fw-bold">4.6 & Up</span>
+                      <span><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Clear Filters button -->
+              <button type="button" id="clearFiltersBtn" class="btn-premium btn-charcoal btn-ripple w-100 py-2.5 border-0 uppercase tracking-wider fs-xs fw-bold" data-aos="fade-up">
+                <i class="bi bi-arrow-counterclockwise"></i> Clear All Filters
+              </button>
+
+            </aside>
+          </div>
+
+          <!-- Right Column: Product Toolbar & Grid Area (col-lg-9) -->
+          <div class="col-lg-9">
+            
+            <!-- Toolbar Box -->
+            <div class="shop-toolbar-box d-flex flex-wrap justify-content-between align-items-center gap-3" data-aos="fade-up">
+              <div class="toolbar-left fs-sm text-gray">
+                Showing <strong class="text-charcoal" id="products-displayed-count">12</strong> of 12 certified components
+              </div>
+              <div class="toolbar-right d-flex align-items-center gap-3">
+                
+                <!-- Sort Select -->
+                <select class="toolbar-select-custom" id="productSortSelect" aria-label="Sort products">
+                  <option value="default">Default Sorting</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating-desc">Customer Rating</option>
+                </select>
+
+                <!-- Grid/List Toggles -->
+                <div class="layout-toggle-group d-flex gap-1">
+                  <button type="button" class="toggle-layout-btn active" id="gridLayoutBtn" title="Grid Layout" aria-label="Grid View">
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                  </button>
+                  <button type="button" class="toggle-layout-btn" id="listLayoutBtn" title="List Layout" aria-label="List View">
+                    <i class="bi bi-list-ul"></i>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Product Grid Wrapper -->
+            <div class="row g-4 product-grid-wrapper" id="productGrid" data-aos="fade-up">
+              
+              <!-- Product 1 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Brake Parts" data-price="189.99" data-rating="5.0" data-name="Carbon-Fiber Brake Rotors" data-sku="AC-BR-1092">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-sale">Sale</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&h=600&q=80" alt="Carbon-Fiber Brake Rotors">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Brake Parts</span>
+                    <span class="product-card-sku">SKU: AC-BR-1092</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Carbon-Fiber Brake Rotors</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(5.0)</span>
+                    </div>
+                    <p class="product-card-desc">Formulated with premium structural carbon composites to eliminate braking glaze, high thermal fatigue, and pad deposits.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$189.99</span>
+                      <span class="product-old-price">$249.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 2 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Engine Parts" data-price="45.00" data-rating="4.8" data-name="Iridium Spark Plug Set" data-sku="AC-SP-5521">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-new">New</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=600&h=600&q=80" alt="Iridium Spark Plug Set">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Engine Parts</span>
+                    <span class="product-card-sku">SKU: AC-SP-5521</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Iridium Spark Plug Set</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.8)</span>
+                    </div>
+                    <p class="product-card-desc">Constructed using laser-welded iridium electrode tips to ensure lightning-fast cold-starts and maximum fuel vapor efficiency.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$45.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 3 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Lubricants" data-price="34.99" data-rating="4.9" data-name="Synthetic Motor Oil 5W-30" data-sku="AC-LO-8821">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-sale">Sale</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1552656967-7a0991a13906?auto=format&fit=crop&w=600&h=600&q=80" alt="Synthetic Motor Oil 5W-30">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Lubricants</span>
+                    <span class="product-card-sku">SKU: AC-LO-8821</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Synthetic Motor Oil 5W-30</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.9)</span>
+                    </div>
+                    <p class="product-card-desc">Advanced high-viscosity resistance formula keeping modern multi-valve combustion blocks clean under intensive road strain.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$34.99</span>
+                      <span class="product-old-price">$42.50</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 4 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Batteries" data-price="120.00" data-rating="4.7" data-name="Heavy-Duty 12V Car Battery" data-sku="AC-BT-3031">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&h=600&q=80" alt="Heavy-Duty 12V Car Battery">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Batteries</span>
+                    <span class="product-card-sku">SKU: AC-BT-3031</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Heavy-Duty 12V Car Battery</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.7)</span>
+                    </div>
+                    <p class="product-card-desc">Absorbent Glass Mat (AGM) design providing unparalleled cranking amps and dynamic vibration resistance in sub-zero climates.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$120.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 5 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Accessories" data-price="22.50" data-rating="4.5" data-name="Aero-Dynamic Wiper Blades" data-sku="AC-WP-2210">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1530047625168-4b29cb50f6aa?auto=format&fit=crop&w=600&h=600&q=80" alt="Aero-Dynamic Wiper Blades">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Accessories</span>
+                    <span class="product-card-sku">SKU: AC-WP-2210</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Aero-Dynamic Wiper Blades</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.5)</span>
+                    </div>
+                    <p class="product-card-desc">Sleek contoured wing structure reduces wind-lift at racing velocities while providing quiet, streak-free rain clearing.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$22.50</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 6 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Engine Parts" data-price="210.00" data-rating="4.9" data-name="High-Flow Cold Air Intake" data-sku="AC-AI-7741">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-sale">Sale</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&h=600&q=80" alt="High-Flow Cold Air Intake">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Engine Parts</span>
+                    <span class="product-card-sku">SKU: AC-AI-7741</span>
+                    <h4 class="product-card-title"><a href="product-details.html">High-Flow Cold Air Intake</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.9)</span>
+                    </div>
+                    <p class="product-card-desc">Mandrel-bent high-grade aluminum tubes and micro-woven mesh air filter optimization for direct throttle induction upgrades.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$210.00</span>
+                      <span class="product-old-price">$250.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 7 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Brake Parts" data-price="65.00" data-rating="4.8" data-name="Ceramic Brake Pads (Front)" data-sku="AC-BP-4412">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-new">New</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=600&q=80" alt="Ceramic Brake Pads (Front)">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Brake Parts</span>
+                    <span class="product-card-sku">SKU: AC-BP-4412</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Ceramic Brake Pads (Front)</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.8)</span>
+                    </div>
+                    <p class="product-card-desc">Zero-noise ceramic-compound linings formulated with structural chamfers to dissipate heat and prevent carbon dust accumulation.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$65.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 8 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Filters" data-price="18.99" data-rating="4.6" data-name="Premium Cabin Air Filter" data-sku="AC-AF-1102">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&h=600&q=80" alt="Premium Cabin Air Filter">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Filters</span>
+                    <span class="product-card-sku">SKU: AC-AF-1102</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Premium Cabin Air Filter</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.6)</span>
+                    </div>
+                    <p class="product-card-desc">Layered with advanced activated-charcoal matrix structures to neutralize incoming odors, fine pollen, and exhaust contaminants.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$18.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 9 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Tools" data-price="29.99" data-rating="4.8" data-name="Telescopic Mechanical Lug Wrench" data-sku="AC-TL-9943">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1607603731681-37cd8772a000?auto=format&fit=crop&w=600&h=600&q=80" alt="Telescopic Mechanical Lug Wrench">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Tools</span>
+                    <span class="product-card-sku">SKU: AC-TL-9943</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Telescopic Mechanical Lug Wrench</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.8)</span>
+                    </div>
+                    <p class="product-card-desc">Forged hardened Chrome-Vanadium steel alloy core extending up to 21 inches to deliver extreme torque leverage on frozen lugs.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$29.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 10 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Tools" data-price="15.99" data-rating="4.7" data-name="Digital Tire Pressure Gauge" data-sku="AC-TG-6632">
+                <div class="product-card-premium">
+                  <div class="product-badge badge-sale">Sale</div>
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&h=600&q=80" alt="Digital Tire Pressure Gauge">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Tools</span>
+                    <span class="product-card-sku">SKU: AC-TG-6632</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Digital Tire Pressure Gauge</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.7)</span>
+                    </div>
+                    <p class="product-card-desc">Accurate backlit LCD readout detailing pressure levels in PSI, Bar, or kPa. Fitted with high-precision solid brass nozzle cores.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$15.99</span>
+                      <span class="product-old-price">$19.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 11 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Filters" data-price="12.49" data-rating="4.9" data-name="Performance Oil Filter" data-sku="AC-OF-2041">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=600&h=600&q=80" alt="Performance Oil Filter">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Filters</span>
+                    <span class="product-card-sku">SKU: AC-OF-2041</span>
+                    <h4 class="product-card-title"><a href="product-details.html">Performance Oil Filter</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.9)</span>
+                    </div>
+                    <p class="product-card-desc">Constructed with highly resilient synthetic cellulose-blend media to filter micro-abrasives from high-pressure engine lubricants.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$12.49</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product 12 -->
+              <div class="col-xl-4 col-md-6 col-product-item" data-category="Accessories" data-price="38.00" data-rating="4.6" data-name="High-Output Halogen Bulb" data-sku="AC-HB-5021">
+                <div class="product-card-premium">
+                  <div class="product-image-wrapper">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1625047509128-8d0af7cecc07?auto=format&fit=crop&w=600&h=600&q=80" alt="High-Output Halogen Headlight Bulb">
+                    <div class="product-card-actions">
+                      <button type="button" class="action-icon-btn quick-view-trigger" title="Quick View" aria-label="Quick View"><i class="bi bi-eye-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-wishlist-btn" title="Add to Wishlist" aria-label="Add to Wishlist"><i class="bi bi-heart-fill"></i></button>
+                      <button type="button" class="action-icon-btn add-to-cart-btn" title="Add to Cart" aria-label="Add to Cart"><i class="bi bi-cart-fill"></i></button>
+                    </div>
+                  </div>
+                  <div class="product-details-box">
+                    <span class="product-card-category">Accessories</span>
+                    <span class="product-card-sku">SKU: AC-HB-5021</span>
+                    <h4 class="product-card-title"><a href="product-details.html">High-Output Halogen Bulb</a></h4>
+                    <div class="product-card-rating">
+                      <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                      <span class="text-gray ms-1 fs-xxs fw-bold">(4.6)</span>
+                    </div>
+                    <p class="product-card-desc">Advanced Xenon gas-infused technology projecting a clean, long-distance white light beam to ensure safe night-road visibility.</p>
+                    <div class="product-card-pricing">
+                      <span class="product-price">$38.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Empty State Warning (Hidden by default) -->
+            <div id="shopEmptyState" class="text-center py-5 d-none">
+              <div class="bg-light-gray p-4 rounded-circle d-inline-flex mb-3 text-gray" style="width: 70px; height: 70px; align-items: center; justify-content: center;">
+                <i class="bi bi-search fs-3"></i>
+              </div>
+              <h5 class="text-charcoal fw-bold">No Products Found</h5>
+              <p class="text-gray fs-sm max-w-sm mx-auto mb-0">Try adjusting your category checks, clearing search strings, or sliding maximum price caps to locate parts.</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Showcase (4 premium cards) -->
+    <section class="featured-shop-section">
+      <div class="container text-center">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">Highly Recommended</span>
+        <h2 class="text-charcoal fw-extrabold mb-5" data-aos="fade-up" data-aos-delay="100">Featured Shop Upgrades</h2>
+        
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Featured 1 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="featured-card-box">
+              <div class="featured-card-image">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=300&h=300&q=80" alt="Titanium Exhaust Component">
+              </div>
+              <span class="product-card-category">Engine Parts</span>
+              <h5 class="product-card-title fs-6"><a href="product-details.html">Titanium Performance Muffler</a></h5>
+              <div class="product-card-rating justify-content-center">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <span class="product-price fs-6 fw-bold text-primary-orange">$249.99</span>
+            </div>
+          </div>
+
+          <!-- Featured 2 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="featured-card-box">
+              <div class="featured-card-image">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=300&h=300&q=80" alt="Sport Coilover Kit">
+              </div>
+              <span class="product-card-category">Accessories</span>
+              <h5 class="product-card-title fs-6"><a href="product-details.html">Coilover Suspension Kit</a></h5>
+              <div class="product-card-rating justify-content-center">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+              </div>
+              <span class="product-price fs-6 fw-bold text-primary-orange">$399.00</span>
+            </div>
+          </div>
+
+          <!-- Featured 3 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="featured-card-box">
+              <div class="featured-card-image">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=300&h=300&q=80" alt="Performance Air Filter">
+              </div>
+              <span class="product-card-category">Filters</span>
+              <h5 class="product-card-title fs-6"><a href="product-details.html">Conical Intake Mesh Filter</a></h5>
+              <div class="product-card-rating justify-content-center">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <span class="product-price fs-6 fw-bold text-primary-orange">$45.00</span>
+            </div>
+          </div>
+
+          <!-- Featured 4 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="featured-card-box">
+              <div class="featured-card-image">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1625047509128-8d0af7cecc07?auto=format&fit=crop&w=300&h=300&q=80" alt="LED Conversion Bulbs">
+              </div>
+              <span class="product-card-category">Accessories</span>
+              <h5 class="product-card-title fs-6"><a href="product-details.html">LED Conversion Kit</a></h5>
+              <div class="product-card-rating justify-content-center">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+              </div>
+              <span class="product-price fs-6 fw-bold text-primary-orange">$89.99</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA (Cream background, high visual symmetry) -->
+    <section class="section-spacing bg-cream position-relative overflow-hidden">
+      <!-- Blueprint tech visual layout -->
+      <div class="banner-blueprint-overlay" style="opacity: 0.05;"></div>
+      <div class="container text-center relative-z" data-aos="zoom-in">
+        <div class="max-w-2xl mx-auto" style="max-width: 650px;">
+          <div class="bg-white p-3 rounded-circle d-inline-flex mb-4 text-primary-orange" style="width: 70px; height: 70px; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+            <i class="bi bi-send-fill fs-3"></i>
+          </div>
+          <h2 class="text-charcoal fw-extrabold mb-3">Subscribe For Blueprint Discounts</h2>
+          <p class="text-gray mb-4 fs-6">Receive immediate micro-alerts for seasonal car accessories, newly arrived high-performance parts, and tech guides from Silas.</p>
+          <div class="newsletter-form-container mx-auto" style="max-width: 500px; border: 1px solid var(--color-light-gray); background-color: var(--color-white); padding: 6px; border-radius: 4px;">
+            <form action="index.html" method="POST" onsubmit="event.preventDefault(); showToastNotification('Subscribed successfully! Welcome to the mechanical digest.'); this.reset();" class="d-flex align-items-center">
+              <input type="email" class="form-control border-0 bg-transparent py-2 fs-sm shadow-none" placeholder="Your Email Address" required style="outline: none;">
+              <button type="submit" class="btn-premium btn-orange btn-ripple border-0 px-4 py-2 uppercase fw-bold fs-xs tracking-wider">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Node: Quick View -->
+    <div class="modal fade modal-quick-view" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0 pb-0">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pt-0">
+            <div class="row g-4 align-items-center">
+              
+              <!-- Left Column: Image -->
+              <div class="col-md-5">
+                <div class="quick-view-gallery-box">
+                  <img loading="lazy" id="modalProductImg" src="" alt="Dynamic Product">
+                </div>
+              </div>
+
+              <!-- Right Column: Details -->
+              <div class="col-md-7">
+                <span id="modalProductCategory" class="product-card-category d-inline-block mb-1">Category</span>
+                <span id="modalProductSku" class="product-card-sku d-block mb-2">SKU: AC-XX-0000</span>
+                <h3 id="modalProductTitle" class="text-charcoal fw-extrabold mb-2 fs-4">Product Spare Name</h3>
+                
+                <!-- Rating -->
+                <div id="modalProductRating" class="product-card-rating mb-3">
+                  <!-- Injected by script -->
+                </div>
+
+                <!-- Price -->
+                <div class="mb-3">
+                  <span id="modalProductPrice" class="fs-4 fw-extrabold text-primary-orange">$0.00</span>
+                  <span id="modalProductOldPrice" class="fs-6 text-decoration-line-through text-gray ms-2 opacity-60">$0.00</span>
+                </div>
+
+                <p id="modalProductDesc" class="fs-sm text-gray mb-4">Detailed technical specifications will be populated here by local scripts on click.</p>
+                
+                <!-- Purchase Interaction Row -->
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                  <div class="qty-input-wrapper">
+                    <button type="button" class="qty-btn" onclick="decrementModalQty()">-</button>
+                    <input type="number" id="modalProductQty" class="qty-num-field" value="1" min="1" max="99" aria-label="Quantity">
+                    <button type="button" class="qty-btn" onclick="incrementModalQty()">+</button>
+                  </div>
+                  <button type="button" id="modalAddToCartBtn" class="btn-premium btn-orange btn-ripple border-0 px-4 py-2.5 fs-xs fw-bold uppercase tracking-wider" onclick="addModalItemToCart()">
+                    <i class="bi bi-cart-fill me-1"></i> Add To Cart
+                  </button>
+                </div>
+
+                <div class="mt-4 pt-3 border-top border-light d-flex gap-3">
+                  <button type="button" id="modalAddToWishlistBtn" class="btn text-charcoal p-0 fs-xs fw-bold border-0 bg-transparent hover-primary d-inline-flex align-items-center gap-1" onclick="addModalItemToWishlist()">
+                    <i class="bi bi-heart-fill text-danger"></i> Add to Wishlist
+                  </button>
+                  <a id="modalProductDetailsLink" href="product-details.html" class="btn text-charcoal p-0 fs-xs fw-bold border-0 bg-transparent hover-primary d-inline-flex align-items-center gap-1">
+                    <i class="bi bi-info-circle-fill"></i> View Details
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications Center -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1060;">
+      <div id="shopToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body d-flex align-items-center gap-2 py-3">
+            <i class="bi bi-check-circle-fill text-primary-orange fs-5"></i>
+            <span id="toastMessage" class="fw-bold fs-xs">Component added to your shopping cart!</span>
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Premium Interactive Catalog Controller Logic -->
+  <script>
+    // Global Toast Notification Trigger
+    function showToastNotification(message) {
+      const toastEl = document.getElementById('shopToast');
+      const toastMessageEl = document.getElementById('toastMessage');
+      if (toastEl && toastMessageEl) {
+        toastMessageEl.textContent = message;
+        const toast = new bootstrap.Toast(toastEl, { delay: 3500 });
+        toast.show();
+      }
+    }
+
+    // Modal Quantity Controls
+    function incrementModalQty() {
+      const qtyField = document.getElementById('modalProductQty');
+      if (qtyField) {
+        let val = parseInt(qtyField.value) || 1;
+        qtyField.value = val + 1;
+      }
+    }
+
+    function decrementModalQty() {
+      const qtyField = document.getElementById('modalProductQty');
+      if (qtyField) {
+        let val = parseInt(qtyField.value) || 1;
+        if (val > 1) {
+          qtyField.value = val - 1;
+        }
+      }
+    }
+
+    // Add modal item to cart/wishlist
+    function addModalItemToCart() {
+      const title = document.getElementById('modalProductTitle').textContent;
+      const qty = document.getElementById('modalProductQty').value;
+      const modalEl = document.getElementById('quickViewModal');
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      if (modal) modal.hide();
+      showToastNotification(`Added ${qty}x "${title}" to your shopping cart!`);
+    }
+
+    function addModalItemToWishlist() {
+      const title = document.getElementById('modalProductTitle').textContent;
+      const modalEl = document.getElementById('quickViewModal');
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      if (modal) modal.hide();
+      showToastNotification(`Added "${title}" to your wishlist!`);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const productGrid = document.getElementById('productGrid');
+      const productCols = Array.from(document.querySelectorAll('.col-product-item'));
+      
+      const searchInput = document.getElementById('shopSearchInput');
+      const categoryCheckboxes = document.querySelectorAll('.category-filter-checkbox');
+      const priceSlider = document.getElementById('priceRangeSlider');
+      const priceValueLabel = document.getElementById('priceRangeValue');
+      const ratingRadios = document.getElementsByName('ratingFilter');
+      const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+      
+      const sortSelect = document.getElementById('productSortSelect');
+      const gridLayoutBtn = document.getElementById('gridLayoutBtn');
+      const listLayoutBtn = document.getElementById('listLayoutBtn');
+      const emptyState = document.getElementById('shopEmptyState');
+      const displayedCountLabel = document.getElementById('products-displayed-count');
+
+      // --- 1. Real-time Filtering Engine ---
+      function filterProducts() {
+        const searchQuery = searchInput.value.toLowerCase().trim();
+        const maxPrice = parseFloat(priceSlider.value) || 250;
+        
+        // Selected categories
+        const checkedCategories = Array.from(categoryCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+
+        // Selected minimum rating
+        let minRating = 0;
+        for (const radio of ratingRadios) {
+          if (radio.checked) {
+            minRating = radio.value === 'all' ? 0 : parseFloat(radio.value);
+            break;
+          }
+        }
+
+        let visibleCount = 0;
+
+        productCols.forEach(col => {
+          const cat = col.getAttribute('data-category');
+          const price = parseFloat(col.getAttribute('data-price')) || 0;
+          const rating = parseFloat(col.getAttribute('data-rating')) || 0;
+          const name = col.getAttribute('data-name').toLowerCase();
+          const sku = col.getAttribute('data-sku').toLowerCase();
+
+          // Evaluate conditions
+          const matchesSearch = !searchQuery || name.includes(searchQuery) || sku.includes(searchQuery);
+          const matchesCategory = checkedCategories.length === 0 || checkedCategories.includes(cat);
+          const matchesPrice = price <= maxPrice;
+          const matchesRating = rating >= minRating;
+
+          if (matchesSearch && matchesCategory && matchesPrice && matchesRating) {
+            col.classList.remove('d-none');
+            visibleCount++;
+          } else {
+            col.classList.add('d-none');
+          }
+        });
+
+        // Update counts and show empty state if necessary
+        displayedCountLabel.textContent = visibleCount;
+        if (visibleCount === 0) {
+          emptyState.classList.remove('d-none');
+        } else {
+          emptyState.classList.add('d-none');
+        }
+      }
+
+      // --- 2. Sorting Engine ---
+      function sortProducts() {
+        const criteria = sortSelect.value;
+        const parent = productGrid;
+
+        const sortedCols = [...productCols].sort((a, b) => {
+          const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+          const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+          const ratingA = parseFloat(a.getAttribute('data-rating')) || 0;
+          const ratingB = parseFloat(b.getAttribute('data-rating')) || 0;
+          const nameA = a.getAttribute('data-name');
+          const nameB = b.getAttribute('data-name');
+
+          if (criteria === 'price-asc') {
+            return priceA - priceB;
+          } else if (criteria === 'price-desc') {
+            return priceB - priceA;
+          } else if (criteria === 'rating-desc') {
+            return ratingB - ratingA;
+          } else {
+            // Default: sort alphabetical or structural
+            return nameA.localeCompare(nameB);
+          }
+        });
+
+        // Re-append sorted columns to the grid parent
+        sortedCols.forEach(col => parent.appendChild(col));
+      }
+
+      // --- 3. Event Binding ---
+      searchInput.addEventListener('input', filterProducts);
+      categoryCheckboxes.forEach(cb => cb.addEventListener('change', filterProducts));
+      
+      priceSlider.addEventListener('input', function() {
+        priceValueLabel.textContent = `$${this.value}`;
+        filterProducts();
+      });
+
+      ratingRadios.forEach(radio => radio.addEventListener('change', filterProducts));
+
+      sortSelect.addEventListener('change', sortProducts);
+
+      // Clear Filters Action
+      clearFiltersBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        categoryCheckboxes.forEach(cb => cb.checked = false);
+        priceSlider.value = 250;
+        priceValueLabel.textContent = '$250';
+        document.getElementById('rating_all').checked = true;
+        filterProducts();
+        sortSelect.value = 'default';
+        sortProducts();
+      });
+
+      // --- 4. Layout Switching (Grid vs List) ---
+      gridLayoutBtn.addEventListener('click', function() {
+        this.classList.add('active');
+        listLayoutBtn.classList.remove('active');
+        productGrid.classList.remove('list-view');
+      });
+
+      listLayoutBtn.addEventListener('click', function() {
+        this.classList.add('active');
+        gridLayoutBtn.classList.remove('active');
+        productGrid.classList.add('list-view');
+      });
+
+      // --- 5. Interactive Action Toasts (Delegation) ---
+      productGrid.addEventListener('click', function(e) {
+        // Add to Cart Buttons
+        const cartBtn = e.target.closest('.add-to-cart-btn');
+        if (cartBtn) {
+          const col = cartBtn.closest('.col-product-item');
+          const name = col.getAttribute('data-name');
+          showToastNotification(`"${name}" has been successfully added to your Cart!`);
+          return;
+        }
+
+        // Add to Wishlist Buttons
+        const wishlistBtn = e.target.closest('.add-to-wishlist-btn');
+        if (wishlistBtn) {
+          const col = wishlistBtn.closest('.col-product-item');
+          const name = col.getAttribute('data-name');
+          showToastNotification(`"${name}" has been added to your Wishlist!`);
+          return;
+        }
+
+        // Quick View Buttons
+        const quickViewBtn = e.target.closest('.quick-view-trigger');
+        if (quickViewBtn) {
+          const col = quickViewBtn.closest('.col-product-item');
+          const name = col.getAttribute('data-name');
+          const sku = col.getAttribute('data-sku');
+          const price = col.getAttribute('data-price');
+          const rating = parseFloat(col.getAttribute('data-rating')) || 0;
+          const category = col.getAttribute('data-category');
+          const imgUrl = col.querySelector('.product-image-wrapper img').getAttribute('src');
+          const desc = col.querySelector('.product-card-desc').textContent;
+
+          // Populate modal fields
+          document.getElementById('modalProductTitle').textContent = name;
+          document.getElementById('modalProductCategory').textContent = category;
+          document.getElementById('modalProductSku').textContent = `SKU: ${sku}`;
+          document.getElementById('modalProductPrice').textContent = `$${parseFloat(price).toFixed(2)}`;
+          document.getElementById('modalProductImg').setAttribute('src', imgUrl);
+          document.getElementById('modalProductDesc').textContent = desc;
+          document.getElementById('modalProductQty').value = 1;
+
+          // If there is an old price, populate it
+          const oldPriceSpan = col.querySelector('.product-old-price');
+          if (oldPriceSpan) {
+            document.getElementById('modalProductOldPrice').textContent = oldPriceSpan.textContent;
+            document.getElementById('modalProductOldPrice').classList.remove('d-none');
+          } else {
+            document.getElementById('modalProductOldPrice').classList.add('d-none');
+          }
+
+          // Populate stars
+          let starsHtml = '';
+          const fullStars = Math.floor(rating);
+          const hasHalf = rating % 1 !== 0;
+          for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+              starsHtml += '<i class="bi bi-star-fill"></i>';
+            } else if (i === fullStars && hasHalf) {
+              starsHtml += '<i class="bi bi-star-half"></i>';
+            } else {
+              starsHtml += '<i class="bi bi-star"></i>';
+            }
+          }
+          starsHtml += `<span class="text-gray ms-1 fs-xxs fw-bold">(${rating.toFixed(1)})</span>`;
+          document.getElementById('modalProductRating').innerHTML = starsHtml;
+
+          // Open the Modal
+          const modalNode = document.getElementById('quickViewModal');
+          const modalInstance = new bootstrap.Modal(modalNode);
+          modalInstance.show();
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

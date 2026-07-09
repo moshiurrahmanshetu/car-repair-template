@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Contact Us</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Premium Contact Styles -->
+  <style>
+    :root {
+      --color-primary: #FF6321;
+      --color-secondary: #FFB300;
+      --color-dark: #151515;
+      --color-gray: #666666;
+      --color-light-gray: #E5E5E5;
+      --color-beige: #F4F4F2;
+      --color-white: #FFFFFF;
+    }
+
+    /* Contact Banner Section */
+    .contact-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 80px 0;
+    }
+    .text-primary-orange {
+      color: var(--color-primary) !important;
+    }
+    .hover-primary:hover {
+      color: var(--color-primary) !important;
+    }
+    .bg-cream {
+      background-color: var(--color-beige) !important;
+    }
+
+    /* Contact Info Cards Grid */
+    .contact-info-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 35px 30px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+      border-color: var(--color-primary);
+    }
+    .contact-info-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+    .contact-info-card:hover::after {
+      height: 100%;
+    }
+    .contact-icon-box {
+      width: 70px;
+      height: 70px;
+      background-color: var(--color-beige);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
+    }
+    .contact-info-card:hover .contact-icon-box {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    /* Form Fields */
+    .form-card-wrapper {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-form-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+    }
+    .contact-form-input {
+      height: 52px;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 0;
+      font-size: 14px;
+      color: var(--color-dark);
+      padding: 0 18px;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .contact-form-input:focus {
+      border-color: var(--color-primary);
+      box-shadow: none;
+      background-color: var(--color-white);
+    }
+    .contact-form-textarea {
+      border: 1px solid var(--color-light-gray);
+      border-radius: 0;
+      font-size: 14px;
+      color: var(--color-dark);
+      padding: 15px 18px;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      resize: vertical;
+    }
+    .contact-form-textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: none;
+      background-color: var(--color-white);
+    }
+    .contact-form-select {
+      height: 52px;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 0;
+      font-size: 14px;
+      color: var(--color-dark);
+      padding: 0 18px;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .contact-form-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: none;
+    }
+
+    /* Maps Section */
+    .map-outer-container {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border: 1px solid var(--color-light-gray);
+      overflow: hidden;
+      background-color: var(--color-beige);
+    }
+    .map-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Branch Office Cards */
+    .branch-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .branch-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+      border-color: var(--color-primary);
+    }
+    .branch-img-wrapper {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background-color: var(--color-dark);
+    }
+    .branch-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .branch-card:hover .branch-img {
+      transform: scale(1.08);
+      opacity: 0.9;
+    }
+    .branch-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+    }
+    .branch-content {
+      padding: 30px;
+    }
+    .branch-meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 13.5px;
+      color: var(--color-gray);
+    }
+    .branch-meta-icon {
+      color: var(--color-primary);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Validation Errors */
+    .contact-error-msg {
+      display: none;
+      color: #DC3545;
+      font-size: 12px;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .has-error .contact-error-msg {
+      display: block;
+    }
+    .has-error .contact-form-input,
+    .has-error .contact-form-textarea,
+    .has-error .contact-form-select {
+      border-color: #DC3545 !important;
+    }
+
+    /* Accessibility focus indicators */
+    .contact-form-input:focus-visible,
+    .contact-form-textarea:focus-visible,
+    .contact-form-select:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 1px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+      }
+      .contact-info-card:hover, .branch-card:hover {
+        transform: none !important;
+      }
+      .branch-card:hover .branch-img {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item ">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item active">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="contact-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z">
+        <div class="row align-items-center">
+          <div class="col-md-8" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">AutoCare Portal</span>
+            <h1 class="display-5 text-white fw-extrabold mb-3">Contact Operations</h1>
+            <p class="text-white opacity-75 fs-6 mb-0 max-w-xl font-sans">Reach out to our premium garage centers. All inquiries are parsed within 12 hours by certified service dispatch managers.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-4 mt-md-0" data-aos="fade-left" data-aos-delay="100">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-primary">Home</a></li>
+                <li class="breadcrumb-item active text-primary-orange" aria-current="page">Contact Us</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information Grid -->
+    <section class="section-spacing bg-cream">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider">Direct Channels</span>
+          <h2 class="text-charcoal fw-extrabold mb-3">We Are Here For Your Machine</h2>
+          <p class="text-gray max-w-2xl mx-auto fs-6">Choose your preferred communications node. Our diagnostics offices are standing by to align mechanical requests or arrange emergency flatbeds.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- Card 1: Head Office -->
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-info-card w-100 d-flex flex-column h-100" id="cardHeadOffice">
+              <div class="contact-icon-box">
+                <i class="bi bi-building-fill-check"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Headquarters Garage</h4>
+              <p class="text-gray mb-0 fs-sm flex-grow-1">
+                123 Performance Parkway,<br>
+                Racing District, NY 10001
+              </p>
+              <hr class="my-4 border-light">
+              <span class="font-mono text-primary-orange fs-xxs tracking-wider uppercase fw-bold">Operations Hub</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Phone Channels -->
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="150">
+            <div class="contact-info-card w-100 d-flex flex-column h-100" id="cardPhoneChannels">
+              <div class="contact-icon-box">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Telephone Support</h4>
+              <p class="text-gray mb-0 fs-sm flex-grow-1">
+                Toll Free: <strong>+1 (555) 123-4567</strong><br>
+                Garage Desk: <strong>+1 (555) 987-6543</strong>
+              </p>
+              <hr class="my-4 border-light">
+              <span class="font-mono text-primary-orange fs-xxs tracking-wider uppercase fw-bold">Call Us Direct</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Email Portal -->
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-info-card w-100 d-flex flex-column h-100" id="cardEmailPortal">
+              <div class="contact-icon-box">
+                <i class="bi bi-envelope-at-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Electronic Mail</h4>
+              <p class="text-gray mb-0 fs-sm flex-grow-1">
+                Enquiries: <a href="mailto:support@autocare-theme.com" class="text-gray text-decoration-underline hover-primary">support@autocare-theme.com</a><br>
+                Estimations: <a href="mailto:info@autocare-theme.com" class="text-gray text-decoration-underline hover-primary">info@autocare-theme.com</a>
+              </p>
+              <hr class="my-4 border-light">
+              <span class="font-mono text-primary-orange fs-xxs tracking-wider uppercase fw-bold">Direct Response</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Working Hours -->
+          <div class="col-xl-6 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="250">
+            <div class="contact-info-card w-100 d-flex flex-column h-100" id="cardWorkingHours">
+              <div class="contact-icon-box">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Service Bay Hours</h4>
+              <p class="text-gray mb-0 fs-sm flex-grow-1">
+                Monday to Saturday: <strong>8:00 AM – 6:00 PM</strong><br>
+                Sunday Operations: <strong>Emergency Towing Dispatch Only</strong>
+              </p>
+              <hr class="my-4 border-light">
+              <span class="font-mono text-primary-orange fs-xxs tracking-wider uppercase fw-bold">Active Times</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Emergency Support -->
+          <div class="col-xl-6 col-md-12 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="contact-info-card w-100 d-flex flex-column h-100" id="cardEmergencySupport">
+              <div class="contact-icon-box">
+                <i class="bi bi-shield-fill-exclamation"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold fs-5 mb-3">24/7 Roadside Emergency</h4>
+              <p class="text-gray mb-0 fs-sm flex-grow-1">
+                Accident, lockout, or ignition failure? Contact our premium rescue fleet.<br>
+                Urgent Dispatch: <strong>+1 (800) 555-ROAD (7623)</strong>
+              </p>
+              <hr class="my-4 border-light">
+              <span class="font-mono text-danger fs-xxs tracking-wider uppercase fw-bold">Always Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form & Main Map Row -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Column Left: Contact Form -->
+          <div class="col-lg-7" data-aos="fade-right">
+            <div class="form-card-wrapper">
+              <div class="mb-4">
+                <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider">Message Terminal</span>
+                <h3 class="text-charcoal fw-extrabold mt-1">Send a Message</h3>
+                <p class="text-gray fs-sm mb-0">Fill out the mechanical dispatcher log. Field parameters with an asterisk (<span class="text-primary-orange">*</span>) represent mandatory parameters.</p>
+              </div>
+
+              <!-- Live Submission Success Banner (Hidden by default) -->
+              <div id="contactFormSuccess" class="alert alert-success d-none p-4 rounded-0 mb-4" role="alert">
+                <div class="d-flex gap-3 align-items-start">
+                  <i class="bi bi-check-circle-fill fs-3 text-success"></i>
+                  <div>
+                    <h5 class="alert-heading fw-bold m-0">Transmission Complete</h5>
+                    <p class="fs-sm text-success-emphasis m-0 mt-2">Your mechanical message has been catalogued. A diagnostic ticket (ID: #AC-MSG-8821) has been spawned in our active garage ledger.</p>
+                  </div>
+                </div>
+              </div>
+
+              <form id="contactForm" novalidate onsubmit="submitContactForm(event)">
+                <div class="row g-3">
+                  
+                  <!-- Full Name -->
+                  <div class="col-md-6" id="groupFullName">
+                    <label for="contactName" class="contact-form-label">Your Name <span class="text-primary-orange">*</span></label>
+                    <input type="text" id="contactName" class="contact-form-input" placeholder="e.g. Christian Horner" required aria-required="true">
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> Full Name is required.</span>
+                  </div>
+
+                  <!-- Email Address -->
+                  <div class="col-md-6" id="groupEmail">
+                    <label for="contactEmail" class="contact-form-label">Email Address <span class="text-primary-orange">*</span></label>
+                    <input type="email" id="contactEmail" class="contact-form-input font-mono" placeholder="e.g. chris@redbull.com" required aria-required="true">
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> A valid email address is required.</span>
+                  </div>
+
+                  <!-- Phone Number -->
+                  <div class="col-md-6" id="groupPhone">
+                    <label for="contactPhone" class="contact-form-label">Phone Number <span class="text-primary-orange">*</span></label>
+                    <input type="tel" id="contactPhone" class="contact-form-input font-mono" placeholder="e.g. +1 (555) 019-2831" required aria-required="true">
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> Valid phone number is required.</span>
+                  </div>
+
+                  <!-- Subject -->
+                  <div class="col-md-6" id="groupSubject">
+                    <label for="contactSubject" class="contact-form-label">Subject <span class="text-primary-orange">*</span></label>
+                    <input type="text" id="contactSubject" class="contact-form-input" placeholder="e.g. Engine noise alignment" required aria-required="true">
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> Subject heading is required.</span>
+                  </div>
+
+                  <!-- Service Select Dropdown -->
+                  <div class="col-12" id="groupService">
+                    <label for="contactService" class="contact-form-label">Target Service Bay <span class="text-primary-orange">*</span></label>
+                    <select id="contactService" class="contact-form-select form-select" required aria-required="true">
+                      <option value="" disabled selected>Choose a diagnostic category...</option>
+                      <option value="diagnostics">Engine & Computer Diagnostics</option>
+                      <option value="brakes">Ceramic Brake Replacements</option>
+                      <option value="alignment">Laser Wheel Alignment</option>
+                      <option value="transmission">Transmission Overhauling</option>
+                      <option value="tuning">Track Preparation & Tuning</option>
+                      <option value="general">Regular Scheduled Maintenance</option>
+                    </select>
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> Please select a target service category.</span>
+                  </div>
+
+                  <!-- Message Area -->
+                  <div class="col-12" id="groupMessage">
+                    <label for="contactMessage" class="contact-form-label">Detailed Mechanical Request <span class="text-primary-orange">*</span></label>
+                    <textarea id="contactMessage" class="contact-form-textarea" rows="6" placeholder="Describe the mechanical symptoms, fitment codes, or alignment tolerances required..." required aria-required="true"></textarea>
+                    <span class="contact-error-msg"><i class="bi bi-exclamation-circle-fill me-1"></i> Mechanical descriptions are required.</span>
+                  </div>
+
+                  <!-- Terms Consent Checkbox -->
+                  <div class="col-12" id="groupTerms">
+                    <div class="form-check d-flex align-items-start gap-2">
+                      <input class="form-check-input border-secondary" type="checkbox" id="termsCheckbox" required aria-required="true" style="margin-top: 4px;">
+                      <label class="form-check-label fs-xs text-gray" for="termsCheckbox">
+                        I authorize AutoCare technicians to process my parameters in accordance with the website <a href="terms.html" class="text-primary-orange text-decoration-underline fw-bold">Terms of Service</a>. <span class="text-primary-orange">*</span>
+                      </label>
+                    </div>
+                    <span class="contact-error-msg" id="termsError"><i class="bi bi-exclamation-circle-fill me-1"></i> You must agree to the technical terms of processing.</span>
+                  </div>
+
+                  <!-- Submit button -->
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn-premium btn-orange btn-ripple w-100 py-3 uppercase fw-bold tracking-wider fs-xs border-0">
+                      <i class="bi bi-send-fill me-2"></i> File Mechanical Ticket
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Column Right: Google Maps Display -->
+          <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
+            <div class="h-100 d-flex flex-column">
+              <div class="mb-4">
+                <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider">Cartography</span>
+                <h3 class="text-charcoal fw-extrabold mt-1">Live Location Map</h3>
+                <p class="text-gray fs-sm mb-0">Our operations center is anchored in the Manhattan Industrial Sector. Find our garage entrance easily via the embedded navigator.</p>
+              </div>
+
+              <!-- Google Map Outer Container -->
+              <div class="map-outer-container flex-grow-1">
+                <iframe 
+                  class="map-iframe" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.423187123456!2d-74.00622692345678!3d40.71277531234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a191c015b67%3A0x6b864a7f05ba7899!2sManhattan%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="AutoCare Manhattan HQ Location Map"
+                  aria-label="Google Map showing AutoCare Manhattan Headquarters">
+                </iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Branch Offices Showcase -->
+    <section class="section-spacing bg-cream">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider">Regional Centers</span>
+          <h2 class="text-charcoal fw-extrabold mb-3">Our Dedicated Branch Network</h2>
+          <p class="text-gray max-w-2xl mx-auto fs-6">Experience our professional standards across three custom mechanical stations. Each branch features top-tier chassis diagnostics platforms.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Branch 1: Manhattan -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="branch-card h-100 d-flex flex-column" id="branchManhattan">
+              <div class="branch-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=600&q=80" alt="Manhattan Diagnostics Engine Bay" class="branch-img" loading="lazy">
+                <span class="branch-badge">Main HQ</span>
+              </div>
+              <div class="branch-content d-flex flex-column flex-grow-1">
+                <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Manhattan Tuning Garage</h4>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-geo-alt-fill branch-meta-icon"></i>
+                  <span>123 Performance Parkway, New York, NY 10001</span>
+                </div>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-telephone-fill branch-meta-icon"></i>
+                  <span>+1 (555) 123-4567</span>
+                </div>
+
+                <div class="branch-meta-item">
+                  <i class="bi bi-envelope-open-fill branch-meta-icon"></i>
+                  <span>manhattan@autocare-theme.com</span>
+                </div>
+
+                <div class="branch-meta-item mb-4">
+                  <i class="bi bi-clock-fill branch-meta-icon"></i>
+                  <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
+                </div>
+
+                <div class="mt-auto">
+                  <a href="https://maps.google.com/?q=Manhattan,New+York" target="_blank" rel="noopener noreferrer" class="btn-premium btn-charcoal btn-ripple w-100 py-2.5 text-center d-inline-block fs-xs fw-bold tracking-wider text-decoration-none">
+                    <i class="bi bi-signpost-split me-2"></i> Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 2: Brooklyn -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="branch-card h-100 d-flex flex-column" id="branchBrooklyn">
+              <div class="branch-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80" alt="Brooklyn High Performance Dyno Bay" class="branch-img" loading="lazy">
+                <span class="branch-badge">Exhaust / Alignment</span>
+              </div>
+              <div class="branch-content d-flex flex-column flex-grow-1">
+                <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Brooklyn Alignment Hub</h4>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-geo-alt-fill branch-meta-icon"></i>
+                  <span>450 Brooklyn Expressway, Brooklyn, NY 11201</span>
+                </div>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-telephone-fill branch-meta-icon"></i>
+                  <span>+1 (555) 234-5678</span>
+                </div>
+
+                <div class="branch-meta-item">
+                  <i class="bi bi-envelope-open-fill branch-meta-icon"></i>
+                  <span>brooklyn@autocare-theme.com</span>
+                </div>
+
+                <div class="branch-meta-item mb-4">
+                  <i class="bi bi-clock-fill branch-meta-icon"></i>
+                  <span>Mon - Sat: 7:30 AM - 6:30 PM</span>
+                </div>
+
+                <div class="mt-auto">
+                  <a href="https://maps.google.com/?q=Brooklyn,New+York" target="_blank" rel="noopener noreferrer" class="btn-premium btn-charcoal btn-ripple w-100 py-2.5 text-center d-inline-block fs-xs fw-bold tracking-wider text-decoration-none">
+                    <i class="bi bi-signpost-split me-2"></i> Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch 3: Queens -->
+          <div class="col-lg-4 col-md-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="branch-card h-100 d-flex flex-column" id="branchQueens">
+              <div class="branch-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&q=80" alt="Queens Overhaul and Paint Bay" class="branch-img" loading="lazy">
+                <span class="branch-badge">Diagnostics HQ</span>
+              </div>
+              <div class="branch-content d-flex flex-column flex-grow-1">
+                <h4 class="text-charcoal fw-extrabold fs-5 mb-3">Queens Overhaul Station</h4>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-geo-alt-fill branch-meta-icon"></i>
+                  <span>88-10 Northern Boulevard, Queens, NY 11372</span>
+                </div>
+                
+                <div class="branch-meta-item">
+                  <i class="bi bi-telephone-fill branch-meta-icon"></i>
+                  <span>+1 (555) 345-6789</span>
+                </div>
+
+                <div class="branch-meta-item">
+                  <i class="bi bi-envelope-open-fill branch-meta-icon"></i>
+                  <span>queens@autocare-theme.com</span>
+                </div>
+
+                <div class="branch-meta-item mb-4">
+                  <i class="bi bi-clock-fill branch-meta-icon"></i>
+                  <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
+                </div>
+
+                <div class="mt-auto">
+                  <a href="https://maps.google.com/?q=Queens,New+York" target="_blank" rel="noopener noreferrer" class="btn-premium btn-charcoal btn-ripple w-100 py-2.5 text-center d-inline-block fs-xs fw-bold tracking-wider text-decoration-none">
+                    <i class="bi bi-signpost-split me-2"></i> Get Directions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Contact CTA -->
+    <section class="section-spacing bg-white text-center position-relative overflow-hidden">
+      <div class="container relative-z">
+        <div class="max-w-3xl mx-auto" style="max-width: 800px;" data-aos="zoom-in">
+          <div class="bg-cream rounded-circle d-inline-flex mb-4 text-primary-orange" style="width: 90px; height: 90px; align-items: center; justify-content: center;">
+            <i class="bi bi-shield-fill-exclamation fs-1"></i>
+          </div>
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-block">Urgent Assistance desk</span>
+          <h2 class="text-charcoal fw-extrabold display-6 mb-3">Facing Mechanical Emergencies on the Highway?</h2>
+          <p class="text-gray mb-4 fs-6">Do not leave your machine stranded. Contact our flatbed logistics team or book an emergency technician immediately to keep your warranties active and your vehicle safe.</p>
+          
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="tel:+15551234567" class="btn-premium btn-charcoal btn-ripple text-decoration-none">
+              <i class="bi bi-telephone-outbound me-2"></i> Call Support Now
+            </a>
+            <a href="appointment.html" class="btn-premium btn-orange btn-ripple text-decoration-none">
+              <i class="bi bi-calendar-check me-2"></i> Book Quick Appointment
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive Contact Page Script -->
+  <script>
+    function submitContactForm(event) {
+      event.preventDefault();
+
+      const fields = [
+        { id: 'contactName', group: 'groupFullName' },
+        { id: 'contactEmail', group: 'groupEmail' },
+        { id: 'contactPhone', group: 'groupPhone' },
+        { id: 'contactSubject', group: 'groupSubject' },
+        { id: 'contactService', group: 'groupService' },
+        { id: 'contactMessage', group: 'groupMessage' }
+      ];
+
+      let isValid = true;
+      let firstErrorField = null;
+
+      // Validate standard inputs
+      fields.forEach(field => {
+        const el = document.getElementById(field.id);
+        const group = document.getElementById(field.group);
+        if (el && group) {
+          group.classList.remove('has-error');
+          el.setAttribute('aria-invalid', 'false');
+
+          let isFieldValid = true;
+          if (!el.value || el.value.trim() === '') {
+            isFieldValid = false;
+          }
+
+          // Email regex validation
+          if (field.id === 'contactEmail' && isFieldValid) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(el.value.trim())) {
+              isFieldValid = false;
+            }
+          }
+
+          if (!isFieldValid) {
+            group.classList.add('has-error');
+            el.setAttribute('aria-invalid', 'true');
+            isValid = false;
+            if (!firstErrorField) {
+              firstErrorField = el;
+            }
+          }
+        }
+      });
+
+      // Terms checkbox validation
+      const termsBox = document.getElementById('termsCheckbox');
+      const termsGroup = document.getElementById('groupTerms');
+      if (termsBox && termsGroup) {
+        termsGroup.classList.remove('has-error');
+        termsBox.setAttribute('aria-invalid', 'false');
+        if (!termsBox.checked) {
+          termsGroup.classList.add('has-error');
+          termsBox.setAttribute('aria-invalid', 'true');
+          isValid = false;
+          if (!firstErrorField) {
+            firstErrorField = termsBox;
+          }
+        }
+      }
+
+      if (!isValid) {
+        if (firstErrorField) {
+          firstErrorField.focus();
+          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      // Successful message dispatch simulation
+      const successBanner = document.getElementById('contactFormSuccess');
+      const contactForm = document.getElementById('contactForm');
+
+      if (successBanner) {
+        successBanner.classList.remove('d-none');
+        successBanner.style.opacity = '0';
+        setTimeout(() => {
+          successBanner.style.transition = 'opacity 0.5s ease';
+          successBanner.style.opacity = '1';
+        }, 50);
+
+        // Reset the form values
+        if (contactForm) {
+          contactForm.reset();
+        }
+
+        // Scroll smoothly to success alert
+        successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  </script>
+</body>
+</html>

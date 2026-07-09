@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Our Master Mechanics</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item active">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- SECTION 01: Premium Internal Banner -->
+    <section class="services-hero-section position-relative d-flex align-items-center" style="background-image: url('/src/assets/images/workshop_reception_1783600278098.jpg'); background-position: center 35%;">
+      <!-- Floating Elements for Parallax Mouse Move Effect -->
+      <div class="services-hero-deco services-hero-1" style="top: 15%; left: 8%;">
+        <i class="bi bi-gear-fill fs-1" style="animation: rotate-clockwise 20s linear infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-2" style="bottom: 15%; right: 8%;">
+        <i class="bi bi-wrench fs-2" style="animation: float-slow 8s ease-in-out infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-3" style="top: 45%; right: 18%;">
+        <i class="bi bi-tools fs-3" style="animation: rotate-counter 12s linear infinite;"></i>
+      </div>
+      
+      <div class="container services-hero-content text-center">
+        <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase tracking-wider" data-aos="fade-down" style="letter-spacing: 2px;">Automotive Specialists</span>
+        <h1 class="text-white fw-extrabold display-3 mb-4" data-aos="fade-up" data-aos-delay="100">Our Master Mechanics</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+          <ol class="breadcrumb justify-content-center m-0">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white opacity-75 text-decoration-none hover-orange">Home</a></li>
+            <li class="breadcrumb-item active text-primary-orange" aria-current="page">Our Mechanics</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- SECTION 02: Team Introduction -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">The AutoCare Crew</span>
+            <h2 class="text-charcoal fw-extrabold display-5 mb-4">Precision Engineering, Delivered by Hands You Can Trust</h2>
+            <p class="text-gray fs-sm mb-4">
+              At AutoCare, we believe that superior car repair isn't just about using state-of-the-art computer diagnostics—it's about the experienced minds and steady hands of the specialists diagnosing your vehicle. Every mechanic in our garage bays undergoes meticulous vetting, holds ASE master credentials, and remains committed to absolute engineering precision.
+            </p>
+            <div class="p-4 bg-cream border border-light-gray mb-4">
+              <h5 class="text-charcoal fw-bold mb-2" style="font-size: 0.95rem;"><i class="bi bi-patch-check-fill text-primary-orange me-2"></i> Our Service Commitments:</h5>
+              <p class="text-gray fs-xs m-0">We guarantee zero diagnostic guessing games, 100% factory original OEM replacement parts, and direct communication lines with the technician actively working on your powertrain.</p>
+            </div>
+            <div class="row g-4 text-center mt-2">
+              <div class="col-4">
+                <h4 class="text-primary-orange fw-extrabold h2 mb-1">12+</h4>
+                <span class="text-dark font-mono-sub fs-xxs text-uppercase" style="font-size: 0.65rem;">Engine Specialists</span>
+              </div>
+              <div class="col-4 border-start border-light-gray">
+                <h4 class="text-primary-orange fw-extrabold h2 mb-1">15k+</h4>
+                <span class="text-dark font-mono-sub fs-xxs text-uppercase" style="font-size: 0.65rem;">Cars Serviced</span>
+              </div>
+              <div class="col-4 border-start border-light-gray">
+                <h4 class="text-primary-orange fw-extrabold h2 mb-1">100%</h4>
+                <span class="text-dark font-mono-sub fs-xxs text-uppercase" style="font-size: 0.65rem;">ASE Certified</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="team-intro-img-wrapper">
+              <img loading="lazy" src="/src/assets/images/about_workshop_main_1783598265070.jpg" alt="AutoCare Workshop Master Mechanics Group" class="team-intro-img img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: Mechanics Grid (12 Unique Mechanics) -->
+    <section class="team-grid-section bg-cream border-top border-bottom">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5" style="max-width: 720px;">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider" data-aos="fade-down">The Specialists</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mt-2 mb-3" data-aos="fade-up" data-aos-delay="100">Meet Our Master Mechanics</h2>
+          <p class="text-gray fs-sm" data-aos="fade-up" data-aos-delay="150">From hybrid electronics calibration to precision engine rebuilds, our certified specialists are equipped to optimize your vehicle's safety and performance.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Mechanic 1 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&h=750&q=80" alt="Marcus Vance Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Hybrid & EV Systems</span>
+                <h4 class="team-card-name">Marcus Vance</h4>
+                <p class="team-card-designation">Chief Master Mechanic (15 yrs exp)</p>
+                <p class="team-card-intro">Specializes in advanced dual-clutch setups, high-voltage battery modules, and performance tuning calibrations.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192831" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2831
+                  </a>
+                  <a href="mailto:marcus.vance@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> marcus.vance@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 2 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=750&q=80" alt="Dominic Reyes Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Computer Diagnostics</span>
+                <h4 class="team-card-name">Dominic Reyes</h4>
+                <p class="team-card-designation">Diagnostics Lead (12 yrs exp)</p>
+                <p class="team-card-intro">Traces micro-faults inside ECU wiring harnesses, active sensor networks, and communication bus controllers.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192832" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2832
+                  </a>
+                  <a href="mailto:dominic.reyes@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> dominic.reyes@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 3 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=750&q=80" alt="Elena Rostova Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Transmission Care</span>
+                <h4 class="team-card-name">Elena Rostova</h4>
+                <p class="team-card-designation">Transmission Specialist (10 yrs exp)</p>
+                <p class="team-card-intro">Expert in automatic overdrive rebuilding, fluid pressure valve calibrating, and manual sync mesh repairs.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192833" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2833
+                  </a>
+                  <a href="mailto:elena.rostova@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> elena.rostova@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 4 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&h=750&q=80" alt="Tyler Kincaid Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Suspension Systems</span>
+                <h4 class="team-card-name">Tyler Kincaid</h4>
+                <p class="team-card-designation">Suspension Specialist (9 yrs exp)</p>
+                <p class="team-card-intro">Provides laser wheel balancing, multi-link strut adjustments, and off-road coilover dampening tuning.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192834" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2834
+                  </a>
+                  <a href="mailto:tyler.kincaid@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> tyler.kincaid@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 5 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&h=750&q=80" alt="Sarah Jenkins Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Electrical Engineering</span>
+                <h4 class="team-card-name">Sarah Jenkins</h4>
+                <p class="team-card-designation">Auto Electrical Engineer (8 yrs exp)</p>
+                <p class="team-card-intro">Configures CAN-bus circuits, custom wiring assemblies, digital dash clusters, and aftermarket lighting rigs.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192835" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2835
+                  </a>
+                  <a href="mailto:sarah.jenkins@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> sarah.jenkins@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 6 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&h=750&q=80" alt="Viktor Volkov Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Power Plant Tuning</span>
+                <h4 class="team-card-name">Viktor Volkov</h4>
+                <p class="team-card-designation">Engine Rebuilding Lead (14 yrs exp)</p>
+                <p class="team-card-intro">Master engine block honer, performance camshaft designer, and compression optimization analyst.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192836" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2836
+                  </a>
+                  <a href="mailto:viktor.volkov@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> viktor.volkov@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 7 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&h=750&q=80" alt="Liam Gallagher Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Exhaust & Emissions</span>
+                <h4 class="team-card-name">Liam Gallagher</h4>
+                <p class="team-card-designation">Emissions Specialist (7 yrs exp)</p>
+                <p class="team-card-intro">Specializes in high-flow catalytic converters, oxygen sensor tuning, and carbon footprint reduction.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192837" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2837
+                  </a>
+                  <a href="mailto:liam.gallagher@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> liam.gallagher@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 8 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=600&h=750&q=80" alt="Sophia Martinez Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Climate Care</span>
+                <h4 class="team-card-name">Sophia Martinez</h4>
+                <p class="team-card-designation">A/C Systems Expert (6 yrs exp)</p>
+                <p class="team-card-intro">Deploys standard R-1234yf recovery stations, climate blend door resets, and condenser upgrades.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192838" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2838
+                  </a>
+                  <a href="mailto:sophia.martinez@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> sophia.martinez@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 9 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&h=750&q=80" alt="Adrian Chen Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Laser Alignment</span>
+                <h4 class="team-card-name">Adrian Chen</h4>
+                <p class="team-card-designation">Wheel Alignment Tech (8 yrs exp)</p>
+                <p class="team-card-intro">Calibrates 3D laser alignment rigs, correcting camber, toe, and caster geometry for custom vehicles.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192839" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2839
+                  </a>
+                  <a href="mailto:adrian.chen@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> adrian.chen@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 10 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="550">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&h=750&q=80" alt="Gabriel Silva Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Forced Induction</span>
+                <h4 class="team-card-name">Gabriel Silva</h4>
+                <p class="team-card-designation">Forced Induction Lead (11 yrs exp)</p>
+                <p class="team-card-intro">Designs performance turbocharging loops, intercooler setups, and wastegate response curves.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192840" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2840
+                  </a>
+                  <a href="mailto:gabriel.silva@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> gabriel.silva@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 11 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&h=750&q=80" alt="Nadia Keller Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Drivetrain Engineering</span>
+                <h4 class="team-card-name">Nadia Keller</h4>
+                <p class="team-card-designation">AWD Systems Expert (9 yrs exp)</p>
+                <p class="team-card-intro">Configures electronic locking differentials, viscous couplings, half-shafts, and transfer cases.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192841" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2841
+                  </a>
+                  <a href="mailto:nadia.keller@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> nadia.keller@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mechanic 12 -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="650">
+            <div class="team-card-premium">
+              <div class="team-card-img-container">
+                <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=600&h=750&q=80" alt="Mateo Rossi Portrait" class="team-card-img" loading="lazy">
+                <div class="team-card-overlay">
+                  <a href="https://facebook.com" class="team-social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://linkedin.com" class="team-social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="mailto:info@autocare.com" class="team-social-icon" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <span class="team-card-specialization">Classic Restoration</span>
+                <h4 class="team-card-name">Mateo Rossi</h4>
+                <p class="team-card-designation">Vintage Car Specialist (16 yrs exp)</p>
+                <p class="team-card-intro">Specializes in carburetor synchronization, point-ignition system tuning, and manual steering rack rebuilding.</p>
+                
+                <div class="team-card-meta">
+                  <a href="tel:+15550192842" class="team-card-meta-item">
+                    <i class="bi bi-telephone-fill"></i> +1 (555) 019-2842
+                  </a>
+                  <a href="mailto:mateo.rossi@autocare.com" class="team-card-meta-item">
+                    <i class="bi bi-envelope-open-fill"></i> mateo.rossi@autocare.com
+                  </a>
+                </div>
+                
+                <a href="team-details.html" class="btn-premium btn-charcoal btn-ripple w-100 mt-3 py-2 text-center text-decoration-none fs-xs fw-bold uppercase">
+                  View Profile <i class="bi bi-arrow-right-short ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: COMPANY VALUES -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5" style="max-width: 720px;">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider" data-aos="fade-down">The Pillars of AutoCare</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mt-2 mb-3" data-aos="fade-up" data-aos-delay="100">Our Core Values</h2>
+          <p class="text-gray fs-sm" data-aos="fade-up" data-aos-delay="150">Every job we perform and every diagnostic session we run traces back to six fundamental standards of premium operations.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Integrity -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-shield-lock-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Absolute Integrity</h4>
+              <p class="text-gray fs-xs m-0">No guessing, no upselling, and no surprise additions. We deliver clear diagnostic breakdowns, full pricing transparency, and keep your damaged parts to show you the fault.</p>
+            </div>
+          </div>
+
+          <!-- Quality -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-gem"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Premium Quality</h4>
+              <p class="text-gray fs-xs m-0">We never compromise by utilizing cheap knock-offs. All mechanical replacements are done using factory original OEM equipment and backed by extensive warranties.</p>
+            </div>
+          </div>
+
+          <!-- Innovation -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-cpu-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Continuous Innovation</h4>
+              <p class="text-gray fs-xs m-0">Cars evolve rapidly, and so do we. Our mechanics regularly attend certified workshops to master advanced EV programming and hybrid fuel-cell tuning parameters.</p>
+            </div>
+          </div>
+
+          <!-- Safety -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-shield-fill-check"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Unyielding Safety</h4>
+              <p class="text-gray fs-xs m-0">A minor calibration fault can compromise your driving safety. We run dual-technician safety checks on braking units and steering racks before any vehicle is returned.</p>
+            </div>
+          </div>
+
+          <!-- Customer Care -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-heart-pulse-fill"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Premium Customer Care</h4>
+              <p class="text-gray fs-xs m-0">We respect your busy timeline. Experience complimentary pick-up/drop-offs, high-speed Wi-Fi in our lounge, and prompt status notifications on your dashboard.</p>
+            </div>
+          </div>
+
+          <!-- Reliability -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="value-card-premium text-start">
+              <div class="value-card-icon-box">
+                <i class="bi bi-hourglass-split"></i>
+              </div>
+              <h4 class="text-charcoal fw-extrabold mb-2" style="font-size: 1.1rem;">Uncompromised Reliability</h4>
+              <p class="text-gray fs-xs m-0">When we commit to a pickup deadline, we deliver. By managing our work through specialized multi-point queue systems, we eliminate repair delays.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: JOIN OUR TEAM CTA -->
+    <section class="section-spacing bg-cream border-top">
+      <div class="container text-center py-4">
+        <div class="max-w-2xl mx-auto" style="max-width: 720px;">
+          <span class="cta-floating-badge mb-3">Join The Garage Leaders</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mb-3" data-aos="fade-up">Ready to Accelerate Your Tuning Career?</h2>
+          <p class="text-gray fs-sm mb-4" data-aos="fade-up" data-aos-delay="100">
+            We are always searching for brilliant ASE-certified master mechanics, advanced automotive programmers, diagnostics leaders, and service advisors to grow our garage. Let's build unmatched standards together.
+          </p>
+          <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="150">
+            <a href="career.html" class="btn-premium btn-orange btn-ripple py-3 px-5 text-uppercase fw-bold text-decoration-none">Explore Openings</a>
+            <a href="contact.html" class="btn-premium btn-charcoal btn-ripple py-3 px-5 text-uppercase fw-bold text-decoration-none">Contact Recruiter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive Parallax Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.querySelector('.services-hero-section');
+      const decoElements = document.querySelectorAll('.services-hero-deco');
+      
+      if (banner && decoElements.length > 0) {
+        banner.addEventListener('mousemove', (e) => {
+          const rect = banner.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          decoElements.forEach((el, index) => {
+            const factor = (index + 1) * 0.02;
+            const moveX = x * factor;
+            const moveY = y * factor;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+          decoElements.forEach((el) => {
+            el.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

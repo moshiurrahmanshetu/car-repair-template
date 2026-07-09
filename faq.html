@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Frequently Asked Questions</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Premium FAQ Styles -->
+  <style>
+    :root {
+      --color-primary: #FF6321;
+      --color-secondary: #FFB300;
+      --color-dark: #151515;
+      --color-gray: #666666;
+      --color-light-gray: #E5E5E5;
+      --color-beige: #F4F4F2;
+      --color-white: #FFFFFF;
+    }
+
+    /* FAQ Banner Section */
+    .faq-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 80px 0;
+    }
+    .text-primary-orange {
+      color: var(--color-primary) !important;
+    }
+    .hover-primary:hover {
+      color: var(--color-primary) !important;
+    }
+    .bg-cream {
+      background-color: var(--color-beige) !important;
+    }
+
+    /* FAQ Search Block */
+    .faq-search-wrapper {
+      max-width: 720px;
+      margin: -40px auto 40px auto;
+      position: relative;
+      z-index: 10;
+    }
+    .faq-search-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 10px;
+      box-shadow: var(--shadow-premium);
+      display: flex;
+      align-items: center;
+    }
+    .faq-search-input {
+      border: 0;
+      outline: none;
+      font-size: 16px;
+      color: var(--color-dark);
+      padding: 12px 18px;
+      flex-grow: 1;
+    }
+    .faq-search-input::placeholder {
+      color: var(--color-gray);
+      opacity: 0.7;
+    }
+    .faq-search-btn {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 0;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+    .faq-search-btn:hover {
+      background-color: var(--color-dark);
+    }
+
+    /* FAQ Category Filters */
+    .faq-filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .faq-filter-btn {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      color: var(--color-dark);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .faq-filter-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .faq-filter-btn.active {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      box-shadow: var(--shadow-soft-orange);
+    }
+
+    /* FAQ Accordion Styling */
+    .faq-accordion-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .faq-accordion-item {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray) !important;
+      margin-bottom: 16px;
+      border-radius: 0 !important;
+      transition: all 0.3s ease;
+    }
+    .faq-accordion-item:hover {
+      border-color: var(--color-primary) !important;
+    }
+    .faq-accordion-button {
+      background-color: var(--color-white) !important;
+      color: var(--color-dark) !important;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 24px 28px;
+      border-radius: 0 !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .faq-accordion-button::after {
+      background-image: none !important;
+      content: '\b1'; /* plus minus sign */
+      font-family: "bootstrap-icons" !important;
+      content: "\F282"; /* chevron-down in bootstrap icons */
+      font-size: 14px;
+      color: var(--color-gray);
+      transition: transform 0.3s ease, color 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 15px;
+    }
+    .faq-accordion-button:not(.collapsed) {
+      color: var(--color-primary) !important;
+    }
+    .faq-accordion-button:not(.collapsed)::after {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+    .faq-badge-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--color-primary);
+      border: 1px solid rgba(255, 99, 33, 0.2);
+      padding: 2px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .faq-accordion-body {
+      padding: 0 28px 24px 28px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--color-gray);
+      border-top: 1px solid var(--color-beige);
+    }
+
+    /* Help Banner Callout */
+    .faq-help-box {
+      background-color: var(--color-beige);
+      border: 1px solid var(--color-light-gray);
+      padding: 50px;
+      text-align: center;
+    }
+
+    /* Search Empty State */
+    .faq-empty-state {
+      text-align: center;
+      padding: 40px;
+      border: 1px dashed var(--color-light-gray);
+      background-color: var(--color-beige);
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+      }
+      .faq-accordion-button::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item active">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="faq-banner-section position-relative overflow-hidden text-center" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">Information Terminal</span>
+        <h1 class="display-5 text-white fw-extrabold mb-3" data-aos="fade-up" data-aos-delay="100">Frequently Asked Questions</h1>
+        <p class="text-white opacity-75 fs-6 mb-0 max-w-2xl mx-auto font-sans" data-aos="fade-up" data-aos-delay="150">Instant solutions regarding towing, diagnostics, warranties, and track preparation. Type your keywords or select mechanical categories below.</p>
+      </div>
+    </section>
+
+    <!-- FAQ Core Layout -->
+    <section class="section-spacing bg-white" style="padding-top: 0;">
+      <div class="container">
+        
+        <!-- Interactive Search Bar Wrapper -->
+        <div class="faq-search-wrapper" data-aos="zoom-in" data-aos-delay="200">
+          <div class="faq-search-box">
+            <i class="bi bi-search text-gray ms-3 fs-5"></i>
+            <input type="text" id="faqSearchInput" class="faq-search-input font-sans" placeholder="Search mechanical parameters, engine diagnostics, warranties..." aria-label="Search FAQs">
+            <button type="button" class="faq-search-btn" onclick="filterFAQs()" aria-label="Execute search"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Filter Categories Tabs -->
+        <div class="faq-filter-row" data-aos="fade-up">
+          <button class="faq-filter-btn active" data-category="all">All Channels</button>
+          <button class="faq-filter-btn" data-category="general">General Desk</button>
+          <button class="faq-filter-btn" data-category="services">Service Bays</button>
+          <button class="faq-filter-btn" data-category="pricing">Pricing & Rates</button>
+          <button class="faq-filter-btn" data-category="appointment">Appointments</button>
+          <button class="faq-filter-btn" data-category="warranty">Warranties</button>
+          <button class="faq-filter-btn" data-category="support">Roadside Rescue</button>
+        </div>
+
+        <!-- FAQ Accordion List (20 Premium Items) -->
+        <div class="faq-accordion-container" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion" id="faqAccordion">
+
+            <!-- Item 1: Core hours -->
+            <div class="faq-accordion-item" data-category="general" id="faq-1">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="false" aria-controls="collapse-1">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">General</span>What are your core diagnostic hours of operation?</span>
+                </button>
+              </h3>
+              <div id="collapse-1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Our primary diagnostic lanes and repair bays are fully operational Monday through Saturday from 8:00 AM to 6:00 PM. On Sundays, our physical service center is closed, but our active flatbed dispatch fleet operates 24/7 for emergency roadside rescue.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2: Walk-ins -->
+            <div class="faq-accordion-item" data-category="general" id="faq-2">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">General</span>Do I need to schedule an appointment for standard safety inspections?</span>
+                </button>
+              </h3>
+              <div id="collapse-2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  While we prioritize scheduled appointments to minimize wait times, we do accommodate drive-ins for quick fluid checks and general safety inspections, subject to bay availability. We recommend booking in advance.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3: Locations -->
+            <div class="faq-accordion-item" data-category="general" id="faq-3">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">General</span>Where are your main service garages located?</span>
+                </button>
+              </h3>
+              <div id="collapse-3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We operate three regional hubs in New York: our Manhattan HQ Tuning Garage on Performance Parkway, the Brooklyn Alignment Hub on Brooklyn Expressway, and our Queens Overhaul Station on Northern Boulevard.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4: Scan time -->
+            <div class="faq-accordion-item" data-category="services" id="faq-4">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Services</span>How long does a full engine computer diagnostic scan take?</span>
+                </button>
+              </h3>
+              <div id="collapse-4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  A complete computer diagnostic run takes approximately 45 to 90 minutes. This includes interfacing with the onboard diagnostic unit (OBD-II), pull-testing fault codes, running active cylinder-balance tests, and mapping live sensor data.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5: Prep / Tuning -->
+            <div class="faq-accordion-item" data-category="services" id="faq-5">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Services</span>Can you perform track preparation and professional tuning?</span>
+                </button>
+              </h3>
+              <div id="collapse-5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Yes, our certified master technicians specialize in track-day prep, customized ECU mapping, suspension corner-balancing, high-temp fluid flush, and performance brake pad upgrades.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 6: Transmission Rebuilds -->
+            <div class="faq-accordion-item" data-category="services" id="faq-6">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Services</span>Do you offer transmission rebuilding and clutch adjustments?</span>
+                </button>
+              </h3>
+              <div id="collapse-6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Absolutely. We perform complete transmission overhauls, torque converter alignments, dual-clutch calibrations, and general gearbox fluid maintenance for both manual and automatic transmissions.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 7: Brands -->
+            <div class="faq-accordion-item" data-category="services" id="faq-7">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Services</span>What brand of engine lubricants do you utilize?</span>
+                </button>
+              </h3>
+              <div id="collapse-7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We use only premium, manufacturer-approved synthetic lubricants including Mobil 1, Liqui Moly, and Castrol Edge, matching exact viscosity requirements for high-performance and luxury vehicles.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 8: Estimates -->
+            <div class="faq-accordion-item" data-category="pricing" id="faq-8">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-8" aria-expanded="false" aria-controls="collapse-8">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Pricing</span>Do you charge for the initial mechanical estimate?</span>
+                </button>
+              </h3>
+              <div id="collapse-8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  If you authorize our team to proceed with the recommended repair layout, the diagnostic estimation fee is fully credited toward your invoice. Independent diagnostic scans carry a standard flat fee.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 9: Payment Forms -->
+            <div class="faq-accordion-item" data-category="pricing" id="faq-9">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-9" aria-expanded="false" aria-controls="collapse-9">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Pricing</span>What forms of payment do your service centers accept?</span>
+                </button>
+              </h3>
+              <div id="collapse-9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We accept all major credit cards (Visa, Mastercard, American Express, Discover), contactless payments (Apple Pay, Google Pay), certified bank drafts, and approved fleet management service cards.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 10: Phone Quotes -->
+            <div class="faq-accordion-item" data-category="pricing" id="faq-10">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-10">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Pricing</span>Can I get an exact quote over the phone before bringing my car?</span>
+                </button>
+              </h3>
+              <div id="collapse-10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We can provide approximate estimates based on symptoms or clear part descriptions, but we can only guarantee exact prices after our physical hands-on digital OBD diagnostic testing.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 11: Financing -->
+            <div class="faq-accordion-item" data-category="pricing" id="faq-11">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Pricing</span>Do you offer financing options for complex engine rebuilds?</span>
+                </button>
+              </h3>
+              <div id="collapse-11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Yes, we partner with specialized automotive service finance providers to offer 0% APR promotional programs for qualified rebuilds and high-performance package installations.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 12: Booking modifications -->
+            <div class="faq-accordion-item" data-category="appointment" id="faq-12">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Appointment</span>How do I modify or cancel my scheduled mechanical appointment?</span>
+                </button>
+              </h3>
+              <div id="collapse-12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  You can modify or cancel your booking through our online client portal, or by calling our service managers directly at least 24 hours prior to your slot to avoid potential rescheduling fees.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 13: Valet/Concierge -->
+            <div class="faq-accordion-item" data-category="appointment" id="faq-13">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-13">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Appointment</span>Is there a concierge pick-up and drop-off service available?</span>
+                </button>
+              </h3>
+              <div id="collapse-13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Yes. For executive scheduled diagnostics, we offer premium flatbed vehicle transport or valet collection within a 15-mile radius of any active AutoCare branch.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 14: Lateness policy -->
+            <div class="faq-accordion-item" data-category="appointment" id="faq-14">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-14" aria-expanded="false" aria-controls="collapse-14">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Appointment</span>What happens if I arrive late for my scheduled service bay booking?</span>
+                </button>
+              </h3>
+              <div id="collapse-14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We maintain a 15-minute grace period. If you are delayed further, please notify us; we will do our best to adjust our line schedule, or we may hold your car as a 'same-day drop-off'.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 15: Coverage -->
+            <div class="faq-accordion-item" data-category="warranty" id="faq-15">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-15" aria-expanded="false" aria-controls="collapse-15">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Warranty</span>What warranty coverage is included on new premium parts?</span>
+                </button>
+              </h3>
+              <div id="collapse-15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  We offer a comprehensive 24-Month / 24,000-Mile warranty on all premium replacement parts and associated mechanical labor, fully backed across all our regional branches.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 16: ECU/Tuning void -->
+            <div class="faq-accordion-item" data-category="warranty" id="faq-16">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-16" aria-expanded="false" aria-controls="collapse-16">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Warranty</span>Does tuning my engine's ECU void my manufacturer warranty?</span>
+                </button>
+              </h3>
+              <div id="collapse-16" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Aftermarket engine tuning or ECU flash may affect some manufacturer powertrain warranties. We always discuss any performance modifications beforehand to ensure full client awareness.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 17: Friction items wear -->
+            <div class="faq-accordion-item" data-category="warranty" id="faq-17">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-17" aria-expanded="false" aria-controls="collapse-17">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Warranty</span>Are high-performance brake pads covered under wear-and-tear warranty?</span>
+                </button>
+              </h3>
+              <div id="collapse-17" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Friction materials like ceramic pads and steel rotors are subject to wear-and-tear and are not warranted against normal abrasion. They are covered against manufacturing defects.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 18: Towing Help -->
+            <div class="faq-accordion-item" data-category="support" id="faq-18">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-18" aria-expanded="false" aria-controls="collapse-18">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Support</span>How do I request emergency highway towing assistance?</span>
+                </button>
+              </h3>
+              <div id="collapse-18" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Call our 24/7 Roadside Towing line immediately at +1 (800) 555-ROAD. Provide your GPS coordinates, and our nearest available flatbed will be dispatched.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 19: Tire / Lockout -->
+            <div class="faq-accordion-item" data-category="support" id="faq-19">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-19" aria-expanded="false" aria-controls="collapse-19">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Support</span>Can you assist with minor roadside lockouts or flat tire changes?</span>
+                </button>
+              </h3>
+              <div id="collapse-19" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Yes, our mobile roadside crews are equipped with specialized lock-out kit tools, high-capacity battery boosters, and electric jacks to address minor roadside challenges.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 20: Insurance work -->
+            <div class="faq-accordion-item" data-category="support" id="faq-20">
+              <h3 class="accordion-header">
+                <button class="faq-accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-20" aria-expanded="false" aria-controls="collapse-20">
+                  <span class="d-flex align-items-center"><span class="faq-badge-tag">Support</span>Do you work with major automotive insurance providers?</span>
+                </button>
+              </h3>
+              <div id="collapse-20" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="faq-accordion-body font-sans">
+                  Yes, we compile and file direct collision damage claims and comprehensive insurance repairs, providing complete photo logs and formal diagnostic reports to speed up claims.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div id="faqEmptyState" class="faq-empty-state d-none text-center">
+            <i class="bi bi-search fs-1 text-primary-orange mb-3 d-inline-block"></i>
+            <h4 class="text-charcoal fw-bold">No Matching Parameters</h4>
+            <p class="text-gray mb-3 fs-sm">We couldn't find any mechanical answers matching your current input query.</p>
+            <button class="btn-premium btn-charcoal btn-ripple py-2 px-4 fs-xs" onclick="resetFAQFilters()">Reset Filters</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Help Callout Section -->
+    <section class="section-spacing bg-cream border-top border-bottom">
+      <div class="container">
+        <div class="faq-help-box max-w-4xl mx-auto" style="max-width: 820px;" data-aos="zoom-in">
+          <h3 class="text-charcoal fw-extrabold display-6 mb-3">Still Need Technical Clarification?</h3>
+          <p class="text-gray mb-4 fs-6">If your vehicle's mechanical codes or fault behavior aren't covered in our general diagnostic sheets, submit an inquiry directly to our engineers or schedule a workshop lane.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="contact.html" class="btn-premium btn-charcoal btn-ripple text-decoration-none">
+              <i class="bi bi-chat-dots-fill me-2"></i> Submit Inquiry Ticket
+            </a>
+            <a href="appointment.html" class="btn-premium btn-orange btn-ripple text-decoration-none">
+              <i class="bi bi-calendar-check me-2"></i> Arrange Garage Lane
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Real-time Filter & Search Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('faqSearchInput');
+      const filterBtns = document.querySelectorAll('.faq-filter-btn');
+
+      // Bind real-time search keyup/input
+      if (searchInput) {
+        searchInput.addEventListener('input', filterFAQs);
+      }
+
+      // Bind category filter clicks
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          filterFAQs();
+        });
+      });
+    });
+
+    function filterFAQs() {
+      const searchInput = document.getElementById('faqSearchInput');
+      const activeBtn = document.querySelector('.faq-filter-btn.active');
+      const accordionItems = document.querySelectorAll('.faq-accordion-item');
+      const emptyState = document.getElementById('faqEmptyState');
+
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const activeCategory = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+
+      let visibleCount = 0;
+
+      accordionItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        const questionText = item.querySelector('.faq-accordion-button').textContent.toLowerCase();
+        const answerText = item.querySelector('.faq-accordion-body').textContent.toLowerCase();
+
+        // 1. Category Matching
+        const matchesCategory = (activeCategory === 'all' || itemCategory === activeCategory);
+
+        // 2. Search Query Matching (Fuzzy text check on both question and answer)
+        const matchesQuery = (!query || questionText.includes(query) || answerText.includes(query));
+
+        if (matchesCategory && matchesQuery) {
+          item.classList.remove('d-none');
+          visibleCount++;
+        } else {
+          item.classList.add('d-none');
+        }
+      });
+
+      // Show/Hide Empty Search States
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('d-none');
+        } else {
+          emptyState.classList.add('d-none');
+        }
+      }
+    }
+
+    function resetFAQFilters() {
+      const searchInput = document.getElementById('faqSearchInput');
+      const filterBtns = document.querySelectorAll('.faq-filter-btn');
+
+      if (searchInput) {
+        searchInput.value = '';
+      }
+
+      filterBtns.forEach(btn => {
+        if (btn.getAttribute('data-category') === 'all') {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      filterFAQs();
+    }
+  </script>
+</body>
+</html>

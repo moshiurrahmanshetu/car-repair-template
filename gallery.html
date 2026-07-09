@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Media Gallery</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Page-Specific Styles for Gallery, Lightbox, and Video Modal -->
+  <style>
+    /* Gallery Filter Styling */
+    .gallery-filter-container {
+      margin-bottom: 45px;
+    }
+    .gallery-filter-btn {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 12px 22px;
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-filter-btn:hover {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+    }
+    .gallery-filter-btn.active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    /* Grid layout with same aspect ratio & hover transitions */
+    .gallery-grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 992px) {
+      .gallery-grid-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (min-width: 1400px) {
+      .gallery-grid-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .gallery-premium-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 100%;
+    }
+    .gallery-premium-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-premium);
+      border-color: var(--color-primary);
+    }
+    
+    .gallery-card-image-box {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #f0f0f0;
+    }
+    .gallery-card-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-premium-card:hover .gallery-card-image-box img {
+      transform: scale(1.1);
+    }
+
+    .gallery-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(21, 21, 21, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-premium-card:hover .gallery-card-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-overlay-icon {
+      width: 54px;
+      height: 54px;
+      background-color: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 20px;
+      transform: scale(0.6);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+    }
+    .gallery-premium-card:hover .gallery-overlay-icon {
+      transform: scale(1);
+    }
+
+    .gallery-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      border-top: 1px solid var(--color-light-gray);
+    }
+    .gallery-card-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .gallery-card-title {
+      font-family: var(--font-primary);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .gallery-card-caption {
+      font-size: 13px;
+      color: var(--color-gray);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Pure Vanilla JS Lightbox CSS styling */
+    .custom-lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(12, 12, 12, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1050;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+    .custom-lightbox.show {
+      display: flex;
+      opacity: 1;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-lightbox.show .lightbox-content {
+      transform: scale(1);
+    }
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      border: 4px solid var(--color-white);
+      border-radius: 4px;
+    }
+    .lightbox-details {
+      margin-top: 15px;
+      text-align: center;
+      color: var(--color-white);
+      width: 100%;
+    }
+    .lightbox-title {
+      font-family: var(--font-primary);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .lightbox-caption {
+      font-size: 13px;
+      color: var(--color-light-gray);
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+    .lightbox-counter {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-primary);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      font-size: 32px;
+      color: var(--color-white);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.1);
+      color: var(--color-primary);
+    }
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: var(--color-white);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      transition: all 0.3s;
+      z-index: 1060;
+    }
+    .lightbox-arrow:hover {
+      color: var(--color-primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .lightbox-prev {
+      left: -60px;
+    }
+    .lightbox-next {
+      right: -60px;
+    }
+    @media (max-width: 768px) {
+      .lightbox-prev { left: 5px; }
+      .lightbox-next { right: 5px; }
+      .lightbox-arrow {
+        background: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+    }
+
+    /* Workshop Video Poster Overlay and Play Pulsing Waves */
+    .video-thumbnail-box {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+    .video-thumbnail-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .video-thumbnail-box:hover img {
+      transform: scale(1.05);
+    }
+    .video-thumbnail-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(21, 21, 21, 0.6) 0%, rgba(21, 21, 21, 0.1) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn-pulse {
+      width: 80px;
+      height: 80px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      position: relative;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(255, 122, 0, 0.5);
+      padding-left: 5px; /* Alignment visual fix */
+    }
+    .video-thumbnail-box:hover .play-btn-pulse {
+      transform: scale(1.1);
+      background-color: var(--color-dark);
+    }
+    .play-btn-pulse::before,
+    .play-btn-pulse::after {
+      content: '';
+      position: absolute;
+      border: 1px solid var(--color-primary);
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      animation: pulse-wave 2s linear infinite;
+      opacity: 0;
+    }
+    .play-btn-pulse::after {
+      animation-delay: 1s;
+    }
+    @keyframes pulse-wave {
+      0% {
+        transform: scale(0.85);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    /* Video Modal */
+    .custom-video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(12, 12, 12, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1051;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      justify-content: center;
+      align-items: center;
+    }
+    .custom-video-modal.show {
+      display: flex;
+      opacity: 1;
+    }
+    .video-modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-video-modal.show .video-modal-content {
+      transform: scale(1);
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      font-size: 32px;
+      color: var(--color-white);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .video-modal-close:hover {
+      transform: scale(1.1);
+      color: var(--color-primary);
+    }
+    .video-modal-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Instagram Social Square CSS styling */
+    .social-square-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #f0f0f0;
+      box-shadow: var(--shadow-sm);
+    }
+    .social-square-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-square-card:hover img {
+      transform: scale(1.1);
+    }
+    .social-square-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 122, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-square-card:hover .social-square-overlay {
+      opacity: 1;
+    }
+    .social-square-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+      transform: translateY(10px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-square-card:hover .social-square-icon {
+      transform: translateY(0);
+    }
+    .social-square-likes {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      transform: translateY(15px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+    .social-square-card:hover .social-square-likes {
+      transform: translateY(0);
+    }
+
+    /* Rotate and float utility animations */
+    @keyframes rotate-clockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes rotate-counter {
+      0% { transform: rotate(360deg); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item active">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- SECTION 01: Premium Internal Banner -->
+    <section class="services-hero-section position-relative d-flex align-items-center" style="background-image: url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&h=600&q=80'); background-position: center 35%;">
+      <!-- Floating Elements for Parallax Mechanical Effect -->
+      <div class="services-hero-deco services-hero-1" style="top: 15%; left: 8%;">
+        <i class="bi bi-gear-fill fs-1" style="animation: rotate-clockwise 20s linear infinite; color: var(--color-primary); opacity: 0.15;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-2" style="bottom: 15%; right: 8%;">
+        <i class="bi bi-wrench fs-2" style="animation: float-slow 8s ease-in-out infinite; color: var(--color-primary); opacity: 0.15;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-3" style="top: 45%; right: 18%;">
+        <i class="bi bi-tools fs-3" style="animation: rotate-counter 12s linear infinite; color: var(--color-primary); opacity: 0.15;"></i>
+      </div>
+      
+      <div class="container services-hero-content text-center">
+        <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase tracking-wider" data-aos="fade-down" style="letter-spacing: 2px;">Visual Showroom</span>
+        <h1 class="text-white fw-extrabold display-3 mb-4" data-aos="fade-up" data-aos-delay="100">Media Gallery</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+          <ol class="breadcrumb justify-content-center m-0">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white opacity-75 text-decoration-none hover-orange">Home</a></li>
+            <li class="breadcrumb-item active text-primary-orange" aria-current="page">Media Gallery</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- SECTION 02: Gallery Introduction -->
+    <section class="section-spacing-top bg-white">
+      <div class="container text-center max-w-3xl mx-auto mb-5" style="max-width: 800px;">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-widest d-inline-block mb-2" data-aos="fade-down">Workshop Inside Tour</span>
+        <h2 class="text-charcoal fw-extrabold display-5 mb-3" data-aos="fade-up">Explore Our Facility & Craft</h2>
+        <div class="divider mx-auto mb-3" style="width: 60px; height: 3px; background-color: var(--color-primary);"></div>
+        <p class="text-gray fs-5" data-aos="fade-up" data-aos-delay="100">
+          A high-definition visual chronicle showcasing our clean, surgical-grade bays, diagnostic terminals, and premium performance restorations. We invite you to explore the craftsmanship that sets our workshop apart.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 03: Gallery Filter & Grid -->
+    <section class="section-spacing-bottom bg-white">
+      <div class="container">
+        <!-- Filter Bar -->
+        <div class="gallery-filter-container d-flex flex-wrap justify-content-center gap-2 mb-5" data-aos="fade-up">
+          <button class="gallery-filter-btn active" data-filter="all">All</button>
+          <button class="gallery-filter-btn" data-filter="workshop">Workshop</button>
+          <button class="gallery-filter-btn" data-filter="engine">Engine</button>
+          <button class="gallery-filter-btn" data-filter="brake">Brake</button>
+          <button class="gallery-filter-btn" data-filter="transmission">Transmission</button>
+          <button class="gallery-filter-btn" data-filter="electrical">Electrical</button>
+          <button class="gallery-filter-btn" data-filter="diagnostics">Diagnostics</button>
+          <button class="gallery-filter-btn" data-filter="body-repair">Body Repair</button>
+          <button class="gallery-filter-btn" data-filter="customer-delivery">Delivery</button>
+        </div>
+
+        <!-- 24-Item Premium Gallery Grid -->
+        <div class="gallery-grid-wrapper">
+          
+          <!-- Item 1: Workshop -->
+          <div class="gallery-grid-item" data-category="workshop" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=800&h=600&q=80" alt="Main Service Bay Calibration" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(0)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Workshop</span>
+                <h4 class="gallery-card-title">Main Service Bay</h4>
+                <p class="gallery-card-caption">Clean, computer-monitored hydraulic lifts for heavy-duty diagnostics.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Workshop -->
+          <div class="gallery-grid-item" data-category="workshop" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=800&h=600&q=80" alt="Advanced Alignment Stage" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(1)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Workshop</span>
+                <h4 class="gallery-card-title">3D Wheel Alignment</h4>
+                <p class="gallery-card-caption">Precision wheel-tracking lasers measuring alignment to 0.1mm.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Workshop -->
+          <div class="gallery-grid-item" data-category="workshop" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=800&h=600&q=80" alt="Surgical Tool Organization" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(2)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Workshop</span>
+                <h4 class="gallery-card-title">Premium Custom Toolset</h4>
+                <p class="gallery-card-caption">Pneumatic and torque tools cleaned daily for pristine mechanical assembly.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Engine -->
+          <div class="gallery-grid-item" data-category="engine" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&h=600&q=80" alt="Twin-Turbo Cylinder Setup" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(3)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Engine</span>
+                <h4 class="gallery-card-title">Cylinder Block Assembly</h4>
+                <p class="gallery-card-caption">Custom thermal blueprinting and manifold dynamic pressure mapping.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5: Engine -->
+          <div class="gallery-grid-item" data-category="engine" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&h=600&q=80" alt="Dynamic Valve Timing Tuning" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(4)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Engine</span>
+                <h4 class="gallery-card-title">Valve Timing Calibration</h4>
+                <p class="gallery-card-caption">Fine-tuning dual overhead camshaft lobes for performance duration.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6: Engine -->
+          <div class="gallery-grid-item" data-category="engine" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&h=600&q=80" alt="Supercar Intake Integration" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(5)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Engine</span>
+                <h4 class="gallery-card-title">Carbon Intake Upgrades</h4>
+                <p class="gallery-card-caption">Mounting custom high-flow dry-carbon fiber airboxes on a V10 powertrain.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7: Brake -->
+          <div class="gallery-grid-item" data-category="brake" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&h=600&q=80" alt="Multi-Piston Caliper Mounting" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(6)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Brake</span>
+                <h4 class="gallery-card-title">Caliper Fitting</h4>
+                <p class="gallery-card-caption">Assembling high-temp monobloc caliper systems for deceleration.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8: Brake -->
+          <div class="gallery-grid-item" data-category="brake" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&h=600&q=80" alt="Slotted Track Rotors Retrofit" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(7)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Brake</span>
+                <h4 class="gallery-card-title">Drilled Rotor Install</h4>
+                <p class="gallery-card-caption">Laser-honed drilled rotors designed to dissipate heat up to 800°C.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9: Brake -->
+          <div class="gallery-grid-item" data-category="brake" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1617469767053-d3b508a0d825?auto=format&fit=crop&w=800&h=600&q=80" alt="Hydraulic Bleeding & Flush" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(8)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Brake</span>
+                <h4 class="gallery-card-title">Hydraulic Line Bleeding</h4>
+                <p class="gallery-card-caption">Extracting tiny air pockets using performance synthetic DOT 5.1 fluid.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 10: Transmission -->
+          <div class="gallery-grid-item" data-category="transmission" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&h=600&q=80" alt="Dual-Clutch Bundle Repair" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(9)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Transmission</span>
+                <h4 class="gallery-card-title">Dual-Clutch Overhaul</h4>
+                <p class="gallery-card-caption">Replacing mechatronic wet clutch assemblies with heavy-duty bands.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 11: Transmission -->
+          <div class="gallery-grid-item" data-category="transmission" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&h=600&q=80" alt="Selector Syncmesh Fitting" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(10)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Transmission</span>
+                <h4 class="gallery-card-title">Helical Gear Syncmesh</h4>
+                <p class="gallery-card-caption">Verifying engagement clearances on high-tolerance helical transmission gears.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 12: Transmission -->
+          <div class="gallery-grid-item" data-category="transmission" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1562591176-a0e28f78d654?auto=format&fit=crop&w=800&h=600&q=80" alt="Bespoke Differential Assembly" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(11)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Transmission</span>
+                <h4 class="gallery-card-title">Differential Matrix Tuning</h4>
+                <p class="gallery-card-caption">Configuring preload matrices on premium mechanical limited-slip differentials.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 13: Electrical -->
+          <div class="gallery-grid-item" data-category="electrical" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&h=600&q=80" alt="Multiplex Wiring Harness" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(12)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Electrical</span>
+                <h4 class="gallery-card-title">Multiplex Wiring Diagnosis</h4>
+                <p class="gallery-card-caption">Tracing micro-amperage current drops on intricate luxury CAN-bus lines.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 14: Electrical -->
+          <div class="gallery-grid-item" data-category="electrical" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&h=600&q=80" alt="Digital Cluster Alignment" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(13)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Electrical</span>
+                <h4 class="gallery-card-title">Dynamic Display Wiring</h4>
+                <p class="gallery-card-caption">Configuring primary dynamic electronic instrumentation with high accuracy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 15: Electrical -->
+          <div class="gallery-grid-item" data-category="electrical" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=800&h=600&q=80" alt="Ignition Coil Ground Tests" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(14)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Electrical</span>
+                <h4 class="gallery-card-title">Ignition Resistance Testing</h4>
+                <p class="gallery-card-caption">Verifying ground integrity and dynamic resistance across multi-coils.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 16: Diagnostics -->
+          <div class="gallery-grid-item" data-category="diagnostics" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&h=600&q=80" alt="ECU Flash & Fuel Mapping" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(15)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Diagnostics</span>
+                <h4 class="gallery-card-title">ECU Reflashing & Coding</h4>
+                <p class="gallery-card-caption">Calibrating ignition timing tables to optimize smooth engine torque delivery.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 17: Diagnostics -->
+          <div class="gallery-grid-item" data-category="diagnostics" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1484755560693-a4074577af3a?auto=format&fit=crop&w=800&h=600&q=80" alt="Live Sensor Telemetry Log" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(16)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Diagnostics</span>
+                <h4 class="gallery-card-title">Live Sensor Analytics</h4>
+                <p class="gallery-card-caption">Recording boost pressure and mass air flow data using advanced diagnostics.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 18: Diagnostics -->
+          <div class="gallery-grid-item" data-category="diagnostics" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1562591176-a0e28f78d654?auto=format&fit=crop&w=800&h=600&q=80" alt="Dyno Mapping Run" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(17)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Diagnostics</span>
+                <h4 class="gallery-card-title">Chassis Dyno Sweeps</h4>
+                <p class="gallery-card-caption">Real-time engine output sweeps under simulated full mechanical loads.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 19: Body Repair -->
+          <div class="gallery-grid-item" data-category="body-repair" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&h=600&q=80" alt="Dry Carbon Aero Installation" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(18)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Body Repair</span>
+                <h4 class="gallery-card-title">Carbon Aero Integration</h4>
+                <p class="gallery-card-caption">Fitting wind-tunnel matched autoclave composite splitters and underbodies.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 20: Body Repair -->
+          <div class="gallery-grid-item" data-category="body-repair" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&h=600&q=80" alt="High-Grade Paint Prep" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(19)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Body Repair</span>
+                <h4 class="gallery-card-title">Bespoke Paint Surface Prep</h4>
+                <p class="gallery-card-caption">Meticulous surface decontamination and block sanding prior to clear coating.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 21: Body Repair -->
+          <div class="gallery-grid-item" data-category="body-repair" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1611245801184-9c4752df7ae9?auto=format&fit=crop&w=800&h=600&q=80" alt="Pristine Polish & Detailing" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(20)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Body Repair</span>
+                <h4 class="gallery-card-title">Mirror Correction Polish</h4>
+                <p class="gallery-card-caption">Bespoke ceramic coatings and correction to achieve a durable high gloss.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 22: Delivery -->
+          <div class="gallery-grid-item" data-category="customer-delivery" data-aos="fade-up" data-aos-delay="0">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&h=600&q=80" alt="Luxury Key Hand-Off" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(21)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Delivery</span>
+                <h4 class="gallery-card-title">Luxury Client Hand-Off</h4>
+                <p class="gallery-card-caption">Custom detailing report and dynamic diagnostic log pack presentation.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 23: Delivery -->
+          <div class="gallery-grid-item" data-category="customer-delivery" data-aos="fade-up" data-aos-delay="100">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&h=600&q=80" alt="Polished Showroom Release" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(22)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Delivery</span>
+                <h4 class="gallery-card-title">Pristine Rollout Release</h4>
+                <p class="gallery-card-caption">Full vehicle cleanup and light tuning check before final customer hand-off.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 24: Delivery -->
+          <div class="gallery-grid-item" data-category="customer-delivery" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-premium-card">
+              <div class="gallery-card-image-box">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E" data-src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf0a3?auto=format&fit=crop&w=800&h=600&q=80" alt="Track delivery Experience" class="lazy-load-img">
+                <div class="gallery-card-overlay" onclick="openLightbox(23)">
+                  <div class="gallery-overlay-icon">
+                    <i class="bi bi-zoom-in"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <span class="gallery-card-badge">Delivery</span>
+                <h4 class="gallery-card-title">Active Track Delivery</h4>
+                <p class="gallery-card-caption">Customer taking track-side delivery of their newly enhanced grand tourer.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="customLightbox" class="custom-lightbox" onclick="closeLightboxOnOutside(event)">
+      <button class="lightbox-close" onclick="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+      <button class="lightbox-arrow lightbox-prev" onclick="changeLightboxItem(-1)"><i class="bi bi-chevron-left"></i></button>
+      <button class="lightbox-arrow lightbox-next" onclick="changeLightboxItem(1)"><i class="bi bi-chevron-right"></i></button>
+      
+      <div class="lightbox-content">
+        <img loading="lazy" id="lightboxImage" class="lightbox-image" src="" alt="Zoomed view">
+        <div class="lightbox-details">
+          <h4 id="lightboxTitle" class="lightbox-title"></h4>
+          <p id="lightboxCaption" class="lightbox-caption"></p>
+          <span id="lightboxCounter" class="lightbox-counter"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 04: Workshop Video Section -->
+    <section class="section-spacing bg-cream">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-widest d-inline-block mb-2">Live Demonstration</span>
+            <h2 class="text-charcoal fw-extrabold display-6 mb-4">See Our Master Technicians in Action</h2>
+            <p class="text-gray mb-4">
+              Step virtually inside our performance tuning bay. This short overview shows our precision calibration process, laser-guided alignments, and final dynamometer verification loops.
+            </p>
+            <div class="d-flex flex-column gap-3">
+              <div class="d-flex align-items-start gap-3">
+                <div class="bg-white p-3 rounded-circle shadow-sm text-primary-orange">
+                  <i class="bi bi-shield-check fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="text-charcoal fw-bold mb-1">Rigorous Quality Protocols</h5>
+                  <p class="text-gray fs-sm mb-0">Every vehicle undergoes digital pre-scans and master checklist runs.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-start gap-3">
+                <div class="bg-white p-3 rounded-circle shadow-sm text-primary-orange">
+                  <i class="bi bi-cpu fs-4"></i>
+                </div>
+                <div>
+                  <h5 class="text-charcoal fw-bold mb-1">State-of-the-Art Toolsets</h5>
+                  <p class="text-gray fs-sm mb-0">We use OEM diagnostics identical to manufacturer factory setups.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="video-thumbnail-box" onclick="openVideoModal()">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=1200&h=675&q=80" alt="Workshop Video Poster" class="lazy-load-img">
+              <div class="video-thumbnail-overlay">
+                <div class="play-btn-pulse">
+                  <i class="bi bi-play-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Video Modal Overlay -->
+    <div id="customVideoModal" class="custom-video-modal" onclick="closeVideoModalOnOutside(event)">
+      <div class="video-modal-content">
+        <button class="video-modal-close" onclick="closeVideoModal()"><i class="bi bi-x-lg"></i></button>
+        <!-- Embedded responsive video placeholder -->
+        <iframe id="videoIframe" class="video-modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- SECTION 05: Instagram/Social Gallery Preview -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-5" style="max-width: 700px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-widest d-inline-block mb-2">Social Feed</span>
+          <h2 class="text-charcoal fw-extrabold display-6 mb-3">Follow @AutoCareWorkshop</h2>
+          <p class="text-gray">Get your daily dose of clean mechanic bays, automotive hardware, custom rebuilds, and tuning tips direct from our team.</p>
+        </div>
+        
+        <div class="row g-3 row-cols-2 row-cols-md-4 mb-4" data-aos="fade-up">
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 1" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 1,420</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 2" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 894</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 3" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 2,105</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 4" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 1,640</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 5" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 942</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 6" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 3,241</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 7" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 1,118</span>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://instagram.com" target="_blank" class="social-square-card d-block">
+              <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&h=600&q=80" alt="Instagram 8" loading="lazy">
+              <div class="social-square-overlay">
+                <i class="bi bi-instagram social-square-icon"></i>
+                <span class="social-square-likes"><i class="bi bi-heart-fill me-1 text-white"></i> 2,330</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <a href="https://instagram.com" target="_blank" class="btn-premium btn-charcoal btn-ripple">
+            <i class="bi bi-instagram me-2"></i> Follow Our Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: Premium CTA Section -->
+    <section class="section-spacing bg-cream border-top">
+      <div class="container text-center max-w-3xl mx-auto" style="max-width: 800px;" data-aos="zoom-in">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-widest d-inline-block mb-2">Book Slot Instantly</span>
+        <h2 class="text-charcoal fw-extrabold display-5 mb-4">Ready to Experience True Engineering Care?</h2>
+        <p class="text-gray fs-5 mb-5">
+          Schedule your premium computerized diagnostic run or maintenance check with our expert team today. Fast turnaround, transparent estimates, and fully warrantied service.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple px-5 py-3 fs-6">
+            <i class="bi bi-calendar-event me-2"></i> Book Appointment Now
+          </a>
+          <a href="services.html" class="btn-premium btn-charcoal btn-ripple px-5 py-3 fs-6">
+            <i class="bi bi-wrench me-2"></i> View Care Services
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Page-Specific Interactive JavaScript Engines -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize AOS Animations
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+      }
+
+      // ==========================================
+      // 1. LAZY LOADING ENGINE
+      // ==========================================
+      const lazyImages = document.querySelectorAll(".lazy-load-img");
+      
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const image = entry.target;
+              image.src = image.dataset.src;
+              image.classList.add("loaded");
+              observer.unobserve(image);
+            }
+          });
+        });
+        
+        lazyImages.forEach(image => {
+          imageObserver.observe(image);
+        });
+      } else {
+        // Fallback for older browsers
+        lazyImages.forEach(image => {
+          image.src = image.dataset.src;
+          image.classList.add("loaded");
+        });
+      }
+
+      // ==========================================
+      // 2. INTERACTIVE FILTER ENGINE
+      // ==========================================
+      const filterBtns = document.querySelectorAll(".gallery-filter-btn");
+      const gridItems = document.querySelectorAll(".gallery-grid-item");
+      let activeFilterCategory = "all";
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove("active"));
+          // Add active class to clicked button
+          this.classList.add("active");
+          
+          activeFilterCategory = this.getAttribute("data-filter");
+          filterGalleryItems();
+        });
+      });
+
+      function filterGalleryItems() {
+        gridItems.forEach(item => {
+          const itemCategory = item.getAttribute("data-category");
+          const card = item.querySelector(".gallery-premium-card");
+          
+          // Smooth fade-out and scale transition
+          if (activeFilterCategory === "all" || itemCategory === activeFilterCategory) {
+            item.style.display = "block";
+            // Re-trigger visual style on next frame to support browser render loop
+            requestAnimationFrame(() => {
+              item.style.opacity = "1";
+              item.style.transform = "scale(1)";
+            });
+          } else {
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.9) translateY(10px)";
+            setTimeout(() => {
+              if (item.style.opacity === "0") {
+                item.style.display = "none";
+              }
+            }, 350); // Matches transition time
+          }
+        });
+
+        // Re-compile indices for Lightbox and refresh AOS spacing layout
+        setTimeout(() => {
+          updateVisibleItemsArray();
+          if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+          }
+        }, 360);
+      }
+
+      // ==========================================
+      // 3. IMAGE LIGHTBOX ENGINE (VANILLA JS)
+      // ==========================================
+      const lightbox = document.getElementById("customLightbox");
+      const lightboxImg = document.getElementById("lightboxImage");
+      const lightboxTitle = document.getElementById("lightboxTitle");
+      const lightboxCaption = document.getElementById("lightboxCaption");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+
+      let visibleItems = [];
+      let currentIdx = 0;
+
+      // Populate list of matching items for current filter view
+      function updateVisibleItemsArray() {
+        visibleItems = [];
+        gridItems.forEach(item => {
+          // Only index elements that are currently showing (display not none)
+          if (item.style.display !== "none") {
+            const img = item.querySelector("img");
+            const title = item.querySelector(".gallery-card-title").textContent;
+            const caption = item.querySelector(".gallery-card-caption").textContent;
+            visibleItems.push({
+              src: img.dataset.src || img.src,
+              title: title,
+              caption: caption,
+              elem: item
+            });
+          }
+        });
+      }
+
+      // Initial visible list population
+      updateVisibleItemsArray();
+
+      // Make openLightbox globally accessible
+      window.openLightbox = function(globalIndex) {
+        // Find which visible item corresponds to the clicked grid item element
+        const clickedItemElem = gridItems[globalIndex];
+        currentIdx = visibleItems.findIndex(item => item.elem === clickedItemElem);
+        
+        if (currentIdx === -1) currentIdx = 0; // Fallback security
+
+        updateLightboxContent();
+        
+        // Open Lightbox with animation
+        lightbox.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Scroll Lock
+        
+        requestAnimationFrame(() => {
+          lightbox.classList.add("show");
+        });
+      };
+
+      window.closeLightbox = function() {
+        lightbox.classList.remove("show");
+        document.body.style.overflow = ""; // Release Scroll Lock
+        
+        setTimeout(() => {
+          lightbox.style.display = "none";
+          lightboxImg.src = ""; // Clean memory
+        }, 400);
+      };
+
+      window.closeLightboxOnOutside = function(event) {
+        if (event.target === lightbox || event.target.classList.contains("lightbox-content")) {
+          closeLightbox();
+        }
+      };
+
+      window.changeLightboxItem = function(direction) {
+        if (visibleItems.length === 0) return;
+        
+        // Loop back and forth
+        currentIdx = (currentIdx + direction + visibleItems.length) % visibleItems.length;
+        
+        // Add subtle slide/fade effect inside lightbox content
+        lightboxImg.style.opacity = "0.3";
+        lightboxImg.style.transform = "scale(0.95)";
+        
+        setTimeout(() => {
+          updateLightboxContent();
+          lightboxImg.style.opacity = "1";
+          lightboxImg.style.transform = "scale(1)";
+        }, 150);
+      };
+
+      function updateLightboxContent() {
+        const currentData = visibleItems[currentIdx];
+        if (!currentData) return;
+
+        lightboxImg.src = currentData.src;
+        lightboxTitle.textContent = currentData.title;
+        lightboxCaption.textContent = currentData.caption;
+        lightboxCounter.textContent = `${currentIdx + 1} of ${visibleItems.length}`;
+      }
+
+      // KEYBOARD NAVIGATION CONTROLS
+      document.addEventListener("keydown", function(e) {
+        if (!lightbox.classList.contains("show")) return;
+        
+        if (e.key === "Escape") {
+          closeLightbox();
+        } else if (e.key === "ArrowRight") {
+          changeLightboxItem(1);
+        } else if (e.key === "ArrowLeft") {
+          changeLightboxItem(-1);
+        }
+      });
+
+      // MOBILE TOUCH SWIPE NAVIGATION CONTROLS
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      lightbox.addEventListener("touchstart", function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lightbox.addEventListener("touchend", function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+
+      function handleSwipeGesture() {
+        const threshold = 50; // Minimum swipe distance in pixels
+        if (touchEndX < touchStartX - threshold) {
+          // Swipe Left -> Show Next Item
+          changeLightboxItem(1);
+        } else if (touchEndX > touchStartX + threshold) {
+          // Swipe Right -> Show Previous Item
+          changeLightboxItem(-1);
+        }
+      }
+
+      // ==========================================
+      // 4. WORKSHOP VIDEO MODAL ENGINE
+      // ==========================================
+      const videoModal = document.getElementById("customVideoModal");
+      const videoIframe = document.getElementById("videoIframe");
+      // Clean, premium 4K automotive workshop detailing video
+      const premiumVideoSrc = "https://www.youtube.com/embed/fD36-C8kHnI?autoplay=1&mute=1&enablejsapi=1";
+
+      window.openVideoModal = function() {
+        videoIframe.src = premiumVideoSrc;
+        videoModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Scroll Lock
+        
+        requestAnimationFrame(() => {
+          videoModal.classList.add("show");
+        });
+      };
+
+      window.closeVideoModal = function() {
+        videoModal.classList.remove("show");
+        document.body.style.overflow = ""; // Release Scroll Lock
+        
+        setTimeout(() => {
+          videoModal.style.display = "none";
+          videoIframe.src = ""; // Stop audio & teardown player state
+        }, 400);
+      };
+
+      window.closeVideoModalOnOutside = function(event) {
+        if (event.target === videoModal || event.target.classList.contains("video-modal-content")) {
+          closeVideoModal();
+        }
+      };
+    });
+  </script>
+</body>
+</html>

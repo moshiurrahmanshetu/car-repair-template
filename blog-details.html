@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Article Details</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Page-Specific Styles for Blog Details & Right Sidebar -->
+  <style>
+    /* Article Layout Styling */
+    .featured-image-box {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      border: 1px solid var(--color-light-gray);
+      background-color: var(--color-beige);
+    }
+    .featured-image-box img {
+      width: 100%;
+      height: auto;
+      max-height: 550px;
+      object-fit: cover;
+    }
+    .blog-article-content {
+      font-family: var(--font-primary);
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-dark);
+    }
+    .blog-article-content p {
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+    .blog-article-content h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-top: 45px;
+      margin-bottom: 20px;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+    .blog-article-content h3::after {
+      display: none;
+    }
+    
+    /* Elegant Quote Block */
+    .article-quote-block {
+      background-color: var(--color-beige);
+      border-left: 4px solid var(--color-primary);
+      padding: 35px;
+      border-radius: 0 8px 8px 0;
+      margin: 40px 0;
+      position: relative;
+    }
+    .quote-text {
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--color-dark);
+      margin-bottom: 12px;
+    }
+    .quote-author {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary);
+      margin: 0;
+    }
+    
+    /* Highlight Information Box */
+    .highlight-box {
+      background-color: #fffbf2;
+      border: 1px solid #ffd1a4;
+      padding: 30px;
+      border-radius: 8px;
+      margin: 35px 0;
+    }
+    .highlight-title {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--color-dark);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .highlight-title i {
+      color: var(--color-primary);
+      font-size: 18px;
+    }
+    
+    /* Custom List in Content */
+    .article-bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+    .article-bullet-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: var(--color-dark);
+    }
+    .article-bullet-list li::before {
+      content: '\f272';
+      font-family: 'bootstrap-icons';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--color-primary);
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    /* Premium Maintenance Tips Checklist */
+    .tips-checklist-wrapper {
+      background-color: var(--color-beige);
+      border-radius: 8px;
+      padding: 35px;
+      margin: 45px 0;
+      border: 1px solid var(--color-light-gray);
+    }
+    .tips-checklist-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .tips-checklist-item:last-child {
+      margin-bottom: 0;
+    }
+    .tips-checklist-icon {
+      color: var(--color-primary);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .tips-checklist-text h5 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--color-dark);
+    }
+    .tips-checklist-text p {
+      font-size: 13.5px;
+      margin-bottom: 0;
+      opacity: 0.85;
+    }
+
+    /* Tags & Share */
+    .article-footer-meta {
+      padding: 25px 0;
+      border-top: 1px solid var(--color-light-gray);
+      border-bottom: 1px solid var(--color-light-gray);
+      margin: 45px 0;
+    }
+    .article-tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .tag-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-dark);
+      margin-right: 5px;
+    }
+    .article-tag-pills {
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .article-tag-pills:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .article-social-share {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .share-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-dark);
+    }
+    .share-btn-custom {
+      width: 36px;
+      height: 36px;
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .share-btn-custom:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    /* Premium Author Card */
+    .author-card-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      border-radius: 8px;
+      padding: 35px;
+      display: flex;
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+    @media (max-width: 576px) {
+      .author-card-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+    }
+    .author-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 3px solid var(--color-beige);
+    }
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .author-info-details h4 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 5px;
+    }
+    .author-role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      letter-spacing: 1.5px;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .author-bio {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--color-gray);
+      margin-bottom: 15px;
+    }
+    .author-social-icons {
+      display: flex;
+      gap: 12px;
+    }
+    @media (max-width: 576px) {
+      .author-social-icons {
+        justify-content: center;
+      }
+    }
+    .author-social-link {
+      color: var(--color-gray);
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    .author-social-link:hover {
+      color: var(--color-primary);
+    }
+
+    /* Previous / Next Article Navigation */
+    .prev-next-navigation {
+      border-top: 1px solid var(--color-light-gray);
+      border-bottom: 1px solid var(--color-light-gray);
+      padding: 30px 0;
+      margin-bottom: 60px;
+    }
+    .nav-link-box {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+    }
+    .nav-link-box .nav-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-gray);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s ease;
+    }
+    .nav-link-box:hover .nav-label {
+      color: var(--color-primary);
+    }
+    .nav-link-box .nav-article-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Related Articles Cards */
+    .related-blog-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .related-blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-premium);
+      border-color: var(--color-primary);
+    }
+    .related-card-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+    }
+    .related-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .related-blog-card:hover .related-card-image img {
+      transform: scale(1.08);
+    }
+    .related-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .related-card-category {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .related-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+    .related-card-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .related-card-title a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Comment Form Validation Styling */
+    .comment-form-container {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      border-radius: 8px;
+      padding: 40px;
+    }
+    @media (max-width: 576px) {
+      .comment-form-container {
+        padding: 25px;
+      }
+    }
+    .comment-form-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 10px;
+    }
+    .comment-form-desc {
+      font-size: 14px;
+      color: var(--color-gray);
+      margin-bottom: 30px;
+    }
+    .form-group-custom {
+      margin-bottom: 20px;
+    }
+    .form-label-custom {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 8px;
+    }
+    .form-input-custom {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 6px;
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .form-input-custom:focus {
+      border-color: var(--color-primary);
+      background-color: var(--color-white);
+      outline: none;
+    }
+    
+    /* Shared Sidebar Widgets from blog.html */
+    .sidebar-widget {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .widget-title {
+      font-family: var(--font-primary);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-dark);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .widget-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--color-primary);
+      border-radius: 2px;
+    }
+    .search-widget-form {
+      position: relative;
+    }
+    .search-widget-input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 6px;
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .search-widget-input:focus {
+      border-color: var(--color-primary);
+      background-color: var(--color-white);
+      outline: none;
+    }
+    .search-widget-btn {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--color-gray);
+      font-size: 18px;
+      padding: 10px;
+      transition: color 0.3s ease;
+    }
+    .search-widget-btn:hover {
+      color: var(--color-primary);
+    }
+    .widget-category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .widget-category-list li {
+      margin-bottom: 15px;
+    }
+    .widget-category-list li:last-child {
+      margin-bottom: 0;
+    }
+    .widget-category-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-dark);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 4px 0;
+    }
+    .widget-category-list a:hover {
+      color: var(--color-primary);
+      padding-left: 5px;
+    }
+    .category-count {
+      background-color: var(--color-beige);
+      color: var(--color-gray);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .widget-category-list a:hover .category-count {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .widget-recent-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .recent-post-item {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .recent-post-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #f0f0f0;
+    }
+    .recent-post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .recent-post-item:hover .recent-post-thumb img {
+      transform: scale(1.1);
+    }
+    .recent-post-detail {
+      display: flex;
+      flex-direction: column;
+    }
+    .recent-post-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-gray);
+      margin-bottom: 4px;
+    }
+    .recent-post-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .recent-post-title a {
+      color: var(--color-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .recent-post-title a:hover {
+      color: var(--color-primary);
+    }
+    .widget-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .widget-tag-link {
+      background-color: var(--color-beige);
+      color: var(--color-dark);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .widget-tag-link:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .newsletter-widget-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--color-light-gray);
+      border-radius: 6px;
+      background-color: var(--color-beige);
+      font-size: 13px;
+      margin-bottom: 12px;
+      color: var(--color-dark);
+      transition: all 0.3s ease;
+    }
+    .newsletter-widget-input:focus {
+      border-color: var(--color-primary);
+      background-color: var(--color-white);
+      outline: none;
+    }
+    .promo-widget-card {
+      background-image: linear-gradient(rgba(21, 21, 21, 0.85), rgba(21, 21, 21, 0.85)), url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&h=800&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      padding: 40px 30px;
+      text-align: center;
+      color: var(--color-white);
+    }
+    .promo-widget-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    .promo-widget-desc {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    /* Accessibility reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item ">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item active">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="internal-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.8), rgba(21, 21, 21, 0.8)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; padding: 120px 0 80px 0;">
+      <!-- Subtle Mechanical Overlay Grid -->
+      <div class="banner-blueprint-overlay"></div>
+      
+      <!-- Ambient Animated Particles -->
+      <div class="banner-gear-particle-1"></div>
+      <div class="banner-gear-particle-2"></div>
+      
+      <div class="container relative-z">
+        <div class="row align-items-center">
+          <div class="col-lg-8" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">Technical Blueprint Series</span>
+            <h1 class="display-5 text-white fw-extrabold mb-3">Decoding Engine Noise Codes</h1>
+            <p class="text-white opacity-75 fs-6 mb-0 max-w-xl">An expert guide to tracing mechanical harmonics and electronic OBD-II sensor correlations.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end mt-4 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+            <nav aria-label="breadcrumb" class="d-inline-block">
+              <ol class="breadcrumb justify-content-lg-end bg-transparent p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-primary">Home</a></li>
+                <li class="breadcrumb-item"><a href="blog.html" class="text-white text-decoration-none opacity-75 hover-primary">Blog</a></li>
+                <li class="breadcrumb-item active text-primary-orange" aria-current="page">Article Details</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Showcase -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Left Column: Article Body (col-lg-8) -->
+          <div class="col-lg-8">
+            <div class="blog-details-wrapper" data-aos="fade-up">
+              
+              <!-- Featured Image Box -->
+              <div class="featured-image-box">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=1200&h=600&q=80" alt="Advanced Automotive Computerized Engine Diagnostics" class="img-fluid">
+              </div>
+
+              <!-- Article Meta Info -->
+              <div class="d-flex align-items-center gap-4 flex-wrap mb-4 pb-3 border-bottom border-light">
+                <span class="fs-xs font-mono text-gray d-inline-flex align-items-center gap-1">
+                  <i class="bi bi-person-fill text-primary-orange"></i> By Silas Thorne
+                </span>
+                <span class="fs-xs font-mono text-gray d-inline-flex align-items-center gap-1">
+                  <i class="bi bi-tag-fill text-primary-orange"></i> Engine Repair
+                </span>
+                <span class="fs-xs font-mono text-gray d-inline-flex align-items-center gap-1">
+                  <i class="bi bi-calendar3 text-primary-orange"></i> July 05, 2026
+                </span>
+                <span class="fs-xs font-mono text-gray d-inline-flex align-items-center gap-1">
+                  <i class="bi bi-chat-text-fill text-primary-orange"></i> 14 Comments
+                </span>
+              </div>
+
+              <!-- Article Content -->
+              <div class="blog-article-content">
+                <p>
+                  Modern passenger cars are masterpiece configurations of mechanical structures harmonized with sophisticated silicon-based computer engines. When a misfire occurs or a mysterious acoustic knocking triggers, the vehicle's onboard controller (OBD-II) registers the event through custom voltage thresholds. However, relying purely on code outputs is only half the battle. A true technician must decode both the physical acoustics and the micro-voltage sensors to locate the root cause.
+                </p>
+
+                <p>
+                  The first step in any sophisticated diagnostic blueprint is tracing the frequency of the noise. High-frequency tapping sounds usually correlate directly with valve train issues, such as sticking lifters or camshaft wear lobes, whereas low-frequency thuds signify crankcase wear, structural main bearing clearances, or piston skirt slapping.
+                </p>
+
+                <h3 id="acoustic-diagnostics">1. Tracing Harmonic Frequencies</h3>
+                <p>
+                  Physical mechanics teaches us that any metal-on-metal impact creates distinctive soundwaves that propagate through the block. Utilizing a piezo-electric mechanics stethoscope, you can safely isolate sounds and determine their frequency rate relative to the crankshaft’s RPM speed.
+                </p>
+                <p>
+                  For instance, a noise that triggers at exactly half of the engine speed indicates an issue within the upper valvetrain assembly (valves, camshafts, lifters, pushrods). Conversely, any noise that matches the precise RPM cycle points directly to the crankshaft assembly, connecting rods, or accessory pulleys.
+                </p>
+
+                <!-- Elegant Custom Quote Block -->
+                <div class="article-quote-block">
+                  <p class="quote-text">
+                    "A mechanical vibration is never merely noise; it is a live acoustic frequency wave mapping the micro-clearance shifts inside your combustion chamber block."
+                  </p>
+                  <p class="quote-author">— Silas Thorne, Master Lead Tech</p>
+                </div>
+
+                <h3>2. Correlating OBD-II Sensor Thresholds</h3>
+                <p>
+                  When physical wear occurs, the vehicle’s powertrain control module (PCM) registers discrepancies via specialized sensors:
+                </p>
+                <ul class="article-bullet-list">
+                  <li><strong>Knock Sensor (KS):</strong> Employs piezo-electric crystals to convert cylinder vibration frequencies directly into electrical voltage signals.</li>
+                  <li><strong>Crankshaft Position Sensor (CKP):</strong> Monitors instantaneous crankshaft deceleration to pinpoint the exact cylinder responsible for a misfire.</li>
+                  <li><strong>Oxygen Sensors (O2) & Fuel Trim Arrays:</strong> Assess real-time air-to-fuel ratio shifts resulting from unburned fuel molecules passing through the manifold.</li>
+                </ul>
+
+                <!-- Technical Diagnostic Code Mapping Box -->
+                <div class="highlight-box">
+                  <div class="highlight-title">
+                    <i class="bi bi-cpu-fill"></i> OBD-II Code Reference Blueprint
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-sm m-0 text-start fs-sm">
+                      <thead>
+                        <tr class="bg-light-gray">
+                          <th style="width: 15%;">Code</th>
+                          <th style="width: 30%;">Technical Name</th>
+                          <th style="width: 55%;">Common Acoustic / Mechanical Root Cause</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong class="text-primary-orange">P0300</strong></td>
+                          <td>Random Misfire Detected</td>
+                          <td>Fuel pressure drop, ignition coil carbon tracking, vacuum manifold leaks.</td>
+                        </tr>
+                        <tr>
+                          <td><strong class="text-primary-orange">P0011</strong></td>
+                          <td>Camshaft A Timing Over-Advanced</td>
+                          <td>Low engine oil pressure, variable valve timing (VVT) solenoid screen clogging.</td>
+                        </tr>
+                        <tr>
+                          <td><strong class="text-primary-orange">P0171</strong></td>
+                          <td>System Too Lean (Bank 1)</td>
+                          <td>Mass Airflow (MAF) contamination, unmetered air leaking downstream of throttle.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <h3>3. Isolating Variable Valve Timing (VVT) Rattles</h3>
+                <p>
+                  One of the most common issues on modern high-efficiency vehicles is a brief rattle upon cold startup, which often resolves itself after 2-3 seconds. This phenomenon is typically linked to VVT cam phasers losing their internal locking pin integrity, or low engine oil pressure failing to prime the timing chain hydraulic tensioners rapidly enough. Ignoring this rattle eventually leads to timing chain stretch, sprocket wear, and catastrophic internal valve-to-piston interference.
+                </p>
+
+                <!-- Responsive Inline Images Row -->
+                <div class="row g-3 my-4">
+                  <div class="col-sm-6">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&h=400&q=80" alt="Engine Diagnostic Wire Scan" class="img-fluid rounded border">
+                  </div>
+                  <div class="col-sm-6">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=400&q=80" alt="VVT Solenoid Service Inspection" class="img-fluid rounded border">
+                  </div>
+                </div>
+
+                <!-- Premium Maintenance Tips Checklist -->
+                <div class="tips-checklist-wrapper">
+                  <h4 class="text-charcoal fw-extrabold mb-4"><i class="bi bi-shield-check text-primary-orange me-2"></i> Master Mechanic's Diagnostic Checklist</h4>
+                  
+                  <div class="tips-checklist-item">
+                    <i class="bi bi-check-circle-fill tips-checklist-icon"></i>
+                    <div class="tips-checklist-text">
+                      <h5>Perform regular oil chemistry inspections</h5>
+                      <p>Metallic particulates suspended in the lubricant are an early indicator of bearing wear. Keep oil changes frequent and stick strictly to recommended viscosities.</p>
+                    </div>
+                  </div>
+
+                  <div class="tips-checklist-item">
+                    <i class="bi bi-check-circle-fill tips-checklist-icon"></i>
+                    <div class="tips-checklist-text">
+                      <h5>Isolate accessories using pulley wraps</h5>
+                      <p>If you hear a constant squealing or growling sound, temporarily remove the serpentine accessory belt. If the sound disappears, the source is likely an alternator, water pump, or power steering pump pulley bearing rather than an internal engine issue.</p>
+                    </div>
+                  </div>
+
+                  <div class="tips-checklist-item">
+                    <i class="bi bi-check-circle-fill tips-checklist-icon"></i>
+                    <div class="tips-checklist-text">
+                      <h5>Verify fuel trims at idle vs. loaded conditions</h5>
+                      <p>A lean code (P0171) that corrects itself at high RPM points to a vacuum leak. If the code persists under heavy load, focus on fuel delivery restrictions (fuel pumps, clogged filters, dirty injectors).</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p>
+                  In conclusion, decoding modern engine codes requires combining electronic sensor outputs with structural mechanical expertise. By understanding the harmonics of your engine, keeping a keen ear out for early warning signs, and performing preventative maintenance, you will protect your high-performance vehicle from costly mechanical failures.
+                </p>
+              </div>
+
+              <!-- Article Footer Tags & Share -->
+              <div class="article-footer-meta d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-4">
+                <div class="article-tags-cloud">
+                  <span class="tag-title">Tags:</span>
+                  <a href="blog.html?tag=diagnostics" class="article-tag-pills">Diagnostics</a>
+                  <a href="blog.html?tag=engine-repair" class="article-tag-pills">Engine Repair</a>
+                  <a href="blog.html?tag=vvt-tuning" class="article-tag-pills">VVT Tuning</a>
+                </div>
+                <div class="article-social-share">
+                  <span class="share-title">Share Article:</span>
+                  <a href="https://facebook.com" target="_blank" class="share-btn-custom" aria-label="Share on Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://twitter.com" target="_blank" class="share-btn-custom" aria-label="Share on X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://linkedin.com" target="_blank" class="share-btn-custom" aria-label="Share on LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <button class="share-btn-custom" onclick="navigator.clipboard.writeText(window.location.href); alert('Article URL copied to clipboard!'); return false;" aria-label="Copy Link" title="Copy Link" style="background: none; border: none; padding: 0; outline: none; cursor: pointer;"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+
+              <!-- Premium Author Card Box -->
+              <div class="author-card-box">
+                <div class="author-avatar">
+                  <img loading="lazy" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80" alt="Silas Thorne - Master Diagnostic Specialist">
+                </div>
+                <div class="author-info-details">
+                  <h4>Silas Thorne</h4>
+                  <span class="author-role">Master Lead Tech & L1 Diagnostics Expert</span>
+                  <p class="author-bio">
+                    Silas has spent over 15 years diagnosing and tuning high-performance internal combustion engines. Certified as an ASE L1 Advanced Engine Specialist, he specializes in electronic management systems and acoustic harmonics troubleshooting.
+                  </p>
+                  <div class="author-social-icons">
+                    <a href="https://facebook.com" class="author-social-link" aria-label="Silas Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://x.com" class="author-social-link" aria-label="Silas Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://linkedin.com" class="author-social-link" aria-label="Silas LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="mailto:silas@autocare.com" class="author-social-link" aria-label="Silas Email"><i class="bi bi-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Previous / Next Navigation Node -->
+              <div class="prev-next-navigation">
+                <div class="row g-4">
+                  <div class="col-sm-6 border-end border-light">
+                    <a href="blog-details.html" class="nav-link-box text-start">
+                      <span class="nav-label"><i class="bi bi-arrow-left"></i> Previous Article</span>
+                      <p class="nav-article-title">5 Critical Signs Your Brake Pads Are Glazing & Overheating</p>
+                    </a>
+                  </div>
+                  <div class="col-sm-6 text-sm-end">
+                    <a href="blog-details.html" class="nav-link-box text-end">
+                      <span class="nav-label justify-content-sm-end">Next Article <i class="bi bi-arrow-right"></i></span>
+                      <p class="nav-article-title">Demystifying Twin-Clutch Transmission Duty Cycles</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Related Articles Showcase (3 cards) -->
+              <div class="related-articles-section mb-5">
+                <h4 class="text-charcoal fw-extrabold mb-4 pb-2 border-bottom">Related Technical Articles</h4>
+                <div class="row g-4">
+                  <!-- Related Post 1 -->
+                  <div class="col-md-4">
+                    <div class="related-blog-card">
+                      <div class="related-card-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=400&q=80" alt="Brake Upgrades">
+                      </div>
+                      <div class="related-card-body">
+                        <span class="related-card-category">Brakes</span>
+                        <h5 class="related-card-title">
+                          <a href="services.html">Brake Safety System Upgrades</a>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Related Post 2 -->
+                  <div class="col-md-4">
+                    <div class="related-blog-card">
+                      <div class="related-card-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=600&h=400&q=80" alt="Hybrid Diagnostics">
+                      </div>
+                      <div class="related-card-body">
+                        <span class="related-card-category">Electrical</span>
+                        <h5 class="related-card-title">
+                          <a href="services.html">Hybrid Powertrain Regeneration</a>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Related Post 3 -->
+                  <div class="col-md-4">
+                    <div class="related-blog-card">
+                      <div class="related-card-image">
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=600&h=400&q=80" alt="Performance Suspension">
+                      </div>
+                      <div class="related-card-body">
+                        <span class="related-card-category">Suspension</span>
+                        <h5 class="related-card-title">
+                          <a href="services.html">Performance Suspension Tuning</a>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Verified Comments Section & Form -->
+              <div class="comment-form-container" id="comments">
+                <h4 class="comment-form-title">Leave a Comment</h4>
+                <p class="comment-form-desc">Your email address will not be published. Required fields are marked *</p>
+                
+                <!-- Feedback success and warning banners (hidden by default) -->
+                <div id="commentAlertSuccess" class="alert alert-success d-none mb-4" role="alert">
+                  <div class="d-flex gap-2">
+                    <i class="bi bi-check-circle-fill fs-5"></i>
+                    <div>
+                      <strong class="d-block">Comment Received!</strong>
+                      Your diagnostic comment has been safely submitted for Silas's expert feedback review.
+                    </div>
+                  </div>
+                </div>
+
+                <form id="blogCommentForm" class="needs-validation" novalidate>
+                  <div class="row">
+                    <!-- Name input -->
+                    <div class="col-md-6 form-group-custom">
+                      <label for="commentName" class="form-label-custom">Full Name *</label>
+                      <input type="text" id="commentName" class="form-input-custom" placeholder="e.g. Marcus Aurelius" required>
+                      <div class="invalid-feedback text-danger fs-xs mt-1" id="commentNameFeedback">
+                        Please enter your full name (minimum 3 characters).
+                      </div>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="col-md-6 form-group-custom">
+                      <label for="commentEmail" class="form-label-custom">Email Address *</label>
+                      <input type="email" id="commentEmail" class="form-input-custom" placeholder="e.g. marcus@performance.com" required>
+                      <div class="invalid-feedback text-danger fs-xs mt-1" id="commentEmailFeedback">
+                        Please enter a valid email address.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Website input -->
+                  <div class="form-group-custom">
+                    <label for="commentWebsite" class="form-label-custom">Website / Blog (Optional)</label>
+                    <input type="url" id="commentWebsite" class="form-input-custom" placeholder="e.g. https://myracer.com">
+                    <div class="invalid-feedback text-danger fs-xs mt-1">
+                      Please enter a valid URL starting with http:// or https://
+                    </div>
+                  </div>
+
+                  <!-- Message input -->
+                  <div class="form-group-custom mb-4">
+                    <label for="commentMessage" class="form-label-custom">Comment / Question *</label>
+                    <textarea id="commentMessage" class="form-input-custom" rows="6" placeholder="Share your mechanical problem, engine noise symptoms, or diagnostic question with our technical team..." required></textarea>
+                    <div class="invalid-feedback text-danger fs-xs mt-1" id="commentMessageFeedback">
+                      Please write a comment message (minimum 10 characters).
+                    </div>
+                  </div>
+
+                  <!-- Terms consent checkbox -->
+                  <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" value="" id="commentConsent" required>
+                    <label class="form-check-label fs-xs text-gray" for="commentConsent">
+                      Save my name, email, and website in this browser for the next time I comment. *
+                    </label>
+                    <div class="invalid-feedback text-danger fs-xs mt-1">
+                      You must agree to save credentials before submitting.
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn-premium btn-orange btn-ripple border-0 px-4 py-3 fw-bold uppercase tracking-wider fs-xs w-100 d-inline-flex justify-content-center align-items-center gap-2">
+                    <i class="bi bi-send-fill"></i> Post Technical Comment
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Shared Sidebar Widgets (col-lg-4) -->
+          <div class="col-lg-4">
+            <aside class="blog-sidebar-wrapper">
+              
+              <!-- Search Widget -->
+              <div class="sidebar-widget" data-aos="fade-up">
+                <h5 class="widget-title">Search Hub</h5>
+                <form class="search-widget-form" onsubmit="event.preventDefault(); alert('Search capability triggered! In a live production database, this will query index nodes.');">
+                  <input type="text" class="search-widget-input" placeholder="Type keywords..." required aria-label="Search articles">
+                  <button type="submit" class="search-widget-btn" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                </form>
+              </div>
+
+              <!-- Categories Widget -->
+              <div class="sidebar-widget" data-aos="fade-up">
+                <h5 class="widget-title">Auto Categories</h5>
+                <ul class="widget-category-list">
+                  <li>
+                    <a href="blog.html?category=engine-repair">
+                      <span>Engine Repair</span>
+                      <span class="category-count">5</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="blog.html?category=transmission-diagnostics">
+                      <span>Transmission Diagnostics</span>
+                      <span class="category-count">3</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="blog.html?category=electrical-calibration">
+                      <span>Electrical Calibration</span>
+                      <span class="category-count">4</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="blog.html?category=performance-tuning">
+                      <span>Performance Tuning</span>
+                      <span class="category-count">2</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="blog.html?category=regular-maintenance">
+                      <span>Regular Maintenance</span>
+                      <span class="category-count">6</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Recent Posts Widget -->
+              <div class="sidebar-widget" data-aos="fade-up">
+                <h5 class="widget-title">Recent Blueprint Articles</h5>
+                <div class="widget-recent-posts">
+                  <!-- Recent Post 1 -->
+                  <div class="recent-post-item">
+                    <div class="recent-post-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=150&h=150&q=80" alt="Carbon build-up fixes">
+                    </div>
+                    <div class="recent-post-detail">
+                      <span class="recent-post-date">June 28, 2026</span>
+                      <h6 class="recent-post-title">
+                        <a href="blog-details.html">Unlocking Direct Injection Carbon Build-Up Fixes</a>
+                      </h6>
+                    </div>
+                  </div>
+                  <!-- Recent Post 2 -->
+                  <div class="recent-post-item">
+                    <div class="recent-post-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=150&h=150&q=80" alt="Alternator troubleshoot">
+                    </div>
+                    <div class="recent-post-detail">
+                      <span class="recent-post-date">June 15, 2026</span>
+                      <h6 class="recent-post-title">
+                        <a href="blog-details.html">Troubleshoot Alternator Diode Ripple Current</a>
+                      </h6>
+                    </div>
+                  </div>
+                  <!-- Recent Post 3 -->
+                  <div class="recent-post-item">
+                    <div class="recent-post-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=150&h=150&q=80" alt="EVAP purge tests">
+                    </div>
+                    <div class="recent-post-detail">
+                      <span class="recent-post-date">June 02, 2026</span>
+                      <h6 class="recent-post-title">
+                        <a href="blog-details.html">Supercharging Evaporative Emissions System Purge Testing</a>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tag Cloud Widget -->
+              <div class="sidebar-widget" data-aos="fade-up">
+                <h5 class="widget-title">Related Tags</h5>
+                <div class="widget-tags-container">
+                  <a href="blog.html?tag=diagnostics" class="widget-tag-link">Diagnostics</a>
+                  <a href="blog.html?tag=tuning" class="widget-tag-link">Tuning</a>
+                  <a href="blog.html?tag=brake" class="widget-tag-link">Brake</a>
+                  <a href="blog.html?tag=calibration" class="widget-tag-link">Calibration</a>
+                  <a href="blog.html?tag=engine" class="widget-tag-link">Engine</a>
+                  <a href="blog.html?tag=transmission" class="widget-tag-link">Transmission</a>
+                  <a href="blog.html?tag=suspension" class="widget-tag-link">Suspension</a>
+                  <a href="blog.html?tag=electrical" class="widget-tag-link">Electrical</a>
+                </div>
+              </div>
+
+              <!-- Newsletter Widget -->
+              <div class="sidebar-widget" data-aos="fade-up">
+                <h5 class="widget-title">Blueprint Digest</h5>
+                <p class="fs-xs text-gray mb-3">Subscribe to get Silas Thorne's diagnostic briefs directly inside your inbox.</p>
+                <form onsubmit="event.preventDefault(); alert('Subscription recorded for expert bulletins!'); this.reset();">
+                  <input type="email" class="newsletter-widget-input" placeholder="Your Email Address" required aria-label="Newsletter email">
+                  <button type="submit" class="btn-premium btn-charcoal btn-ripple w-100 py-2 fs-xs uppercase border-0">Sign Up Free</button>
+                </form>
+              </div>
+
+              <!-- Emergency Callout Widget -->
+              <div class="promo-widget-card" data-aos="fade-up">
+                <h5 class="promo-widget-title">Emergency Repairs?</h5>
+                <p class="promo-widget-desc">Our fast-response mobile mechanical teams are equipped with portable diagnostic rigs to service you on the road.</p>
+                <div class="d-flex flex-column gap-2">
+                  <a href="tel:+15551234567" class="btn-premium btn-orange btn-ripple py-2 fs-xs text-decoration-none text-center fw-bold"><i class="bi bi-telephone-fill"></i> +1 (555) 123-4567</a>
+                  <a href="appointment.html" class="btn-premium btn-white btn-ripple py-2 fs-xs text-decoration-none text-center fw-bold">Book Mobile Callout</a>
+                </div>
+              </div>
+
+            </aside>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Vanilla JavaScript Comment Form Validation & Interactive Alert -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const commentForm = document.getElementById('blogCommentForm');
+      const nameInput = document.getElementById('commentName');
+      const emailInput = document.getElementById('commentEmail');
+      const messageInput = document.getElementById('commentMessage');
+      const consentInput = document.getElementById('commentConsent');
+      const successAlert = document.getElementById('commentAlertSuccess');
+
+      if (commentForm) {
+        commentForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          let isValid = true;
+
+          // Reset custom error markers
+          nameInput.classList.remove('is-invalid', 'is-valid');
+          emailInput.classList.remove('is-invalid', 'is-valid');
+          messageInput.classList.remove('is-invalid', 'is-valid');
+          consentInput.classList.remove('is-invalid', 'is-valid');
+
+          // Name validation (minimum 3 characters after trim)
+          const nameValue = nameInput.value.trim();
+          if (nameValue.length < 3) {
+            nameInput.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            nameInput.classList.add('is-valid');
+          }
+
+          // Email validation (regex)
+          const emailValue = emailInput.value.trim();
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailPattern.test(emailValue)) {
+            emailInput.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            emailInput.classList.add('is-valid');
+          }
+
+          // Message validation (minimum 10 characters after trim)
+          const messageValue = messageInput.value.trim();
+          if (messageValue.length < 10) {
+            messageInput.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            messageInput.classList.add('is-valid');
+          }
+
+          // Consent checkbox validation
+          if (!consentInput.checked) {
+            consentInput.classList.add('is-invalid');
+            isValid = false;
+          } else {
+            consentInput.classList.add('is-valid');
+          }
+
+          // Form level check
+          if (isValid) {
+            // Hide any previous instances of the alert
+            successAlert.classList.remove('d-none');
+            
+            // Smooth scroll to the success alert banner
+            successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Reset the form
+            commentForm.reset();
+            commentForm.classList.remove('was-validated');
+
+            // Remove validation visual classes after brief delay
+            setTimeout(function() {
+              nameInput.classList.remove('is-valid');
+              emailInput.classList.remove('is-valid');
+              messageInput.classList.remove('is-valid');
+              consentInput.classList.remove('is-valid');
+            }, 3000);
+          } else {
+            // Apply standard Bootstrap was-validated class to show other native validations (e.g. Website URL format)
+            commentForm.classList.add('was-validated');
+          }
+        });
+
+        // Real-time keyboard listeners to remove visual invalid state as the user types
+        const inputsToObserve = [nameInput, emailInput, messageInput];
+        inputsToObserve.forEach(input => {
+          input.addEventListener('input', function() {
+            if (input.classList.contains('is-invalid')) {
+              input.classList.remove('is-invalid');
+            }
+          });
+        });
+
+        consentInput.addEventListener('change', function() {
+          if (consentInput.checked && consentInput.classList.contains('is-invalid')) {
+            consentInput.classList.remove('is-invalid');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

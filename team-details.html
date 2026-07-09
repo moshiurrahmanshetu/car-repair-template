@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Technician Profile Details</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item active">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- SECTION 01: Internal Banner -->
+    <section class="services-hero-section position-relative d-flex align-items-center" style="background-image: url('/src/assets/images/workshop_reception_1783600278098.jpg'); background-position: center 35%;">
+      <!-- Floating Elements for Parallax Mouse Move Effect -->
+      <div class="services-hero-deco services-hero-1" style="top: 15%; left: 8%;">
+        <i class="bi bi-gear-fill fs-1" style="animation: rotate-clockwise 20s linear infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-2" style="bottom: 15%; right: 8%;">
+        <i class="bi bi-wrench fs-2" style="animation: float-slow 8s ease-in-out infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-3" style="top: 45%; right: 18%;">
+        <i class="bi bi-tools fs-3" style="animation: rotate-counter 12s linear infinite;"></i>
+      </div>
+      
+      <div class="container services-hero-content text-center">
+        <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase tracking-wider" data-aos="fade-down" style="letter-spacing: 2px;">Technician Spotlight</span>
+        <h1 class="text-white fw-extrabold display-3 mb-4" data-aos="fade-up" data-aos-delay="100">Profile Details</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+          <ol class="breadcrumb justify-content-center m-0">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white opacity-75 text-decoration-none hover-orange">Home</a></li>
+            <li class="breadcrumb-item"><a href="team.html" class="text-white opacity-75 text-decoration-none hover-orange">Our Team</a></li>
+            <li class="breadcrumb-item active text-primary-orange" aria-current="page">Marcus Vance</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- SECTION 02: Mechanic Profile Details Layout -->
+    <section class="profile-detail-section bg-white">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- LEFT COLUMN: Profile Details & Achievements -->
+          <div class="col-lg-8" data-aos="fade-right">
+            <div class="profile-main-card border border-light-gray">
+              <div class="row g-4 align-items-center mb-5">
+                <div class="col-md-5">
+                  <div class="profile-img-container">
+                    <span class="profile-badge-overlay">Lead Master</span>
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&h=750&q=80" alt="Marcus Vance Chief Master Mechanic">
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">ASE Certified Master</span>
+                  <h2 class="text-charcoal fw-extrabold mb-1" style="font-size: 2rem;">Marcus Vance</h2>
+                  <p class="text-primary-orange fw-bold fs-sm mb-3">Chief Master Mechanic (15+ Years Experience)</p>
+                  <p class="text-gray fs-sm mb-4">
+                    Marcus Vance coordinates shop operations at AutoCare. With an elite background in performance racing powertrains and high-voltage electrical setups, he bridges old-school mechanics with future-proof hybrid diagnostics.
+                  </p>
+                  
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <span class="text-gray fs-xxs text-uppercase tracking-wider font-mono-sub d-block">Languages</span>
+                      <strong class="text-charcoal fs-xs">English, Spanish</strong>
+                    </div>
+                    <div class="col-6">
+                      <span class="text-gray fs-xxs text-uppercase tracking-wider font-mono-sub d-block">Availability</span>
+                      <strong class="text-charcoal fs-xs">Mon - Sat (Active Shift)</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Biography section -->
+              <div class="mb-5">
+                <h4 class="text-charcoal fw-extrabold mb-3" style="font-size: 1.25rem;">Biography</h4>
+                <p class="text-gray fs-sm leading-relaxed mb-3">
+                  Marcus began his journey with mechanical repair systems in standard aircraft restoration programs before completing his advanced Master Technician certifications in European and Japanese imports. Over the last decade, he has specialized in complex hybrid electric battery pack rebuilds, automated electronic clutches, and computer mapping recalibrations.
+                </p>
+                <p class="text-gray fs-sm leading-relaxed mb-0">
+                  When he is not in the shop, Marcus hosts performance diagnostics workshops for regional automotive colleges and serves as a lead advisor on local environmental clean emission projects.
+                </p>
+              </div>
+
+              <!-- Specializations & Certifications Meta Grid -->
+              <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                  <h4 class="text-charcoal fw-extrabold mb-3" style="font-size: 1.25rem;">Specializations</h4>
+                  <ul class="list-unstyled d-flex flex-column gap-2 text-gray fs-sm m-0">
+                    <li><i class="bi bi-caret-right-fill text-primary-orange me-2"></i> Hybrid/EV Battery Pack Restoration</li>
+                    <li><i class="bi bi-caret-right-fill text-primary-orange me-2"></i> Multi-Link Adaptive Air Suspensions</li>
+                    <li><i class="bi bi-caret-right-fill text-primary-orange me-2"></i> Custom ECU Chip Tuning & Re-mapping</li>
+                    <li><i class="bi bi-caret-right-fill text-primary-orange me-2"></i> Dual-Clutch Gearbox Overhauling</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h4 class="text-charcoal fw-extrabold mb-3" style="font-size: 1.25rem;">Workshop Accreditation</h4>
+                  <ul class="list-unstyled d-flex flex-column gap-2 text-gray fs-sm m-0">
+                    <li><i class="bi bi-shield-fill-check text-primary-orange me-2"></i> ASE L3 Hybrid/EV Master Specialist</li>
+                    <li><i class="bi bi-shield-fill-check text-primary-orange me-2"></i> Bosch Advanced GDI Engine Certificate</li>
+                    <li><i class="bi bi-shield-fill-check text-primary-orange me-2"></i> European Gearbox Guild Accredited</li>
+                    <li><i class="bi bi-shield-fill-check text-primary-orange me-2"></i> EPA Section 609 Mobile A/C License</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- SECTION 03: Skills (Animated Progress Bars) -->
+              <div class="skills-wrapper border-top pt-5 mb-5">
+                <h4 class="text-charcoal fw-extrabold mb-4" style="font-size: 1.25rem;">Technical Diagnostic Proficiency</h4>
+                
+                <!-- Skill 1 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Engine Repair & Blueprinting</span>
+                    <span class="skill-percentage">98%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="98"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Transmission Rebuilding (DSG/Manual)</span>
+                    <span class="skill-percentage">95%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="95"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Advanced Electrical & CAN-bus Diagnostics</span>
+                    <span class="skill-percentage">92%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="92"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Hybrid, EV & High Voltage Tuning</span>
+                    <span class="skill-percentage">96%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="96"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Performance Braking Systems</span>
+                    <span class="skill-percentage">90%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="90"></div>
+                  </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-item">
+                  <div class="skill-header">
+                    <span class="skill-name">Computerized Suspension & Dampening</span>
+                    <span class="skill-percentage">88%</span>
+                  </div>
+                  <div class="skill-bar-outer">
+                    <div class="skill-bar-inner" data-width="88"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 04: Professional Experience Timeline -->
+              <div class="experience-timeline-wrapper border-top pt-5 mb-5">
+                <h4 class="text-charcoal fw-extrabold mb-4" style="font-size: 1.25rem;">Professional Track Record</h4>
+                <div class="experience-timeline">
+                  
+                  <div class="timeline-item-custom">
+                    <div class="timeline-dot-custom"></div>
+                    <span class="timeline-meta-custom">2021 - Present</span>
+                    <h5 class="timeline-title-custom">Chief Master Mechanic & Shop Foreman</h5>
+                    <p class="timeline-org-custom">AutoCare Premium Garage Bays, NY</p>
+                    <p class="timeline-desc-custom">
+                      Coordinates all technical operations across 12 diagnostic lanes. Specialized in EV battery calibration, master-tuning high-performance sports cars, and mentoring incoming mechanics.
+                    </p>
+                  </div>
+
+                  <div class="timeline-item-custom">
+                    <div class="timeline-dot-custom"></div>
+                    <span class="timeline-meta-custom">2016 - 2021</span>
+                    <h5 class="timeline-title-custom">Lead Powertrain Specialist</h5>
+                    <p class="timeline-org-custom">Apex Performance Tuning, Boston</p>
+                    <p class="timeline-desc-custom">
+                      Focused entirely on engine rebuilding, forced induction modifications, differential locking setups, and ECU flashing programs.
+                    </p>
+                  </div>
+
+                  <div class="timeline-item-custom">
+                    <div class="timeline-dot-custom"></div>
+                    <span class="timeline-meta-custom">2011 - 2016</span>
+                    <h5 class="timeline-title-custom">Senior Diagnostic Technician</h5>
+                    <p class="timeline-org-custom">Precision Automotive Systems, Chicago</p>
+                    <p class="timeline-desc-custom">
+                      Traced electrical wiring faults, fuel rail leaks, and sensor feedback failures in luxury European sedan models using Bosch scanners.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- SECTION 05 & 06: Certifications & Awards Grid -->
+              <div class="certifications-awards border-top pt-5 mb-5">
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <h4 class="text-charcoal fw-extrabold mb-3" style="font-size: 1.25rem;">Accredited Awards</h4>
+                    <div class="card-premium p-3 bg-cream mb-3">
+                      <div class="d-flex gap-3 align-items-center">
+                        <i class="bi bi-trophy-fill text-primary-orange fs-4"></i>
+                        <div>
+                          <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.85rem;">Technician of the Year (2025)</h6>
+                          <span class="text-gray font-mono-sub fs-xxs">Regional Automotive Association</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-premium p-3 bg-cream">
+                      <div class="d-flex gap-3 align-items-center">
+                        <i class="bi bi-award-fill text-primary-orange fs-4"></i>
+                        <div>
+                          <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.85rem;">Golden Wrench Service Medal</h6>
+                          <span class="text-gray font-mono-sub fs-xxs">Customer Safety First Guild</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <h4 class="text-charcoal fw-extrabold mb-3" style="font-size: 1.25rem;">Active Safety Badges</h4>
+                    <div class="card-premium p-3 bg-cream mb-3">
+                      <div class="d-flex gap-3 align-items-center">
+                        <i class="bi bi-check-circle-fill text-primary-orange fs-4"></i>
+                        <div>
+                          <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.85rem;">First Aid & High-Voltage Certified</h6>
+                          <span class="text-gray font-mono-sub fs-xxs">National Electrical Safety Council</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-premium p-3 bg-cream">
+                      <div class="d-flex gap-3 align-items-center">
+                        <i class="bi bi-patch-check-fill text-primary-orange fs-4"></i>
+                        <div>
+                          <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.85rem;">Clean Garage Bay Compliance (2026)</h6>
+                          <span class="text-gray font-mono-sub fs-xxs">Eco-Aware Environmental League</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 07: Customer Reviews (3 Testimonials) -->
+              <div class="reviews-section border-top pt-5">
+                <h4 class="text-charcoal fw-extrabold mb-4" style="font-size: 1.25rem;">Client Endorsements</h4>
+                
+                <div class="row g-4">
+                  <!-- Review 1 -->
+                  <div class="col-md-4">
+                    <div class="review-card-custom">
+                      <div class="review-stars-custom">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="review-text-custom">
+                        "Marcus is a true genius! He rebuilt my hybrid's traction battery and saved me thousands compared to dealership quotes. Highly professional!"
+                      </p>
+                      <div class="review-author-custom">
+                        <div class="review-author-avatar">
+                          <img loading="lazy" src="/src/assets/images/avatar_client_1_1783598971391.jpg" alt="Arthur Pendelton Client">
+                        </div>
+                        <div>
+                          <h6 class="review-author-name m-0">Arthur P.</h6>
+                          <span class="review-author-meta">Tesla Model S Owner</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Review 2 -->
+                  <div class="col-md-4">
+                    <div class="review-card-custom">
+                      <div class="review-stars-custom">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="review-text-custom">
+                        "Traced an engine wire fault that three other mechanics missed. Diagnostics are transparent and flawless. Marcus Vance is our go-to technician."
+                      </p>
+                      <div class="review-author-custom">
+                        <div class="review-author-avatar">
+                          <img loading="lazy" src="/src/assets/images/avatar_client_2_1783598986242.jpg" alt="Samantha Cruz Client">
+                        </div>
+                        <div>
+                          <h6 class="review-author-name m-0">Samantha C.</h6>
+                          <span class="review-author-meta">BMW M3 Owner</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Review 3 -->
+                  <div class="col-md-4">
+                    <div class="review-card-custom">
+                      <div class="review-stars-custom">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <p class="review-text-custom">
+                        "Highly recommend Marcus for dual-clutch overhauls. My Porsche shifts like it just rolled off the factory floor. Flawless timing and repair!"
+                      </p>
+                      <div class="review-author-custom">
+                        <div class="review-author-avatar">
+                          <img loading="lazy" src="/src/assets/images/avatar_client_3_1783598999926.jpg" alt="Gregory Harrison Client">
+                        </div>
+                        <div>
+                          <h6 class="review-author-name m-0">Gregory H.</h6>
+                          <span class="review-author-meta">911 Carrera Owner</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Contact Card Sidebar & Working Hours & Related Mechanics -->
+          <div class="col-lg-4" data-aos="fade-left">
+            <div class="sidebar-wrapper d-flex flex-column gap-4" style="position: sticky; top: 120px;">
+              
+              <!-- SECTION 08: Contact Card Widget -->
+              <div class="sidebar-profile-widget border border-light-gray">
+                <h5 class="sidebar-profile-title"><i class="bi bi-envelope-check-fill text-primary-orange me-2"></i> Book with Marcus</h5>
+                <p class="text-gray fs-xs mb-4">Would you like Marcus to personally diagnose your hybrid, ECU, or dual-clutch transmission? Schedule a slot directly below.</p>
+                
+                <div class="p-3 bg-white border border-light-gray mb-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="bg-cream text-primary-orange p-2 rounded-circle"><i class="bi bi-telephone-fill"></i></div>
+                    <div>
+                      <span class="text-gray fs-xxs text-uppercase font-mono-sub d-block">Call Direct Bay</span>
+                      <strong class="text-charcoal fs-xs">+1 (555) 019-2831</strong>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="bg-cream text-primary-orange p-2 rounded-circle"><i class="bi bi-envelope-fill"></i></div>
+                    <div>
+                      <span class="text-gray fs-xxs text-uppercase font-mono-sub d-block">Direct Email</span>
+                      <strong class="text-charcoal fs-xs">marcus.vance@autocare.com</strong>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="bg-cream text-primary-orange p-2 rounded-circle"><i class="bi bi-clock-fill"></i></div>
+                    <div>
+                      <span class="text-gray fs-xxs text-uppercase font-mono-sub d-block">Active Hours</span>
+                      <strong class="text-charcoal fs-xs">Mon - Sat: 8 AM - 5 PM</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center text-decoration-none py-3 uppercase fw-bold fs-xs">
+                  Book Slot Now <i class="bi bi-calendar3 ms-1"></i>
+                </a>
+              </div>
+
+              <!-- SECTION 09: Related Mechanics Widget -->
+              <div class="sidebar-profile-widget border border-light-gray">
+                <h5 class="sidebar-profile-title"><i class="bi bi-people-fill text-primary-orange me-2"></i> Related Specialists</h5>
+                <p class="text-gray fs-xxs mb-3">Other certified master mechanics in our workshop crew:</p>
+                
+                <div class="d-flex flex-column">
+                  
+                  <!-- Related Mechanic 1 -->
+                  <a href="team-details.html" class="related-mechanic-card">
+                    <div class="related-mechanic-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Dominic Reyes Thumbnail">
+                    </div>
+                    <div>
+                      <h6 class="related-mechanic-name">Dominic Reyes</h6>
+                      <span class="related-mechanic-specialization">Computer Diagnostics</span>
+                    </div>
+                  </a>
+
+                  <!-- Related Mechanic 2 -->
+                  <a href="team-details.html" class="related-mechanic-card">
+                    <div class="related-mechanic-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80" alt="Elena Rostova Thumbnail">
+                    </div>
+                    <div>
+                      <h6 class="related-mechanic-name">Elena Rostova</h6>
+                      <span class="related-mechanic-specialization">Transmission Specialist</span>
+                    </div>
+                  </a>
+
+                  <!-- Related Mechanic 3 -->
+                  <a href="team-details.html" class="related-mechanic-card">
+                    <div class="related-mechanic-thumb">
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="Tyler Kincaid Thumbnail">
+                    </div>
+                    <div>
+                      <h6 class="related-mechanic-name">Tyler Kincaid</h6>
+                      <span class="related-mechanic-specialization">Suspension Master</span>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive JavaScript Engine for Team Details Page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mouse move parallax effect for internal banner
+      const banner = document.querySelector('.services-hero-section');
+      const decoElements = document.querySelectorAll('.services-hero-deco');
+      
+      if (banner && decoElements.length > 0) {
+        banner.addEventListener('mousemove', (e) => {
+          const rect = banner.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          decoElements.forEach((el, index) => {
+            const factor = (index + 1) * 0.02;
+            const moveX = x * factor;
+            const moveY = y * factor;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+          decoElements.forEach((el) => {
+            el.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+
+      // 2. Skill bar progress animation
+      const skillBars = document.querySelectorAll('.skill-bar-inner');
+      const animateSkills = () => {
+        skillBars.forEach((bar) => {
+          const targetWidth = bar.getAttribute('data-width');
+          bar.style.width = `${targetWidth}%`;
+        });
+      };
+
+      // Trigger skills animation slightly after load to ensure smooth visualization
+      setTimeout(animateSkills, 300);
+    });
+  </script>
+</body>
+</html>

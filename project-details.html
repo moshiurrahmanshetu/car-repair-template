@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Project Details Case Study</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+  
+  <!-- Embedded Page-Specific Styles for Case Study Elements -->
+  <style>
+    /* Case study meta cards & sidebar widgets */
+    .meta-details-card {
+      background-color: var(--color-beige);
+      border: 1px solid var(--color-light-gray);
+      padding: 30px;
+    }
+    .meta-details-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-dark);
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .meta-details-list li {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    .meta-details-list li:last-child {
+      margin-bottom: 0;
+    }
+    .meta-details-list span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .meta-details-list strong {
+      color: var(--color-dark);
+      font-size: 14px;
+    }
+    
+    /* Interactive Before/After slider visual fine-tuning */
+    .slider-section-box {
+      border: 1px solid var(--color-light-gray);
+      padding: 15px;
+      background: var(--color-white);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    /* Project story sections */
+    .story-block {
+      border-left: 3px solid var(--color-primary);
+      padding-left: 25px;
+      margin-bottom: 40px;
+    }
+    
+    /* Custom vertical timeline for repair process */
+    .repair-timeline {
+      position: relative;
+      padding-left: 35px;
+    }
+    .repair-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      width: 2px;
+      height: calc(100% - 10px);
+      background-color: var(--color-light-gray);
+    }
+    .repair-timeline-item {
+      position: relative;
+      margin-bottom: 35px;
+    }
+    .repair-timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .repair-timeline-icon {
+      position: absolute;
+      left: -35px;
+      top: 3px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 4px solid var(--color-primary);
+      z-index: 1;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .repair-timeline-item:hover .repair-timeline-icon {
+      background-color: var(--color-primary);
+      transform: scale(1.25);
+    }
+    .repair-timeline-content {
+      background-color: var(--color-beige);
+      padding: 25px;
+      border: 1px solid var(--color-light-gray);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .repair-timeline-item:hover .repair-timeline-content {
+      background-color: var(--color-white);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* Image Gallery Hover Zoom Styles */
+    .gallery-img-box {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--color-light-gray);
+      cursor: pointer;
+    }
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-img-box:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-overlay-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(21, 21, 21, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-img-box:hover .gallery-overlay-icon {
+      opacity: 1;
+    }
+    
+    /* Lightbox Modal Styles */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(21, 21, 21, 0.95);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 85%;
+      max-height: 80%;
+      object-fit: contain;
+      border: 4px solid var(--color-white);
+      box-shadow: var(--shadow-lg);
+      animation: zoom-in 0.3s ease;
+    }
+    @keyframes zoom-in {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: var(--color-white);
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      user-select: none;
+    }
+    .lightbox-close:hover {
+      color: var(--color-primary);
+    }
+    .lightbox-prev, .lightbox-next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: var(--color-white);
+      font-weight: bold;
+      font-size: 30px;
+      transition: 0.3s;
+      user-select: none;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .lightbox-prev {
+      left: 20px;
+    }
+    .lightbox-next {
+      right: 20px;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
+      color: var(--color-white);
+      font-size: 14px;
+      font-family: var(--font-primary);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    
+    /* Navigation between previous/next project */
+    .project-nav-card {
+      background-color: var(--color-beige);
+      border: 1px solid var(--color-light-gray);
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-nav-card:hover {
+      background-color: var(--color-white);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
+    .project-nav-card.text-end {
+      justify-content: flex-end;
+    }
+    .project-nav-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-dark);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    .project-nav-card:hover .project-nav-arrow {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border-color: var(--color-primary);
+    }
+    
+    /* Project item related card */
+    .related-project-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .related-project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item active">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- SECTION 01: Internal Banner -->
+    <section class="services-hero-section position-relative d-flex align-items-center" style="background-image: url('/src/assets/images/workshop_reception_1783600278098.jpg'); background-position: center 35%;">
+      <!-- Floating Elements for Parallax Mouse Move Effect -->
+      <div class="services-hero-deco services-hero-1" style="top: 15%; left: 8%;">
+        <i class="bi bi-gear-fill fs-1" style="animation: rotate-clockwise 20s linear infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-2" style="bottom: 15%; right: 8%;">
+        <i class="bi bi-wrench fs-2" style="animation: float-slow 8s ease-in-out infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-3" style="top: 45%; right: 18%;">
+        <i class="bi bi-tools fs-3" style="animation: rotate-counter 12s linear infinite;"></i>
+      </div>
+      
+      <div class="container services-hero-content text-center">
+        <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase tracking-wider" data-aos="fade-down" style="letter-spacing: 2px;">Case Study Details</span>
+        <h1 class="text-white fw-extrabold display-3 mb-4" data-aos="fade-up" data-aos-delay="100">Project Case Study</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+          <ol class="breadcrumb justify-content-center m-0">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white opacity-75 text-decoration-none hover-orange">Home</a></li>
+            <li class="breadcrumb-item"><a href="projects.html" class="text-white opacity-75 text-decoration-none hover-orange">Our Projects</a></li>
+            <li class="breadcrumb-item active text-primary-orange" aria-current="page">Case Details</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- SECTION 02: Featured Project Title & Overview -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Left Column: Featured Project Info Grid -->
+          <div class="col-lg-8" data-aos="fade-right">
+            <div class="mb-5">
+              <span class="font-mono-sub text-primary-orange mb-3 d-block">Precision Assembly & Track Tune</span>
+              <h2 class="text-charcoal fw-extrabold mb-4" style="font-size: 2.5rem; line-height: 1.25;">Porsche 911 Carrera S Carbon Ceramic Braking Retrofit</h2>
+              <p class="text-gray fs-6 leading-relaxed mb-4">
+                This project represents the gold standard of track-day preparation. Handled in our advanced racing bay, our master technicians performed a complete braking system overhaul, pairing light-weight carbon rotors with track coilovers to build an uncompromised cornering machine.
+              </p>
+            </div>
+
+            <!-- Featured Large Image -->
+            <div class="mb-5 border border-light-gray p-3 bg-cream shadow-sm">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&h=675&q=80" alt="Porsche 911 Carbon Brake Retrofit" class="w-100 object-fit-cover" style="aspect-ratio: 16 / 9;">
+            </div>
+
+            <!-- SECTION 03: Project Story -->
+            <div class="project-story-wrapper pt-3">
+              <h3 class="text-charcoal fw-extrabold mb-4" style="font-size: 1.75rem;">Deep-Dive Case Analysis</h3>
+              
+              <div class="story-block">
+                <h5 class="text-charcoal fw-bold mb-2 text-uppercase font-mono-sub border-0 p-0" style="font-size: 0.9rem; tracking-wider: 1px;">01. The Problem</h5>
+                <p class="text-gray fs-sm leading-relaxed m-0">
+                  The client reported severe brake fade and instability during high-speed decel sequences on regional racing circuits. The factory-fitted steel rotors were experiencing thermal stress fractures and rotor warpage under sustained heavy load. Additionally, excessive suspension nose-dive under braking disrupted the car's corner-entry balance, making lap times highly erratic.
+                </p>
+              </div>
+
+              <div class="story-block">
+                <h5 class="text-charcoal fw-bold mb-2 text-uppercase font-mono-sub border-0 p-0" style="font-size: 0.9rem; tracking-wider: 1px;">02. The Diagnosis</h5>
+                <p class="text-gray fs-sm leading-relaxed m-0">
+                  Thermal logging showed rotor temperatures surpassing 650°C, causing boiling brake fluid and master cylinder hydraulic pressure loss. Suspension damper sweeps revealed inadequate low-speed compression damping to handle the high longitudinal load transfer during heavy braking cycles. To solve this, a transition to specialized carbon ceramics and track coilovers was recommended.
+                </p>
+              </div>
+
+              <div class="story-block">
+                <h5 class="text-charcoal fw-bold mb-2 text-uppercase font-mono-sub border-0 p-0" style="font-size: 0.9rem; tracking-wider: 1px;">03. The Repair & Custom Process</h5>
+                <p class="text-gray fs-sm leading-relaxed m-0">
+                  Our crew unmounted the hubs, factory calipers, and standard suspension struts. Custom CNC-machined structural caliper brackets were fitted to accommodate larger Porsche multi-piston monobloc calipers. We then mounted high-temperature track ceramic brake rotors alongside custom steel braided brake lines. Finally, 3-way adjustable coilovers were bolted in and precisely corner-balanced to racing specifications.
+                </p>
+              </div>
+
+              <div class="story-block mb-0">
+                <h5 class="text-charcoal fw-bold mb-2 text-uppercase font-mono-sub border-0 p-0" style="font-size: 0.9rem; tracking-wider: 1px;">04. The Final Result</h5>
+                <p class="text-gray fs-sm leading-relaxed m-0">
+                  Brake fade was completely eliminated. Deceleration forces increased by 35% with a consistent, firm pedal feel. The dynamic nose-dive was reduced by 60%, maintaining optimal weight distribution. Ultimately, corner-entry speeds increased dramatically, leading to a 2.4-second lap time reduction on the client's home track.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Sidebar Meta Information -->
+          <div class="col-lg-4" data-aos="fade-left">
+            <div class="sidebar-sticky-wrapper d-flex flex-column gap-4" style="position: sticky; top: 120px;">
+              
+              <!-- Project Meta Card Widget -->
+              <div class="meta-details-card">
+                <h5 class="meta-details-title"><i class="bi bi-info-circle-fill text-primary-orange me-2"></i> Case File Details</h5>
+                <ul class="meta-details-list list-unstyled p-0 m-0">
+                  <li>
+                    <span>Vehicle Brand</span>
+                    <strong>Porsche</strong>
+                  </li>
+                  <li>
+                    <span>Vehicle Model</span>
+                    <strong>911 Carrera S (992)</strong>
+                  </li>
+                  <li>
+                    <span>Service Category</span>
+                    <strong>Brake & Suspension Upgrades</strong>
+                  </li>
+                  <li>
+                    <span>Completion Date</span>
+                    <strong>October 24, 2025</strong>
+                  </li>
+                  <li>
+                    <span>Duration</span>
+                    <strong>14 Working Hours</strong>
+                  </li>
+                  <li>
+                    <span>Customer Type</span>
+                    <strong>Performance Track Enthusiast</strong>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Quick CTA Widget -->
+              <div class="p-4 bg-charcoal text-white text-center position-relative overflow-hidden">
+                <div class="glow-orange" style="top:-30%; left:-30%;"></div>
+                <h5 class="text-white fw-bold mb-3">Want Similar Upgrades?</h5>
+                <p class="text-white-50 fs-xs mb-4">Our specialized master mechanics offer bespoke performance blueprints for all high-end European and sports platforms.</p>
+                <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center py-3 uppercase fw-bold fs-xs text-decoration-none">Book Tuning Slot <i class="bi bi-calendar3 ms-1"></i></a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: Interactive Before / After Comparison Slider -->
+    <section class="section-spacing bg-cream border-top border-bottom">
+      <div class="container text-center">
+        <div class="max-w-3xl mx-auto mb-5" style="max-width: 720px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase">Interactive Visual Comparison</span>
+          <h2 class="text-charcoal fw-extrabold display-5">Braking Assembly Overhaul Slider</h2>
+          <p class="text-gray fs-sm mt-3">Drag the vertical bar left and right to inspect the upgrade difference between the worn stock rotor assembly (Before) and the high-performance track retrofit (After).</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto" style="max-width: 900px;" data-aos="zoom-in" data-aos-delay="100">
+          <div class="slider-section-box">
+            <!-- Slider Container -->
+            <div class="comparison-slider-container">
+              <!-- After Image (Always sits on bottom) -->
+              <div class="comparison-image-after">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&h=675&q=80" alt="After Caliper Retrofit">
+                <span class="badge-comparison badge-after">Retrofit Installed</span>
+              </div>
+              <!-- Before Image (Sits on top with absolute width clipped) -->
+              <div class="comparison-image-before">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1617469767053-d3b508a0d825?auto=format&fit=crop&w=1200&h=675&q=80" alt="Before Caliper Setup">
+                <span class="badge-comparison badge-before">Stock Steel Rotors</span>
+              </div>
+              <!-- Draggable Handle bar -->
+              <div class="slider-handle">
+                <div class="slider-handle-button">
+                  <i class="bi bi-arrows-left-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: Project Gallery (6 responsive images) -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-5" style="max-width: 720px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase">Project Workshop Files</span>
+          <h2 class="text-charcoal fw-extrabold display-5">High-Resolution Case Gallery</h2>
+          <p class="text-gray fs-sm mt-3">Click on any high-fidelity photograph below to launch our premium full-screen lightbox presentation for fine-detail inspection.</p>
+        </div>
+
+        <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="0">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=600&h=450&q=80" alt="Porsche 911 Rear Stance Alignment">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="1">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=450&q=80" alt="Front Chassis Intake Details">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="2">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1611245801184-9c4752df7ae9?auto=format&fit=crop&w=600&h=450&q=80" alt="High-Performance Forged Alloy Wheels">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="3">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1562591176-a0e28f78d654?auto=format&fit=crop&w=600&h=450&q=80" alt="Computerized Sensor Recalibration">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="4">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=450&q=80" alt="High-Temperature Fluid Flush & Bleed">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-img-box" data-index="5">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1617469767053-d3b508a0d825?auto=format&fit=crop&w=600&h=450&q=80" alt="Multi-Link Coilover Setup Profile">
+              <div class="gallery-overlay-icon">
+                <i class="bi bi-zoom-in text-white fs-3"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: Repair Process Timeline (5 key steps) -->
+    <section class="section-spacing bg-cream border-top border-bottom">
+      <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-5" style="max-width: 720px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase">Precision Execution Track</span>
+          <h2 class="text-charcoal fw-extrabold display-5">Repair Process Lifecycle</h2>
+          <p class="text-gray fs-sm mt-3">Our proprietary 5-phase workflow maintains structural integrity and absolute client safety from initial vehicle roll-in to final high-speed delivery.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="100">
+          <div class="repair-timeline">
+            
+            <!-- Step 1 -->
+            <div class="repair-timeline-item">
+              <div class="repair-timeline-icon"></div>
+              <div class="repair-timeline-content">
+                <h5 class="text-charcoal fw-bold mb-2">Phase 01: Multi-Point Safety Inspection</h5>
+                <p class="text-gray fs-sm m-0">Complete chassis scanning, electronic diagnostic readouts, visual inspection of hub carrier stress points, and thermal imaging log checks.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="repair-timeline-item">
+              <div class="repair-timeline-icon"></div>
+              <div class="repair-timeline-content">
+                <h5 class="text-charcoal fw-bold mb-2">Phase 02: Computerized Diagnostics</h5>
+                <p class="text-gray fs-sm m-0">CAN-bus telemetry analysis, fluid chemical analysis, caliper piston travel evaluations, and suspension damper rebound testing sweeps.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="repair-timeline-item">
+              <div class="repair-timeline-icon"></div>
+              <div class="repair-timeline-content">
+                <h5 class="text-charcoal fw-bold mb-2">Phase 03: Precision Retrofit & Repair</h5>
+                <p class="text-gray fs-sm m-0">CNC bracket mount fittings, carbon ceramic rotor installation, caliper lines mounting, fluid flushing, and coilover spring pre-load settings.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="repair-timeline-item">
+              <div class="repair-timeline-icon"></div>
+              <div class="repair-timeline-content">
+                <h5 class="text-charcoal fw-bold mb-2">Phase 04: Dyno & Circuit Calibration Testing</h5>
+                <p class="text-gray fs-sm m-0">Thermal stress testing, anti-lock brake module re-coding, dynamic track-simulation deceleration runs, and full suspension corner balancing.</p>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="repair-timeline-item">
+              <div class="repair-timeline-icon"></div>
+              <div class="repair-timeline-content">
+                <h5 class="text-charcoal fw-bold mb-2">Phase 05: Certified Delivery & Hand-Off</h5>
+                <p class="text-gray fs-sm m-0">Final multi-point safety checklist sign-off, exterior detailing, data log file transfer to client, and racetrack trackside briefing.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: Customer Feedback Testimonial -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-5" style="max-width: 720px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase">Client Testimonials</span>
+          <h2 class="text-charcoal fw-extrabold display-5">A Word From Our Driver</h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center" style="max-width: 800px;" data-aos="zoom-in" data-aos-delay="100">
+          <div class="card-premium p-5 bg-cream border border-light-gray">
+            <div class="text-warning mb-4 fs-4">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="text-charcoal fs-5 fw-medium italic leading-relaxed mb-4">
+              "The transformation under braking is absolutely unbelievable. The pedal feedback remains perfectly identical on lap 1 or lap 30, and the dynamic turn-in balance of the coilovers has completely resolved my previous lap understeer. AutoCare delivers elite, factory-grade engineering precision."
+            </p>
+            
+            <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
+              <div class="rounded-circle overflow-hidden border border-light-gray" style="width: 60px; height: 60px;">
+                <img loading="lazy" src="/src/assets/images/avatar_client_1_1783598971391.jpg" alt="Arthur Pendelton client avatar" class="w-100 h-100 object-fit-cover">
+              </div>
+              <div class="text-start">
+                <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.95rem;">Arthur Pendelton</h6>
+                <span class="text-gray font-mono-sub fs-xxs border-0 p-0 text-uppercase tracking-wider">Porsche GT3 Cup Driver</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08: Related Projects (3 Cards) -->
+    <section class="section-spacing bg-cream border-top">
+      <div class="container">
+        <div class="text-center max-w-3xl mx-auto mb-5" style="max-width: 720px;" data-aos="fade-up">
+          <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase">More Case Studies</span>
+          <h2 class="text-charcoal fw-extrabold display-5">Related Projects</h2>
+        </div>
+
+        <div class="row g-4" data-aos="fade-up" data-aos-delay="100">
+          
+          <!-- Related Card 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="related-project-card">
+              <div class="overflow-hidden" style="aspect-ratio: 16 / 10;">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&h=400&q=80" alt="V8 Engine blueprinting case" class="w-100 h-100 object-fit-cover hover-scale-105" style="transition: transform 0.4s ease;">
+              </div>
+              <div class="p-4">
+                <span class="font-mono-sub text-primary-orange fs-xxs border-0 p-0 text-uppercase mb-2 d-block">Engine Repair</span>
+                <h5 class="text-charcoal fw-bold mb-3" style="font-size: 1.05rem;">Performance V8 Engine Blueprinting</h5>
+                <a href="project-details.html" class="text-primary-orange fw-bold fs-xs text-decoration-none hover-orange">Explore Case Study <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Card 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="related-project-card">
+              <div class="overflow-hidden" style="aspect-ratio: 16 / 10;">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=400&q=80" alt="Dual-clutch transmission overhaul case" class="w-100 h-100 object-fit-cover hover-scale-105" style="transition: transform 0.4s ease;">
+              </div>
+              <div class="p-4">
+                <span class="font-mono-sub text-primary-orange fs-xxs border-0 p-0 text-uppercase mb-2 d-block">Transmission</span>
+                <h5 class="text-charcoal fw-bold mb-3" style="font-size: 1.05rem;">Dual-Clutch Gearbox Overhaul</h5>
+                <a href="project-details.html" class="text-primary-orange fw-bold fs-xs text-decoration-none hover-orange">Explore Case Study <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Card 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="related-project-card">
+              <div class="overflow-hidden" style="aspect-ratio: 16 / 10;">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&h=400&q=80" alt="Bodywork dynamic setup case" class="w-100 h-100 object-fit-cover hover-scale-105" style="transition: transform 0.4s ease;">
+              </div>
+              <div class="p-4">
+                <span class="font-mono-sub text-primary-orange fs-xxs border-0 p-0 text-uppercase mb-2 d-block">Body Repair</span>
+                <h5 class="text-charcoal fw-bold mb-3" style="font-size: 1.05rem;">Aerodynamic Carbon Fiber Bodywork</h5>
+                <a href="project-details.html" class="text-primary-orange fw-bold fs-xs text-decoration-none hover-orange">Explore Case Study <i class="bi bi-arrow-right ms-1"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09: Previous / Next Project Navigation Cards -->
+    <section class="bg-white py-5 border-top border-bottom">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Previous Project Link -->
+          <div class="col-md-6" data-aos="fade-right">
+            <a href="project-details.html" class="project-nav-card text-decoration-none text-start">
+              <div class="project-nav-arrow">
+                <i class="bi bi-arrow-left"></i>
+              </div>
+              <div>
+                <span class="font-mono-sub text-gray text-uppercase mb-1 d-block border-0 p-0 fs-xxs" style="letter-spacing: 1px;">Previous Case Study</span>
+                <h6 class="text-charcoal fw-bold m-0" style="font-size: 0.95rem;">Performance V8 Engine Blueprinting</h6>
+              </div>
+            </a>
+          </div>
+
+          <!-- Next Project Link -->
+          <div class="col-md-6" data-aos="fade-left">
+            <a href="project-details.html" class="project-nav-card text-end text-decoration-none">
+              <div class="order-md-2 project-nav-arrow">
+                <i class="bi bi-arrow-right"></i>
+              </div>
+              <div class="order-md-1">
+                <span class="font-mono-sub text-gray text-uppercase mb-1 d-block border-0 p-0 fs-xxs text-md-end" style="letter-spacing: 1px;">Next Case Study</span>
+                <h6 class="text-charcoal fw-bold m-0 text-md-end" style="font-size: 0.95rem;">Dual-Clutch Gearbox Overhaul</h6>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal Markup -->
+  <div class="lightbox-modal" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <span class="lightbox-prev" id="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next" id="lightbox-next">&#10095;</span>
+    <img loading="lazy" class="lightbox-content" id="lightbox-img" src="" alt="Lightbox Image">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top" id="back-to-top-btn"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive JavaScript Engine for Project Details Page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mouse move parallax effect for internal banner
+      const banner = document.querySelector('.services-hero-section');
+      const decoElements = document.querySelectorAll('.services-hero-deco');
+      
+      if (banner && decoElements.length > 0) {
+        banner.addEventListener('mousemove', (e) => {
+          const rect = banner.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          decoElements.forEach((el, index) => {
+            const factor = (index + 1) * 0.02;
+            const moveX = x * factor;
+            const moveY = y * factor;
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+          decoElements.forEach((el) => {
+            el.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+
+      // 2. Pure Vanilla JS Gallery Lightbox Engine
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const lightboxPrev = document.getElementById('lightbox-prev');
+      const lightboxNext = document.getElementById('lightbox-next');
+      
+      const galleryItems = document.querySelectorAll('.gallery-img-box');
+      let currentImgIndex = 0;
+      
+      const imagesList = [];
+      galleryItems.forEach((item) => {
+        const img = item.querySelector('img');
+        imagesList.push({
+          src: img.src,
+          alt: img.alt || 'Gallery Image'
+        });
+        
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const index = parseInt(item.getAttribute('data-index'));
+          openLightbox(index);
+        });
+      });
+      
+      function openLightbox(index) {
+        currentImgIndex = index;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Lock scrolling
+        updateLightboxImage();
+      }
+      
+      function closeLightbox() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = ''; // Unlock scrolling
+      }
+      
+      function updateLightboxImage() {
+        lightboxImg.src = imagesList[currentImgIndex].src;
+        lightboxCaption.textContent = imagesList[currentImgIndex].alt;
+      }
+      
+      function nextLightboxImage() {
+        currentImgIndex = (currentImgIndex + 1) % imagesList.length;
+        updateLightboxImage();
+      }
+      
+      function prevLightboxImage() {
+        currentImgIndex = (currentImgIndex - 1 + imagesList.length) % imagesList.length;
+        updateLightboxImage();
+      }
+      
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxNext.addEventListener('click', nextLightboxImage);
+      lightboxPrev.addEventListener('click', prevLightboxImage);
+      
+      // Close on backdrop click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Keyboard Support
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowRight') nextLightboxImage();
+          if (e.key === 'ArrowLeft') prevLightboxImage();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

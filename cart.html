@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Shopping Cart</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Premium Shopping Cart Styles -->
+  <style>
+    .cart-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 80px 0;
+    }
+    .text-primary-orange {
+      color: var(--color-primary) !important;
+    }
+    .hover-primary:hover {
+      color: var(--color-primary) !important;
+    }
+    .bg-cream {
+      background-color: var(--color-beige) !important;
+    }
+    
+    /* Cart Table Styles */
+    .cart-table-wrapper {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 0;
+      margin-bottom: 30px;
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+    }
+    .cart-table th {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      padding: 18px 20px;
+      border: none;
+    }
+    .cart-table td {
+      padding: 20px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--color-light-gray);
+      font-size: 15px;
+    }
+    .cart-table tr:last-child td {
+      border-bottom: none;
+    }
+    .cart-product-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .cart-product-img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      background-color: var(--color-beige);
+      border: 1px solid var(--color-light-gray);
+      flex-shrink: 0;
+    }
+    .cart-product-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+    .cart-product-sku {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-gray);
+    }
+    
+    /* Quantity Control */
+    .cart-qty-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--color-light-gray);
+      background-color: var(--color-white);
+      height: 40px;
+    }
+    .cart-qty-btn {
+      background: none;
+      border: none;
+      width: 35px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-dark);
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      outline: none;
+    }
+    .cart-qty-btn:hover {
+      background-color: var(--color-beige);
+    }
+    .cart-qty-input {
+      width: 40px;
+      height: 100%;
+      text-align: center;
+      border: none;
+      outline: none;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-dark);
+    }
+    
+    /* Remove Button */
+    .btn-cart-remove {
+      background: none;
+      border: none;
+      color: var(--color-gray);
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      padding: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-cart-remove:hover {
+      color: var(--color-primary);
+      transform: scale(1.1);
+    }
+
+    /* Coupon Area */
+    .coupon-card-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    .coupon-form {
+      display: flex;
+      gap: 10px;
+    }
+    .coupon-input {
+      flex-grow: 1;
+      height: 45px;
+      padding: 0 15px;
+      border: 1px solid var(--color-light-gray);
+      font-size: 14px;
+      outline: none;
+      transition: var(--transition-fast);
+    }
+    .coupon-input:focus {
+      border-color: var(--color-primary);
+    }
+
+    /* Cart Summary Card */
+    .summary-card-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 30px;
+      position: sticky;
+      top: 30px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--color-light-gray);
+      font-size: 14px;
+    }
+    .summary-row.total-row {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .summary-label {
+      font-weight: 500;
+      color: var(--color-gray);
+    }
+    .summary-value {
+      font-weight: 700;
+      color: var(--color-dark);
+    }
+    .summary-value.grand-total-val {
+      font-size: 22px;
+      color: var(--color-primary);
+      font-weight: 800;
+    }
+
+    /* Recommended Product Cards */
+    .rec-card-box {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      transition: var(--transition-medium);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .rec-card-box:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-premium);
+      border-color: var(--color-primary);
+    }
+    .rec-img-wrapper {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background-color: var(--color-beige);
+    }
+    .rec-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-medium);
+    }
+    .rec-card-box:hover .rec-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    /* Mobile Responsive Cart Table */
+    @media (max-width: 768px) {
+      .cart-table thead {
+        display: none;
+      }
+      .cart-table tr {
+        display: block;
+        border-bottom: 2px solid var(--color-light-gray);
+        padding: 15px 0;
+      }
+      .cart-table tr:last-child {
+        border-bottom: none;
+      }
+      .cart-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        border: none;
+        text-align: right;
+      }
+      .cart-table td::before {
+        content: attr(data-label);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 11px;
+        color: var(--color-dark);
+        float: left;
+        margin-right: 15px;
+      }
+      .cart-table td.cell-product {
+        display: block;
+        text-align: left;
+      }
+      .cart-table td.cell-product::before {
+        display: none;
+      }
+      .cart-product-item {
+        justify-content: space-between;
+      }
+    }
+
+    /* Accessibility reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item ">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger ">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item active">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="cart-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z">
+        <div class="row align-items-center">
+          <div class="col-md-8" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">AutoCare Shopping Portal</span>
+            <h1 class="display-5 text-white fw-extrabold mb-3">Your Shopping Cart</h1>
+            <p class="text-white opacity-75 fs-6 mb-0 max-w-xl font-sans">Review your premium selection of certified performance parts and garage accessories before proceeding.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-4 mt-md-0" data-aos="fade-left" data-aos-delay="100">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-primary">Home</a></li>
+                <li class="breadcrumb-item"><a href="shop.html" class="text-white text-decoration-none opacity-75 hover-primary">Shop</a></li>
+                <li class="breadcrumb-item active text-primary-orange" aria-current="page">Shopping Cart</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shopping Cart Grid Section -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        
+        <!-- Cart Empty State Alert -->
+        <div id="cartEmptyState" class="text-center py-5 d-none" data-aos="fade-up">
+          <div class="bg-cream rounded-circle d-inline-flex mb-4 text-primary-orange" style="width: 100px; height: 100px; align-items: center; justify-content: center;">
+            <i class="bi bi-cart-x-fill fs-1"></i>
+          </div>
+          <h3 class="text-charcoal fw-extrabold mb-3">Your Shopping Cart is Empty</h3>
+          <p class="text-gray max-w-md mx-auto mb-4">You have not added any performance parts or premium fluids to your active cart yet.</p>
+          <a href="shop.html" class="btn-premium btn-orange btn-ripple uppercase px-5 py-3 fw-bold fs-xs border-0">
+            <i class="bi bi-shop me-2"></i> Browse Store Parts
+          </a>
+        </div>
+
+        <div class="row g-4" id="cartContentRow">
+          
+          <!-- Cart Items Column (col-lg-8) -->
+          <div class="col-lg-8" data-aos="fade-right">
+            
+            <!-- Table Wrapper -->
+            <div class="cart-table-wrapper table-responsive mb-4">
+              <table class="cart-table" id="cartTable">
+                <thead>
+                  <tr>
+                    <th style="width: 45%;">Product</th>
+                    <th style="width: 15%;">Price</th>
+                    <th style="width: 15%;">Quantity</th>
+                    <th style="width: 15%;">Subtotal</th>
+                    <th style="width: 10%; text-align: center;">Remove</th>
+                  </tr>
+                </thead>
+                <tbody id="cartTableBody">
+                  
+                  <!-- Item 1 -->
+                  <tr class="cart-item-row" data-price="189.99" data-sku="AC-BR-1092" data-id="1">
+                    <td class="cell-product">
+                      <div class="cart-product-item">
+                        <img loading="lazy" class="cart-product-img" src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=150&h=150&q=80" alt="Carbon-Fiber Brake Rotors">
+                        <div>
+                          <h5 class="cart-product-title text-charcoal"><a href="product-details.html" class="text-dark hover-primary">Carbon-Fiber Brake Rotors</a></h5>
+                          <span class="cart-product-sku">SKU: AC-BR-1092</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Price" class="text-charcoal fw-bold">$189.99</td>
+                    <td data-label="Quantity">
+                      <div class="cart-qty-box">
+                        <button type="button" class="cart-qty-btn decrease-qty" onclick="adjustQty(this, -1)">-</button>
+                        <input type="number" class="cart-qty-input" value="2" min="1" max="99" onchange="updateQty(this)" aria-label="Product Quantity">
+                        <button type="button" class="cart-qty-btn increase-qty" onclick="adjustQty(this, 1)">+</button>
+                      </div>
+                    </td>
+                    <td data-label="Subtotal" class="text-primary-orange fw-extrabold item-subtotal">$379.98</td>
+                    <td data-label="Remove" style="text-align: center;">
+                      <button type="button" class="btn-cart-remove" onclick="removeCartItem(this)" aria-label="Remove item">
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Item 2 -->
+                  <tr class="cart-item-row" data-price="65.00" data-sku="AC-BP-4412" data-id="2">
+                    <td class="cell-product">
+                      <div class="cart-product-item">
+                        <img loading="lazy" class="cart-product-img" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=150&h=150&q=80" alt="Ceramic Brake Pads">
+                        <div>
+                          <h5 class="cart-product-title text-charcoal"><a href="product-details.html" class="text-dark hover-primary">Ceramic Brake Pads (Front)</a></h5>
+                          <span class="cart-product-sku">SKU: AC-BP-4412</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Price" class="text-charcoal fw-bold">$65.00</td>
+                    <td data-label="Quantity">
+                      <div class="cart-qty-box">
+                        <button type="button" class="cart-qty-btn decrease-qty" onclick="adjustQty(this, -1)">-</button>
+                        <input type="number" class="cart-qty-input" value="1" min="1" max="99" onchange="updateQty(this)" aria-label="Product Quantity">
+                        <button type="button" class="cart-qty-btn increase-qty" onclick="adjustQty(this, 1)">+</button>
+                      </div>
+                    </td>
+                    <td data-label="Subtotal" class="text-primary-orange fw-extrabold item-subtotal">$65.00</td>
+                    <td data-label="Remove" style="text-align: center;">
+                      <button type="button" class="btn-cart-remove" onclick="removeCartItem(this)" aria-label="Remove item">
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Item 3 -->
+                  <tr class="cart-item-row" data-price="34.99" data-sku="AC-LO-8821" data-id="3">
+                    <td class="cell-product">
+                      <div class="cart-product-item">
+                        <img loading="lazy" class="cart-product-img" src="https://images.unsplash.com/photo-1552656967-7a0991a13906?auto=format&fit=crop&w=150&h=150&q=80" alt="Synthetic Motor Oil">
+                        <div>
+                          <h5 class="cart-product-title text-charcoal"><a href="product-details.html" class="text-dark hover-primary">Synthetic Motor Oil 5W-30</a></h5>
+                          <span class="cart-product-sku">SKU: AC-LO-8821</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td data-label="Price" class="text-charcoal fw-bold">$34.99</td>
+                    <td data-label="Quantity">
+                      <div class="cart-qty-box">
+                        <button type="button" class="cart-qty-btn decrease-qty" onclick="adjustQty(this, -1)">-</button>
+                        <input type="number" class="cart-qty-input" value="3" min="1" max="99" onchange="updateQty(this)" aria-label="Product Quantity">
+                        <button type="button" class="cart-qty-btn increase-qty" onclick="adjustQty(this, 1)">+</button>
+                      </div>
+                    </td>
+                    <td data-label="Subtotal" class="text-primary-orange fw-extrabold item-subtotal">$104.97</td>
+                    <td data-label="Remove" style="text-align: center;">
+                      <button type="button" class="btn-cart-remove" onclick="removeCartItem(this)" aria-label="Remove item">
+                        <i class="bi bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Coupon Box -->
+            <div class="coupon-card-box d-flex flex-wrap justify-content-between align-items-center gap-3">
+              <div class="coupon-form max-w-sm flex-grow-1" style="max-width: 420px;">
+                <input type="text" id="couponCodeInput" class="coupon-input font-mono" placeholder="PROMO CODE (e.g. AUTOCARE20)" aria-label="Promo Code">
+                <button type="button" class="btn-premium btn-charcoal py-2 px-4 fs-xs text-uppercase fw-bold border-0" onclick="applyPromoCode()">Apply</button>
+              </div>
+              <div>
+                <a href="shop.html" class="btn-premium btn-ripple btn-cream border border-light py-2 px-4 uppercase fs-xs text-dark hover-primary fw-bold">
+                  <i class="bi bi-arrow-left me-1"></i> Continue Shopping
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Cart Summary Column (col-lg-4) -->
+          <div class="col-lg-4" data-aos="fade-left" data-aos-delay="100">
+            <div class="summary-card-box">
+              <h4 class="text-charcoal fw-extrabold mb-4 pb-2 border-bottom border-light">Cart Summary</h4>
+              
+              <div class="summary-row">
+                <span class="summary-label">Cart Subtotal</span>
+                <span class="summary-value" id="summarySubtotal">$549.95</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Estimated Tax (8%)</span>
+                <span class="summary-value" id="summaryTax">$44.00</span>
+              </div>
+              <div class="summary-row" id="discountRow" style="display: none;">
+                <span class="summary-label text-success">Discount (<span id="discountPercent">0</span>%)</span>
+                <span class="summary-value text-success" id="summaryDiscount">-$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span class="summary-label">Shipping</span>
+                <span class="summary-value text-success" id="summaryShipping">FREE</span>
+              </div>
+              
+              <div class="summary-row total-row mt-4 pt-3 border-top border-light">
+                <span class="fs-5 fw-extrabold text-charcoal">Grand Total</span>
+                <span class="grand-total-val" id="summaryGrandTotal">$593.95</span>
+              </div>
+
+              <!-- Secure badge -->
+              <div class="d-flex align-items-center justify-content-center gap-2 mt-4 py-2 bg-cream text-charcoal font-mono" style="font-size: 11px; font-weight: bold;">
+                <i class="bi bi-shield-lock-fill text-primary-orange"></i> 256-BIT SSL SECURE CHECKOUT
+              </div>
+
+              <!-- Proceed button -->
+              <a href="checkout.html" class="btn-premium btn-orange btn-ripple w-100 text-center py-3 mt-3 uppercase fw-bold tracking-wider fs-xs d-block">
+                Proceed To Checkout <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended Products Section -->
+    <section class="section-spacing bg-light border-top border-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">Complete Your Setup</span>
+          <h3 class="text-charcoal fw-extrabold" data-aos="fade-up" data-aos-delay="100">Recommended Accessories</h3>
+        </div>
+
+        <div class="row g-4">
+          
+          <!-- Product Card 1 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="rec-card-box">
+              <div class="rec-img-wrapper">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&h=600&q=80" alt="Titanium Exhaust Muffler">
+              </div>
+              <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
+                <div>
+                  <span class="text-uppercase font-mono text-gray mb-1 d-block" style="font-size: 10px; letter-spacing: 0.5px;">Engine Parts</span>
+                  <h5 class="fs-sm fw-bold mb-2"><a href="product-details.html" class="text-dark hover-primary">Titanium Performance Muffler</a></h5>
+                  <div class="text-warning mb-3" style="font-size: 11px;">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-light">
+                  <span class="text-primary-orange fw-extrabold fs-6">$249.99</span>
+                  <a href="product-details.html" class="text-charcoal fs-xs fw-bold hover-primary">View <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="rec-card-box">
+              <div class="rec-img-wrapper">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&h=600&q=80" alt="Digital Tire Pressure Gauge">
+              </div>
+              <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
+                <div>
+                  <span class="text-uppercase font-mono text-gray mb-1 d-block" style="font-size: 10px; letter-spacing: 0.5px;">Tools</span>
+                  <h5 class="fs-sm fw-bold mb-2"><a href="product-details.html" class="text-dark hover-primary">Digital Tire Pressure Gauge</a></h5>
+                  <div class="text-warning mb-3" style="font-size: 11px;">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-light">
+                  <span class="text-primary-orange fw-extrabold fs-6">$15.99</span>
+                  <a href="product-details.html" class="text-charcoal fs-xs fw-bold hover-primary">View <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="rec-card-box">
+              <div class="rec-img-wrapper">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1530047625168-4b29cb50f6aa?auto=format&fit=crop&w=600&h=600&q=80" alt="Aero Wiper Blades">
+              </div>
+              <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
+                <div>
+                  <span class="text-uppercase font-mono text-gray mb-1 d-block" style="font-size: 10px; letter-spacing: 0.5px;">Exterior Parts</span>
+                  <h5 class="fs-sm fw-bold mb-2"><a href="product-details.html" class="text-dark hover-primary">Aero-Dynamic Wiper Blades</a></h5>
+                  <div class="text-warning mb-3" style="font-size: 11px;">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-light">
+                  <span class="text-primary-orange fw-extrabold fs-6">$22.50</span>
+                  <a href="product-details.html" class="text-charcoal fs-xs fw-bold hover-primary">View <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="rec-card-box">
+              <div class="rec-img-wrapper">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=600&h=600&q=80" alt="Performance Oil Filter">
+              </div>
+              <div class="p-4 flex-grow-1 d-flex flex-column justify-content-between">
+                <div>
+                  <span class="text-uppercase font-mono text-gray mb-1 d-block" style="font-size: 10px; letter-spacing: 0.5px;">Engine Parts</span>
+                  <h5 class="fs-sm fw-bold mb-2"><a href="product-details.html" class="text-dark hover-primary">Performance Oil Filter</a></h5>
+                  <div class="text-warning mb-3" style="font-size: 11px;">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-light">
+                  <span class="text-primary-orange fw-extrabold fs-6">$12.49</span>
+                  <a href="product-details.html" class="text-charcoal fs-xs fw-bold hover-primary">View <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Premium Toast Notification Container -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+    <div id="cartToast" class="toast align-items-center text-white bg-dark border-0 rounded-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i class="bi bi-check-circle-fill text-primary-orange"></i>
+          <span id="cartToastMessage">Success! Your cart has been updated.</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let activeDiscountPercent = 0;
+
+    function showCartToast(message) {
+      const toastEl = document.getElementById('cartToast');
+      const toastMessageEl = document.getElementById('cartToastMessage');
+      if (toastEl && toastMessageEl) {
+        toastMessageEl.textContent = message;
+        const toast = new bootstrap.Toast(toastEl, { delay: 3500 });
+        toast.show();
+      }
+    }
+
+    function adjustQty(button, amount) {
+      const input = button.closest('.cart-qty-box').querySelector('.cart-qty-input');
+      if (input) {
+        let val = parseInt(input.value) || 1;
+        val += amount;
+        if (val < 1) val = 1;
+        if (val > 99) val = 99;
+        input.value = val;
+        updateRowSubtotal(button.closest('.cart-item-row'), val);
+      }
+    }
+
+    function updateQty(input) {
+      let val = parseInt(input.value) || 1;
+      if (val < 1) val = 1;
+      if (val > 99) val = 99;
+      input.value = val;
+      updateRowSubtotal(input.closest('.cart-item-row'), val);
+    }
+
+    function updateRowSubtotal(row, qty) {
+      const price = parseFloat(row.getAttribute('data-price')) || 0;
+      const subtotal = price * qty;
+      const subtotalEl = row.querySelector('.item-subtotal');
+      if (subtotalEl) {
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      }
+      recalculateCart();
+    }
+
+    function removeCartItem(button) {
+      const row = button.closest('.cart-item-row');
+      if (row) {
+        const title = row.querySelector('.cart-product-title').textContent.trim();
+        row.style.transition = 'all 0.4s ease';
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-20px)';
+        setTimeout(() => {
+          row.remove();
+          recalculateCart();
+          showCartToast(`Removed "${title}" from your cart.`);
+        }, 400);
+      }
+    }
+
+    function applyPromoCode() {
+      const promoInput = document.getElementById('couponCodeInput');
+      const code = promoInput.value.trim().toUpperCase();
+      
+      if (!code) {
+        showCartToast("Please enter a valid coupon code.");
+        return;
+      }
+
+      if (code === 'AUTOCARE20') {
+        activeDiscountPercent = 20;
+        showCartToast('Success! Promo code "AUTOCARE20" applied. 20% discount applied to your subtotal.');
+      } else if (code === 'SAVE10') {
+        activeDiscountPercent = 10;
+        showCartToast('Success! Promo code "SAVE10" applied. 10% discount applied to your subtotal.');
+      } else {
+        showCartToast('Invalid promo code. Try "AUTOCARE20" or "SAVE10".');
+        promoInput.value = '';
+        return;
+      }
+      recalculateCart();
+    }
+
+    function recalculateCart() {
+      const rows = document.querySelectorAll('.cart-item-row');
+      
+      if (rows.length === 0) {
+        // Show empty state
+        document.getElementById('cartContentRow').classList.add('d-none');
+        document.getElementById('cartEmptyState').classList.remove('d-none');
+        return;
+      }
+
+      let subtotal = 0;
+      rows.forEach(row => {
+        const qtyInput = row.querySelector('.cart-qty-input');
+        const qty = parseInt(qtyInput.value) || 1;
+        const price = parseFloat(row.getAttribute('data-price')) || 0;
+        subtotal += price * qty;
+      });
+
+      const tax = subtotal * 0.08;
+      
+      // Calculate Discount
+      let discount = 0;
+      const discountRow = document.getElementById('discountRow');
+      if (activeDiscountPercent > 0) {
+        discount = subtotal * (activeDiscountPercent / 100);
+        document.getElementById('discountPercent').textContent = activeDiscountPercent;
+        document.getElementById('summaryDiscount').textContent = `-$${discount.toFixed(2)}`;
+        discountRow.style.display = 'flex';
+      } else {
+        discountRow.style.display = 'none';
+      }
+
+      // Calculate Shipping: Free above $500, else flat $15.00
+      let shipping = 0;
+      const shippingEl = document.getElementById('summaryShipping');
+      if (subtotal > 500) {
+        shipping = 0;
+        shippingEl.textContent = 'FREE';
+        shippingEl.className = 'summary-value text-success';
+      } else {
+        shipping = 15.00;
+        shippingEl.textContent = `$${shipping.toFixed(2)}`;
+        shippingEl.className = 'summary-value text-charcoal';
+      }
+
+      const grandTotal = subtotal + tax + shipping - discount;
+
+      // Update DOM
+      document.getElementById('summarySubtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('summaryTax').textContent = `$${tax.toFixed(2)}`;
+      document.getElementById('summaryGrandTotal').textContent = `$${grandTotal.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>

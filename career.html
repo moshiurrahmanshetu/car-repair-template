@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers - AutoCare Premium Garage</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Custom Styles for Career Content -->
+  <style>
+    :root {
+      --color-primary-orange: #FF6321;
+      --color-amber: #FFB300;
+      --color-charcoal: #151515;
+      --color-gray: #666666;
+      --color-cream: #F4F4F2;
+      --color-light-gray: #E5E5E5;
+      --color-white: #FFFFFF;
+      --font-grotesk: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    .bg-cream {
+      background-color: var(--color-cream) !important;
+    }
+
+    /* Career Header Banner */
+    .career-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 110px 0 85px 0;
+    }
+
+    /* Benefits Grid Cards */
+    .benefit-card-custom {
+      background: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 35px 30px;
+      height: 100%;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+    }
+    .benefit-card-custom:hover {
+      border-color: var(--color-primary-orange);
+      transform: translateY(-5px);
+    }
+    .benefit-icon-box {
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-orange);
+      font-size: 24px;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+    .benefit-card-custom:hover .benefit-icon-box {
+      background-color: var(--color-primary-orange);
+      color: var(--color-white);
+    }
+    .benefit-card-title {
+      font-family: var(--font-grotesk);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 12px;
+    }
+    .benefit-card-desc {
+      font-size: 14px;
+      color: var(--color-gray);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Vacancy Grid Cards */
+    .job-card-custom {
+      background: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 35px;
+      height: 100%;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .job-card-custom:hover {
+      border-color: var(--color-primary-orange);
+      box-shadow: 0 10px 30px rgba(21, 21, 21, 0.05);
+    }
+    .job-tag-type {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-primary-orange);
+      background-color: rgba(255, 99, 33, 0.08);
+      padding: 5px 12px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .job-card-title {
+      font-family: var(--font-grotesk);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 16px;
+    }
+    .job-meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      border-bottom: 1px solid var(--color-light-gray);
+      padding-bottom: 20px;
+    }
+    .job-meta-item {
+      font-size: 13.5px;
+      color: var(--color-gray);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .job-meta-item i {
+      color: var(--color-primary-orange);
+      font-size: 15px;
+    }
+    .job-salary-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .job-salary-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-gray);
+    }
+    .job-salary-val {
+      font-family: var(--font-grotesk);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+    }
+
+    /* Sequential Hiring Process Steps */
+    .timeline-wrapper {
+      position: relative;
+      margin-top: 50px;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-light-gray);
+      z-index: 1;
+    }
+    .timeline-step-card {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .timeline-node {
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-white);
+      border: 3px solid var(--color-light-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-grotesk);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin: 0 auto 20px auto;
+      transition: all 0.3s ease;
+    }
+    .timeline-step-card:hover .timeline-node {
+      border-color: var(--color-primary-orange);
+      background-color: var(--color-primary-orange);
+      color: var(--color-white);
+      transform: scale(1.1);
+    }
+    .timeline-step-title {
+      font-family: var(--font-grotesk);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 8px;
+    }
+    .timeline-step-desc {
+      font-size: 13px;
+      color: var(--color-gray);
+      line-height: 1.5;
+      padding: 0 10px;
+    }
+
+    /* Accordion styles */
+    .accordion-item-career {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      margin-bottom: 12px;
+    }
+    .accordion-button-career {
+      font-family: var(--font-grotesk);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-charcoal);
+      background: none;
+      border: 0;
+      padding: 20px 24px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+    }
+    .accordion-button-career::after {
+      content: "\F282"; /* chevron-down icon */
+      font-family: "bootstrap-icons";
+      font-size: 14px;
+      color: var(--color-primary-orange);
+      transition: transform 0.3s ease;
+    }
+    .accordion-button-career:not(.collapsed) {
+      color: var(--color-primary-orange);
+    }
+    .accordion-button-career:not(.collapsed)::after {
+      transform: rotate(180deg);
+    }
+    .accordion-collapse-career {
+      border-top: 1px solid var(--color-light-gray);
+      padding: 20px 24px;
+      display: none;
+    }
+    .accordion-collapse-career.show {
+      display: block;
+    }
+
+    /* Modal dialog overrides for application form */
+    .modal-content-custom {
+      border-radius: 0;
+      border: 1px solid var(--color-charcoal);
+      padding: 40px;
+    }
+    .modal-input-custom {
+      border: 1px solid var(--color-light-gray);
+      padding: 12px 16px;
+      border-radius: 0;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      background-color: var(--color-cream);
+    }
+    .modal-input-custom:focus {
+      border-color: var(--color-primary-orange);
+    }
+
+    @media (max-width: 991px) {
+      .timeline-line {
+        display: none;
+      }
+      .timeline-step-card {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <span class="search-trigger" aria-label="Search trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle" aria-label="Toggle menu"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: Premium Career Banner -->
+    <section class="career-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z text-center py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-block">Career Calibration</span>
+            <h1 class="display-4 text-white fw-extrabold mb-3 font-sans">Assemble Your Professional Future</h1>
+            <p class="text-white opacity-75 fs-6 mb-4 max-w-xl mx-auto font-sans">Join the nation's premier automotive diagnostics league. We provide state-of-the-art hydraulic service bays, factory tooling, and competitive compensation blueprints.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+              <a href="#open-positions" class="btn-premium btn-orange btn-ripple text-decoration-none">Explore Open Lanes</a>
+              <a href="#hiring-process" class="btn-premium btn-white-border btn-ripple text-decoration-none text-white">Our Pipeline</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Company Culture -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">The AutoCare Culture</span>
+            <h2 class="text-charcoal fw-extrabold mb-4 font-sans">Where Mechanical Engineering Meets Luxury Care</h2>
+            <div class="text-gray fs-6 font-sans">
+              <p class="mb-3">At AutoCare, we believe that an immaculate garage is the foundation of high-precision engineering. Our bays feature climate-controlled airflow systems, dust-filtering insulation, and bright, surgical-grade ceiling lighting. We foster a workplace of absolute professionalism, transparency, and mechanical craftsmanship.</p>
+              <p class="mb-4">Our diagnostics squad doesn't just clear code dashboard errors; we perform forensic mechanical analyses. We operate as a high-performance team where mechanics, service advisors, parts directors, and technical inspectors collaborate seamlessly in a highly professional environment.</p>
+            </div>
+            
+            <div class="p-4 bg-light-gray rounded border-start border-3 border-orange text-start">
+              <h5 class="text-charcoal fw-extrabold mb-2 fs-sm font-sans"><i class="bi bi-award-fill text-primary-orange me-2"></i> ASE Blue-Seal Certified Workplace</h5>
+              <p class="text-gray m-0 fs-sm font-sans">We prioritize certifications, continuing professional education, and safe lifting routines over quick-turn quotas. Every project is handled with precision.</p>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+            <div class="position-relative overflow-hidden shadow-sm">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&w=800&q=80" alt="AutoCare Master Technicians collaborating on custom engine block repair" class="img-fluid w-100 object-fit-cover scale-hover" style="max-height: 480px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Benefits Grid Section -->
+    <section class="section-spacing bg-cream border-top border-bottom">
+      <div class="container text-center">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">The Performance Package</span>
+        <h2 class="text-charcoal fw-extrabold mb-5 font-sans" data-aos="fade-up">Premium Care For Our Crew</h2>
+        
+        <div class="row g-4 text-start">
+          <!-- Benefit 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-heart-pulse-fill"></i></div>
+              <h4 class="benefit-card-title">Comprehensive Health</h4>
+              <p class="benefit-card-desc">Full dental, medical, vision, and disability insurance with 100% premiums cleared for the technician.</p>
+            </div>
+          </div>
+          <!-- Benefit 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-book-half"></i></div>
+              <h4 class="benefit-card-title">Paid OEM Training</h4>
+              <p class="benefit-card-desc">Fully covered factory certifications, specialty manufacturer classes, and master mentorship paths.</p>
+            </div>
+          </div>
+          <!-- Benefit 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-graph-up-arrow"></i></div>
+              <h4 class="benefit-card-title">Tier Growth Blueprint</h4>
+              <p class="benefit-card-desc">Clear progression guidelines to elevate from Apprentice to Master Diagnostic Lead with transparent milestones.</p>
+            </div>
+          </div>
+          <!-- Benefit 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-calendar-range-fill"></i></div>
+              <h4 class="benefit-card-title">Flexible Shifts</h4>
+              <p class="benefit-card-desc">Custom scheduling setups, balanced rotating weekends, and substantial paid vacation time off.</p>
+            </div>
+          </div>
+          <!-- Benefit 5 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-cash-coin"></i></div>
+              <h4 class="benefit-card-title">Uncapped Performance Bonus</h4>
+              <p class="benefit-card-desc">Generous flat-rate bonuses, seasonal profit shares, and direct cash incentives for stellar work quality.</p>
+            </div>
+          </div>
+          <!-- Benefit 6 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="benefit-card-custom">
+              <div class="benefit-icon-box"><i class="bi bi-hammer"></i></div>
+              <h4 class="benefit-card-title">High-Tech Workshop</h4>
+              <p class="benefit-card-desc">Surgical-grade air-conditioned lanes equipped with brand-new Snap-on tool blocks and computerized alignments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Open Positions (8 Vacancies) -->
+    <section class="section-spacing bg-white" id="open-positions">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">Active Openings</span>
+          <h2 class="text-charcoal fw-extrabold mb-3 font-sans" data-aos="fade-up">Available Diagnostic Lanes</h2>
+          <p class="text-gray max-w-lg mx-auto font-sans" data-aos="fade-up" data-aos-delay="100" style="max-width: 550px;">Select an active vacancy below to launch your submission. Our recruitment desk audits telemetry logs daily.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Position 1: Mechanic -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Mechanic</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 2-4 Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$65k - $85k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Mechanic')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 2: Senior Technician -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Senior Technician</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 5+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$90k - $120k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Senior Technician')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 3: Service Advisor -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Service Advisor</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 3+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$70k - $95k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Service Advisor')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 4: Workshop Manager -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Workshop Manager</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 6+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$100k - $135k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Workshop Manager')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 5: Receptionist -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Part-Time</span>
+              <h4 class="job-card-title">Receptionist</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 1+ Yr Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$20 - $28 / Hr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Receptionist')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 6: Electrician -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Electrician</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 4+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$80k - $105k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Electrician')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 7: Parts Specialist -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Parts Specialist</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 2+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$55k - $75k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Parts Specialist')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 8: Quality Inspector -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="job-card-custom">
+              <span class="job-tag-type">Full-Time</span>
+              <h4 class="job-card-title">Quality Inspector</h4>
+              <ul class="job-meta-list">
+                <li class="job-meta-item"><i class="bi bi-briefcase"></i> 5+ Yrs Experience</li>
+                <li class="job-meta-item"><i class="bi bi-geo-alt"></i> Racing District, NY</li>
+              </ul>
+              <div class="job-salary-block">
+                <div>
+                  <div class="job-salary-label">Salary Range</div>
+                  <div class="job-salary-val">$85k - $110k / Yr</div>
+                </div>
+                <button class="btn-premium btn-orange btn-ripple py-2 px-3 fs-xs" onclick="triggerJobModal('Quality Inspector')">Apply Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Hiring Process Section -->
+    <section class="section-spacing bg-cream border-top border-bottom" id="hiring-process">
+      <div class="container text-center">
+        <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">The Intake Pipeline</span>
+        <h2 class="text-charcoal fw-extrabold mb-5 font-sans" data-aos="fade-up">Our Hiring Framework</h2>
+        
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+          <div class="row g-4">
+            
+            <!-- Step 1 -->
+            <div class="col-lg-2col col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" style="flex: 1 0 20%;">
+              <div class="timeline-step-card">
+                <div class="timeline-node">1</div>
+                <h4 class="timeline-step-title">Application</h4>
+                <p class="timeline-step-desc">Submit your physical resume and active certifications.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-lg-2col col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200" style="flex: 1 0 20%;">
+              <div class="timeline-step-card">
+                <div class="timeline-node">2</div>
+                <h4 class="timeline-step-title">Interview</h4>
+                <p class="timeline-step-desc">Coordinate with our workshop leads to assess mindset.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-2col col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300" style="flex: 1 0 20%;">
+              <div class="timeline-step-card">
+                <div class="timeline-node">3</div>
+                <h4 class="timeline-step-title">Technical Test</h4>
+                <p class="timeline-step-desc">Demonstrate alignment precision on our calibration bays.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="col-lg-2col col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400" style="flex: 1 0 20%;">
+              <div class="timeline-step-card">
+                <div class="timeline-node">4</div>
+                <h4 class="timeline-step-title">The Offer</h4>
+                <p class="timeline-step-desc">Review your tailored salary, medical, and tooling allocation.</p>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="col-lg-2col col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500" style="flex: 1 0 20%;">
+              <div class="timeline-step-card">
+                <div class="timeline-node">5</div>
+                <h4 class="timeline-step-title">Joining</h4>
+                <p class="timeline-step-desc">Report to your diagnostic bay and meet your teammates.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Career FAQs -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block" data-aos="fade-down">Recruiting Desk</span>
+          <h2 class="text-charcoal fw-extrabold mb-3 font-sans" data-aos="fade-up">Frequently Logged Inquiries</h2>
+          <p class="text-gray max-w-lg mx-auto font-sans" data-aos="fade-up" data-aos-delay="100" style="max-width: 550px;">Detailed clarifications regarding custom tool storage boxes, relocation allocations, and specialized testing standards.</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto" style="max-width: 780px;">
+          <!-- FAQ 1 -->
+          <div class="accordion-item-career shadow-sm" data-aos="fade-up">
+            <button class="accordion-button-career collapsed" type="button" onclick="toggleCareerAccordion('faqCollapse1')">
+              Do I need to supply my own master toolbox assemblies?
+            </button>
+            <div id="faqCollapse1" class="accordion-collapse-career">
+              <p class="text-gray font-sans m-0">While most senior technicians prefer utilizing their custom sets, AutoCare provides premium, locked Snap-on diagnostic roll cabinets per bay. Specialty tooling, heavy pneumatic lifts, diagnostic scopes, and laptop interfaces are fully provided by the workshop.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item-career shadow-sm" data-aos="fade-up">
+            <button class="accordion-button-career collapsed" type="button" onclick="toggleCareerAccordion('faqCollapse2')">
+              Are ASE certifications strictly required prior to application?
+            </button>
+            <div id="faqCollapse2" class="accordion-collapse-career">
+              <p class="text-gray font-sans m-0">For Senior and Specialist lanes, at least three active ASE certifications are required. For Apprentice lanes, we prioritize a strong conceptual background and continuous commitment to pass the tests; we clear all certification registration fees and provide classroom modules.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item-career shadow-sm" data-aos="fade-up">
+            <button class="accordion-button-career collapsed" type="button" onclick="toggleCareerAccordion('faqCollapse3')">
+              Do you offer relocation stipends for certified out-of-state technicians?
+            </button>
+            <div id="faqCollapse3" class="accordion-collapse-career">
+              <p class="text-gray font-sans m-0">Yes. For certified Senior Mechanics and Specialty Electricians relocating to our Racing District hub, we provide a tax-free relocation stipend ranging between $3,500 and $6,000 to cover transit, lodging, and initial tooling transfers.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item-career shadow-sm" data-aos="fade-up">
+            <button class="accordion-button-career collapsed" type="button" onclick="toggleCareerAccordion('faqCollapse4')">
+              How does the uncapped commission structure operate?
+            </button>
+            <div id="faqCollapse4" class="accordion-collapse-career">
+              <p class="text-gray font-sans m-0">Unlike standard high-pressure commissions that reward upsells, our bonus pools are tied strictly to flat-rate diagnostic accuracy and zero-defect quality parameters. Mechanics who register clean diagnostics and zero rework hours within a month receive scaled salary multipliers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Final CTA -->
+    <section class="section-spacing bg-cream border-top">
+      <div class="container text-center">
+        <div class="max-w-2xl mx-auto" style="max-width: 650px;" data-aos="zoom-in">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">The Next Lap</span>
+          <h2 class="text-charcoal fw-extrabold mb-3 font-sans">Ready To Align Your Potential?</h2>
+          <p class="text-gray font-sans mb-4">If you possess a meticulous mindset, appreciation for factory precision, and a zero-error workflow, submit your profile or dispatch an email to our HR leads.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap">
+            <a href="mailto:careers@autocare-theme.com" class="btn-premium btn-orange btn-ripple text-decoration-none">
+              <i class="bi bi-envelope-fill me-2"></i> Contact HR Division
+            </a>
+            <a href="tel:+15551234567" class="btn-premium btn-charcoal btn-ripple text-decoration-none">
+              <i class="bi bi-telephone-fill me-2"></i> Call Dispatch Head
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Job Application Form Modal Dialog -->
+  <div class="modal fade" id="jobApplicationModal" tabindex="-1" aria-labelledby="jobApplicationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content-custom bg-white border-dark">
+        <div class="modal-header border-0 p-0 mb-4 justify-content-between align-items-start">
+          <div>
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider fs-xs mb-1 d-block">Intake Console</span>
+            <h4 class="modal-title text-charcoal fw-extrabold font-sans" id="jobApplicationModalLabel">Submit Fitment Ledger</h4>
+          </div>
+          <button type="button" class="btn-close m-0 p-1 shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          
+          <div id="applySuccessMsg" class="alert alert-success d-none rounded-0 mb-4 p-3 border-0 bg-success text-white" role="alert">
+            <div class="d-flex gap-2">
+              <i class="bi bi-check-circle-fill fs-5"></i>
+              <div>
+                <strong class="d-block">Credentials Lodged!</strong>
+                <span class="fs-xs">Our workshop leads will verify your diagnostics certifications. Expect track dispatch in 48 hours.</span>
+              </div>
+            </div>
+          </div>
+
+          <form id="careerApplyForm" onsubmit="submitCareerApplication(event)" novalidate>
+            <input type="hidden" id="targetJobField">
+            
+            <div class="mb-3">
+              <label class="form-label font-sans fw-bold text-charcoal fs-xs mb-2">Target Bay Lane</label>
+              <input type="text" id="targetJobFieldDisplay" class="modal-input-custom font-sans text-muted" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label font-sans fw-bold text-charcoal fs-xs mb-2">Full Legal Name</label>
+              <input type="text" id="appFullName" class="modal-input-custom font-sans" placeholder="e.g. Marcus Vance" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label font-sans fw-bold text-charcoal fs-xs mb-2">Electronic Mail Address</label>
+              <input type="email" id="appEmail" class="modal-input-custom font-sans" placeholder="e.g. marcus@diagnostics.com" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label font-sans fw-bold text-charcoal fs-xs mb-2">Cellular Contact Dispatch</label>
+              <input type="tel" id="appPhone" class="modal-input-custom font-sans" placeholder="e.g. +1 (555) 019-2834" required>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label font-sans fw-bold text-charcoal fs-xs mb-2">Active ASE / Diagnostic Certifications</label>
+              <textarea id="appCerts" class="modal-input-custom font-sans" rows="3" placeholder="e.g. ASE A1 (Engine), ASE A5 (Brakes), OEM Brand Calibration Credentials..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-premium btn-orange btn-ripple w-100 py-3 font-sans">Submit Diagnostic Resume</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium Light Footer -->
+  <footer class="footer-wrapper-premium" id="premium-footer">
+    <div class="footer-top-premium">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-brand-logo mb-4 d-inline-block">
+              <i class="bi bi-wrench-adjustable-circle-fill text-primary-orange"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-brand-desc mb-4">
+              Premium automotive mechanics delivering factory-grade diagnostic precision, OEM-certified parts, and meticulous luxury restoration care.
+            </p>
+            <div class="footer-brand-socials d-flex gap-2">
+              <a href="https://facebook.com" class="social-btn-round" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com" class="social-btn-round" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="social-btn-round" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="social-btn-round" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-col-title">Quick Links</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="about.html"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-arrow-right-short"></i> Portfolio</a></li>
+              <li><a href="gallery.html"><i class="bi bi-arrow-right-short"></i> Photo Gallery</a></li>
+              <li><a href="blog.html"><i class="bi bi-arrow-right-short"></i> Blog & Insights</a></li>
+              <li><a href="shop.html"><i class="bi bi-arrow-right-short"></i> Parts Shop</a></li>
+              <li><a href="contact.html"><i class="bi bi-arrow-right-short"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Services -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-col-title">Our Services</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Engine Overhaul</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Brake Restoration</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Transmission Repair</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Body Paint & Wax</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Suspension Tuning</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Telemetry Scan</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Working Hours & Location -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-col-title">Working Hours</h5>
+            <div class="footer-hours-wrapper mb-4">
+              <div class="hours-item">
+                <span class="days">Monday - Friday</span>
+                <span class="time">7:30 AM - 6:30 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Saturday</span>
+                <span class="time">8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Sunday</span>
+                <span class="time bg-danger text-white rounded px-2">Emergency Only</span>
+              </div>
+            </div>
+            
+            <h5 class="footer-col-title pt-1">Store Location</h5>
+            <p class="footer-contact-text"><i class="bi bi-geo-alt-fill text-primary-orange me-2"></i> 123 Performance Parkway, Racing District, NY 10001</p>
+          </div>
+
+          <!-- Column 5: Contact & Mini Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <h5 class="footer-col-title">Contact Us</h5>
+            <p class="footer-contact-text mb-2"><i class="bi bi-telephone-fill text-primary-orange me-2"></i> +1 (555) 123-4567</p>
+            <p class="footer-contact-text mb-4"><i class="bi bi-envelope-open-fill text-primary-orange me-2"></i> support@autocare-theme.com</p>
+            
+            <h5 class="footer-col-title pt-1">Newsletter Mini Form</h5>
+            <div class="footer-mini-form-container">
+              <form id="footer-newsletter-form" class="position-relative">
+                <input type="email" id="footer-email-input" class="form-control footer-newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="footer-newsletter-submit" aria-label="Submit newsletter"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+              <div id="footer-newsletter-success" class="d-none mt-2 text-success fs-xs fw-bold">
+                <i class="bi bi-check-circle-fill me-1"></i> Subscribed!
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-premium">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="footer-copyright m-0">© 2026 AutoCare. Designed with HTML5 Bootstrap 5. All rights reserved.</p>
+        <div class="footer-bottom-links d-flex gap-3 mt-3 mt-md-0">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="career.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <button id="back-to-top-btn" class="back-to-top-circle" aria-label="Back to Top">
+    <svg class="progress-circle-svg" width="48" height="48" viewBox="0 0 48 48">
+      <circle class="progress-background" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-width="3"></circle>
+      <circle class="progress-active" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-dashoffset="125.66" stroke-width="3"></circle>
+    </svg>
+    <div class="arrow-icon">
+      <i class="bi bi-arrow-up-short"></i>
+    </div>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive Career JS Logic -->
+  <script>
+    // Custom Career Accordion Toggle Function
+    function toggleCareerAccordion(id) {
+      const activePanel = document.getElementById(id);
+      if (!activePanel) return;
+
+      const isShowing = activePanel.classList.contains('show');
+      const buttons = document.querySelectorAll('.accordion-button-career');
+      const panels = document.querySelectorAll('.accordion-collapse-career');
+
+      // Collapse all
+      buttons.forEach(btn => btn.classList.add('collapsed'));
+      panels.forEach(p => p.classList.remove('show'));
+
+      if (!isShowing) {
+        activePanel.classList.add('show');
+        // Find corresponding trigger button and remove collapsed class
+        buttons.forEach(btn => {
+          if (btn.getAttribute('onclick').includes(id)) {
+            btn.classList.remove('collapsed');
+          }
+        });
+      }
+    }
+
+    // Trigger Job Modal Popup Setup
+    let jobModalInstance = null;
+    function triggerJobModal(jobTitle) {
+      const fieldId = document.getElementById('targetJobField');
+      const fieldDisplay = document.getElementById('targetJobFieldDisplay');
+      const successMsg = document.getElementById('applySuccessMsg');
+      const form = document.getElementById('careerApplyForm');
+
+      if (fieldId) fieldId.value = jobTitle;
+      if (fieldDisplay) fieldDisplay.value = jobTitle + ' Lane Intake';
+      if (successMsg) successMsg.classList.add('d-none');
+      if (form) form.classList.remove('d-none');
+
+      // Bootstrap modal init
+      const modalEl = document.getElementById('jobApplicationModal');
+      if (modalEl) {
+        if (!jobModalInstance) {
+          jobModalInstance = new bootstrap.Modal(modalEl);
+        }
+        jobModalInstance.show();
+      }
+    }
+
+    // Handle Career Form Application Submission
+    function submitCareerApplication(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('appFullName');
+      const email = document.getElementById('appEmail');
+      const phone = document.getElementById('appPhone');
+      const certs = document.getElementById('appCerts');
+      const successMsg = document.getElementById('applySuccessMsg');
+      const form = document.getElementById('careerApplyForm');
+
+      if (!name || !email || !phone || !certs || !successMsg || !form) return;
+
+      const nameVal = name.value.trim();
+      const emailVal = email.value.trim();
+      const phoneVal = phone.value.trim();
+      const certsVal = certs.value.trim();
+
+      if (!nameVal || !emailVal || !phoneVal || !certsVal) {
+        alert('All telemetry fields must be logged prior to intake.');
+        return;
+      }
+
+      // Hide form and show success
+      form.classList.add('d-none');
+      successMsg.classList.remove('d-none');
+
+      // Reset
+      form.reset();
+    }
+  </script>
+</body>
+</html>

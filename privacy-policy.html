@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - AutoCare Premium Garage</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+
+  <!-- Embedded Custom Styles for Legal Content -->
+  <style>
+    :root {
+      --color-primary-orange: #FF6321;
+      --color-amber: #FFB300;
+      --color-charcoal: #151515;
+      --color-gray: #666666;
+      --color-cream: #F4F4F2;
+      --color-light-gray: #E5E5E5;
+      --color-white: #FFFFFF;
+      --font-grotesk: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 130px; /* Offset for header-wrapper */
+    }
+
+    /* Premium Banner section */
+    .legal-banner-section {
+      background-size: cover;
+      background-position: center;
+      padding: 110px 0 75px 0;
+    }
+
+    .bg-cream {
+      background-color: var(--color-cream) !important;
+    }
+
+    /* Column Layouts */
+    .sticky-legal-sidebar {
+      position: sticky;
+      top: 130px;
+      z-index: 10;
+    }
+    .legal-sidebar-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 30px;
+    }
+    .legal-sidebar-title {
+      font-family: var(--font-grotesk);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--color-primary-orange);
+    }
+    .legal-sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .legal-sidebar-item {
+      margin-bottom: 4px;
+    }
+    .legal-sidebar-link {
+      font-family: var(--font-grotesk);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--color-gray);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      transition: all 0.25s ease;
+      border-left: 3px solid transparent;
+    }
+    .legal-sidebar-link:hover {
+      color: var(--color-primary-orange);
+      background-color: var(--color-cream);
+    }
+    .legal-sidebar-link.active {
+      color: var(--color-primary-orange);
+      background-color: var(--color-cream);
+      border-left-color: var(--color-primary-orange);
+      font-weight: 800;
+    }
+    .legal-sidebar-link i {
+      font-size: 11px;
+      opacity: 0.6;
+      transition: transform 0.25s ease;
+    }
+    .legal-sidebar-link:hover i, .legal-sidebar-link.active i {
+      transform: translateX(3px);
+      opacity: 1;
+    }
+
+    /* Content Cards */
+    .legal-content-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-light-gray);
+      padding: 45px;
+      margin-bottom: 30px;
+      transition: border-color 0.3s ease;
+    }
+    .legal-content-card:hover {
+      border-color: var(--color-primary-orange);
+    }
+    .legal-section-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-primary-orange);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .legal-section-title {
+      font-family: var(--font-grotesk);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-charcoal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .legal-section-title i {
+      color: var(--color-primary-orange);
+    }
+    .legal-text-block {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--color-gray);
+    }
+    .legal-text-block p {
+      margin-bottom: 18px;
+    }
+    .legal-text-block p:last-child {
+      margin-bottom: 0;
+    }
+    .legal-sub-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 15px 0;
+    }
+    .legal-sub-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .legal-sub-list li::before {
+      content: "\F26F"; /* bootstrap-icon check */
+      font-family: "bootstrap-icons";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary-orange);
+      font-weight: bold;
+    }
+
+    /* Metadata Block */
+    .legal-meta-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--color-gray);
+      background-color: var(--color-light-gray);
+      padding: 4px 12px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <span class="search-trigger" aria-label="Search trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle" aria-label="Toggle menu"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Premium Internal Banner -->
+    <section class="legal-banner-section position-relative overflow-hidden" style="background-image: linear-gradient(rgba(21, 21, 21, 0.75), rgba(21, 21, 21, 0.75)), url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80');">
+      <div class="container relative-z">
+        <div class="row align-items-center">
+          <div class="col-md-8" data-aos="fade-right">
+            <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider mb-2 d-inline-block">Legal Hub</span>
+            <h1 class="display-5 text-white fw-extrabold mb-3">Privacy & Telemetry Policy</h1>
+            <p class="text-white opacity-75 fs-6 mb-0 max-w-xl font-sans">Learn how our workshop engines process and protect your mechanical coordinates, vehicle parameters, and electronic payment records.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-4 mt-md-0" data-aos="fade-left" data-aos-delay="100">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-md-end bg-transparent p-0 m-0">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white text-decoration-none opacity-75 hover-primary">Home</a></li>
+                <li class="breadcrumb-item active text-primary-orange" aria-current="page">Privacy Policy</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Two-Column Legal Layout -->
+    <section class="section-spacing bg-cream">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Sticky Sidebar Navigation Column -->
+          <div class="col-lg-4">
+            <div class="sticky-legal-sidebar">
+              <div class="legal-sidebar-card shadow-sm border-light">
+                <h5 class="legal-sidebar-title">Table of Contents</h5>
+                <ul class="legal-sidebar-list">
+                  <li class="legal-sidebar-item">
+                    <a href="#info-collection" class="legal-sidebar-link active">
+                      <span>1. Information Collection</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#cookies" class="legal-sidebar-link">
+                      <span>2. Cookies & Tracker Nodes</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#third-party" class="legal-sidebar-link">
+                      <span>3. Third-party Services</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#data-security" class="legal-sidebar-link">
+                      <span>4. Core Data Security</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#user-rights" class="legal-sidebar-link">
+                      <span>5. User Rights & Auditing</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#policy-updates" class="legal-sidebar-link">
+                      <span>6. Policy Calibration Updates</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="legal-sidebar-item">
+                    <a href="#contact-info" class="legal-sidebar-link">
+                      <span>7. Legal Contact Desk</span> <i class="bi bi-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+
+                <hr class="my-4 border-light">
+                <div class="text-start">
+                  <span class="d-block text-charcoal font-sans fw-bold fs-xs mb-1">Last Calibration</span>
+                  <span class="legal-meta-badge bg-light">July 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legal Content Sections Column -->
+          <div class="col-lg-8">
+            
+            <!-- Section 1: Information Collection -->
+            <div id="info-collection" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">01 / Parameters Logged</span>
+              <h3 class="legal-section-title"><i class="bi bi-folder-symlink-fill"></i> Information Collection</h3>
+              <div class="legal-text-block">
+                <p>At AutoCare, we catalog and store essential user credentials and vehicle parameters to provide our high-fidelity garage diagnostics and repair scheduling operations. The parameters we collect fall into two primary classification profiles:</p>
+                
+                <h5 class="text-charcoal fw-bold fs-sm mt-4 mb-2">A. Active User Parameters</h5>
+                <p>These consist of details you submit directly into our scheduling and feedback modules, including full legal name, digital electronic mail address, physical vehicle retrieval coordinates, active cellular coordinates, and vehicle chassis identification parameters (e.g., VIN codes, model fitment details).</p>
+                
+                <h5 class="text-charcoal fw-bold fs-sm mt-4 mb-2">B. Passive Mechanical Logs</h5>
+                <p>When interfacing your machine with our computerized OBD-II telemetry receivers during garage diagnostic sessions, we catalogue mechanical performance parameters, fault codes, engine cylinder calibration readouts, brake wear metrics, and suspension alignment coordinates. This telemetry is stored to map your vehicle's structural performance history.</p>
+              </div>
+            </div>
+
+            <!-- Section 2: Cookies -->
+            <div id="cookies" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">02 / Browser Cookies</span>
+              <h3 class="legal-section-title"><i class="bi bi-cookie"></i> Cookies & Tracker Nodes</h3>
+              <div class="legal-text-block">
+                <p>Our digital portal deploys browser cookie variables, tracking nodes, and micro-session variables to personalize your interface experience and remember your spare part cart preferences. These cookies help us track site diagnostics, analyze user flow, and coordinate continuous load balancing.</p>
+                
+                <p>The standard classifications of browser storage objects we implement include:</p>
+                <ul class="legal-sub-list">
+                  <li><strong>Core Session Cookies:</strong> Essential for processing appointment reservation states and maintaining active authentication statuses inside client portals.</li>
+                  <li><strong>Interface Personalization:</strong> Used to record user settings, typography preferences, and preferred mechanical branch locations.</li>
+                  <li><strong>Performance Analytics:</strong> Aggregates anonymized speed reports, network latency logs, and viewport width stats to help our engineers optimize layout performance.</li>
+                </ul>
+                <p>You may adjust your browser's security console to refuse all cookies or notify you when a cookie variable is spawned. However, blocking core cookies will disable appointment scheduling and part checkout modules.</p>
+              </div>
+            </div>
+
+            <!-- Section 3: Third-party Services -->
+            <div id="third-party" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">03 / Associated Partners</span>
+              <h3 class="legal-section-title"><i class="bi bi-shuffle"></i> Third-party Services</h3>
+              <div class="legal-text-block">
+                <p>To deliver modern automotive web features, we securely exchange verified parameters with verified third-party partners. These processing networks are strictly prohibited from utilizing your mechanical logs for any secondary commercial purposes:</p>
+                
+                <ul class="legal-sub-list">
+                  <li><strong>Financial Payment Gateways:</strong> All direct parts checkouts and workshop invoice deposits are proxied through PCI-DSS Level 1 certified payment brokers (e.g. Stripe, PayPal) for credit card routing.</li>
+                  <li><strong>Cartographic Tracking Services:</strong> We embed interactive Google Maps components on our contact page to plot workshop entrance corridors. These widgets may log your physical GPS coordinates to plot route directions.</li>
+                  <li><strong>Emergency Towing Dispatch:</strong> Fleet tracking networks receive geographical coordinates to guide roadside emergency flatbeds to stalled vehicles.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 4: Data Security -->
+            <div id="data-security" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">04 / Encryption Protocols</span>
+              <h3 class="legal-section-title"><i class="bi bi-shield-lock-fill"></i> Core Data Security</h3>
+              <div class="legal-text-block">
+                <p>We treat client records with the same meticulous standards applied to engine block restorations. All active and passive data packets are safeguarded using cutting-edge commercial security technologies:</p>
+                
+                <p>All database connections are sealed behind SSL/TLS transport-layer encryption, preventing packet interception. Our physical server cages are monitored 24/7, and administrative database panels require strict multi-factor authentication (MFA) credentials. We run daily diagnostic audits and automated database rollbacks to eliminate potential points of system failure.</p>
+              </div>
+            </div>
+
+            <!-- Section 5: User Rights -->
+            <div id="user-rights" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">05 / Mechanical Audit</span>
+              <h3 class="legal-section-title"><i class="bi bi-person-check-fill"></i> User Rights & Auditing</h3>
+              <div class="legal-text-block">
+                <p>As the legal owner of your personal parameters and mechanical records, you maintain full authority over their storage lifespan. Under commercial regulations, you possess the following active rights:</p>
+                
+                <ul class="legal-sub-list">
+                  <li><strong>The Right to Inspect:</strong> You may request a complete, machine-readable CSV output of all diagnostic history, contact messages, and registration variables catalogued under your name.</li>
+                  <li><strong>The Right to Rectify:</strong> You can edit incorrect fitment parameters, email addresses, or phone numbers at any time.</li>
+                  <li><strong>The Right to Erase:</strong> You may file a data teardown ticket to purge your vehicle metrics, diagnostic files, and reservation lists from our live database nodes. Anonymized tax and accounting logs required for audit trails will remain preserved.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Section 6: Policy Updates -->
+            <div id="policy-updates" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">06 / Routine Calibration</span>
+              <h3 class="legal-section-title"><i class="bi bi-arrow-repeat"></i> Policy Calibration Updates</h3>
+              <div class="legal-text-block">
+                <p>We routinely calibrate our security rules and parameter policies to align with new legal directives, database architectures, and diagnostic standards. Any revision of parameter rules will be signaled by updating the "Last Calibration" timestamp on the sidebar card.</p>
+                <p>We recommend clients periodically review this legal workspace to stay informed on how we isolate and shield mechanical diagnostics from unauthorized commercial scraping.</p>
+              </div>
+            </div>
+
+            <!-- Section 7: Contact Information -->
+            <div id="contact-info" class="legal-content-card shadow-sm scroll-target-spy" data-aos="fade-up">
+              <span class="legal-section-tag">07 / Legal Communications Desk</span>
+              <h3 class="legal-section-title"><i class="bi bi-envelope-at-fill"></i> Legal Contact Desk</h3>
+              <div class="legal-text-block">
+                <p>For deep technical questions regarding data encryption, parameters logging, or to file an authorization deletion request, contact our database administrators and legal compliance managers directly at the channels listed below:</p>
+                
+                <ul class="legal-sub-list">
+                  <li><strong>Compliance Officer:</strong> AutoCare Legal Operations Group</li>
+                  <li><strong>Postal Corridor:</strong> 123 Performance Parkway, Racing District, NY 10001</li>
+                  <li><strong>Electronic Mail Desk:</strong> <a href="mailto:privacy@autocare-theme.com" class="text-primary-orange text-decoration-underline fw-bold">privacy@autocare-theme.com</a></li>
+                  <li><strong>Direct Workshop Telephone:</strong> +1 (555) 123-4567 (Ask for Data Custodian)</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Light Footer -->
+  <footer class="footer-wrapper-premium" id="premium-footer">
+    <div class="footer-top-premium">
+      <div class="container">
+        <div class="row g-5">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-brand-logo mb-4 d-inline-block">
+              <i class="bi bi-wrench-adjustable-circle-fill text-primary-orange"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-brand-desc mb-4">
+              Premium automotive mechanics delivering factory-grade diagnostic precision, OEM-certified parts, and meticulous luxury restoration care.
+            </p>
+            <div class="footer-brand-socials d-flex gap-2">
+              <a href="https://facebook.com" class="social-btn-round" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://twitter.com" class="social-btn-round" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="social-btn-round" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="social-btn-round" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-col-title">Quick Links</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="about.html"><i class="bi bi-arrow-right-short"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-arrow-right-short"></i> Portfolio</a></li>
+              <li><a href="gallery.html"><i class="bi bi-arrow-right-short"></i> Photo Gallery</a></li>
+              <li><a href="blog.html"><i class="bi bi-arrow-right-short"></i> Blog & Insights</a></li>
+              <li><a href="shop.html"><i class="bi bi-arrow-right-short"></i> Parts Shop</a></li>
+              <li><a href="contact.html"><i class="bi bi-arrow-right-short"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Services -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-col-title">Our Services</h5>
+            <ul class="footer-col-links list-unstyled">
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Engine Overhaul</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Brake Restoration</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Transmission Repair</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Body Paint & Wax</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Suspension Tuning</a></li>
+              <li><a href="services.html"><i class="bi bi-arrow-right-short"></i> Telemetry Scan</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Working Hours & Location -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-col-title">Working Hours</h5>
+            <div class="footer-hours-wrapper mb-4">
+              <div class="hours-item">
+                <span class="days">Monday - Friday</span>
+                <span class="time">7:30 AM - 6:30 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Saturday</span>
+                <span class="time">8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="days">Sunday</span>
+                <span class="time bg-danger text-white rounded px-2">Emergency Only</span>
+              </div>
+            </div>
+            
+            <h5 class="footer-col-title pt-1">Store Location</h5>
+            <p class="footer-contact-text"><i class="bi bi-geo-alt-fill text-primary-orange me-2"></i> 123 Performance Parkway, Racing District, NY 10001</p>
+          </div>
+
+          <!-- Column 5: Contact & Mini Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <h5 class="footer-col-title">Contact Us</h5>
+            <p class="footer-contact-text mb-2"><i class="bi bi-telephone-fill text-primary-orange me-2"></i> +1 (555) 123-4567</p>
+            <p class="footer-contact-text mb-4"><i class="bi bi-envelope-open-fill text-primary-orange me-2"></i> support@autocare-theme.com</p>
+            
+            <h5 class="footer-col-title pt-1">Newsletter Mini Form</h5>
+            <div class="footer-mini-form-container">
+              <form id="footer-newsletter-form" class="position-relative">
+                <input type="email" id="footer-email-input" class="form-control footer-newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="footer-newsletter-submit" aria-label="Submit newsletter"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+              <div id="footer-newsletter-success" class="d-none mt-2 text-success fs-xs fw-bold">
+                <i class="bi bi-check-circle-fill me-1"></i> Subscribed!
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom-premium">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="footer-copyright m-0">© 2026 AutoCare. Designed with HTML5 Bootstrap 5. All rights reserved.</p>
+        <div class="footer-bottom-links d-flex gap-3 mt-3 mt-md-0">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="career.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <button id="back-to-top-btn" class="back-to-top-circle" aria-label="Back to Top">
+    <svg class="progress-circle-svg" width="48" height="48" viewBox="0 0 48 48">
+      <circle class="progress-background" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-width="3"></circle>
+      <circle class="progress-active" cx="24" cy="24" r="20" fill="none" stroke-dasharray="125.66 125.66" stroke-dashoffset="125.66" stroke-width="3"></circle>
+    </svg>
+    <div class="arrow-icon">
+      <i class="bi bi-arrow-up-short"></i>
+    </div>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+
+  <!-- Interactive Intersection Observer ScrollSpy Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '-140px 0px -40% 0px', // Matches scroll offset
+        threshold: 0
+      };
+
+      const spySections = document.querySelectorAll('.scroll-target-spy');
+      const sidebarLinks = document.querySelectorAll('.legal-sidebar-link');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute('id');
+            sidebarLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${currentId}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      spySections.forEach(section => observer.observe(section));
+
+      // Handle manual click highlights
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          sidebarLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

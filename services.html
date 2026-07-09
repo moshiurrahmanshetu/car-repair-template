@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoCare - Our Auto Services</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom Stylesheets -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="/assets/css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner mx-auto"></div>
+      <div class="preloader-text">AutoCare Initializing</div>
+    </div>
+  </div>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info">
+        <span><i class="bi bi-clock-fill"></i> Mon - Sat: 8:00 AM - 6:00 PM</span>
+        <span><i class="bi bi-telephone-fill"></i> Urgent Support: +1 (555) 123-4567</span>
+      </div>
+      <div class="topbar-socials">
+        <a href="https://facebook.com" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://x.com" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://instagram.com" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section with Navigation -->
+  <header class="header-wrapper">
+    <div class="container">
+      <div class="navbar-custom">
+        <!-- Logo -->
+        <a href="index.html" class="logo-brand">
+          <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu">
+          <li class="nav-item ">
+            <a href="index.html" class="nav-link-custom">Home</a>
+          </li>
+          
+          <!-- Classic Multi-Level Dropdown -->
+          <li class="nav-item ">
+            <a href="about.html" class="nav-link-custom">Pages <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+              <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+              <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+              <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+              <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+              <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+              <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+              <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+              <li class="dropdown-item-parent">
+                <a href="privacy-policy.html" class="dropdown-item-custom d-flex justify-content-between align-items-center">Legal <i class="bi bi-chevron-right fs-xs"></i></a>
+                <ul class="dropdown-custom-child">
+                  <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+                  <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mega Menu Trigger -->
+          <li class="nav-item mega-menu-trigger active">
+            <a href="services.html" class="nav-link-custom">Services <i class="bi bi-chevron-down fs-xs"></i></a>
+            <div class="mega-menu-custom">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Core Services</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Engine Diagnostics</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Brake Replacement</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Wheel Alignment</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Transmission Repair</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Advanced Care</h5>
+                    <ul class="mega-links">
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Hybrid System Tuning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Auto Air Conditioning</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Suspension Repairs</a></li>
+                      <li><a href="service-details.html"><i class="bi bi-caret-right-fill"></i> Exhaust & Emissions</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <h5 class="mega-title">Quick Links</h5>
+                    <ul class="mega-links">
+                      <li><a href="services.html"><i class="bi bi-caret-right-fill"></i> All Auto Services</a></li>
+                      <li><a href="projects.html"><i class="bi bi-caret-right-fill"></i> Completed Projects</a></li>
+                      <li><a href="pricing.html"><i class="bi bi-caret-right-fill"></i> Pricing Packages</a></li>
+                      <li><a href="shop.html"><i class="bi bi-caret-right-fill"></i> Spare Parts Shop</a></li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="p-4 bg-light-gray rounded text-center">
+                      <h6 class="text-charcoal mb-2 fw-bold">Need Urgent Car Support?</h6>
+                      <p class="text-gray fs-xs mb-3">Book an inspection slot instantly with our premium master mechanics.</p>
+                      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-full">Book Slots</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item ">
+            <a href="projects.html" class="nav-link-custom">Projects <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+              <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Shop Dropdown -->
+          <li class="nav-item ">
+            <a href="shop.html" class="nav-link-custom">Shop <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="shop.html" class="dropdown-item-custom">Auto Spare Shop</a></li>
+              <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+              <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+              <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+            </ul>
+          </li>
+
+          <!-- Blog Dropdown -->
+          <li class="nav-item ">
+            <a href="blog.html" class="nav-link-custom">Blog <i class="bi bi-chevron-down fs-xs"></i></a>
+            <ul class="dropdown-custom">
+              <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+              <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+            </ul>
+          </li>
+
+          <!-- Contact Link -->
+          <li class="nav-item ">
+            <a href="contact.html" class="nav-link-custom">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Navigation Actions (Search, Book CTA, Mobile Trigger) -->
+        <div class="nav-actions">
+          <span class="search-trigger"><i class="bi bi-search"></i></span>
+          <a href="appointment.html" class="btn-premium btn-orange btn-ripple d-none d-lg-inline-flex">Book Online</a>
+          <span class="mobile-toggle"><i class="bi bi-list"></i></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Popup Overlay -->
+  <div class="search-popup">
+    <span class="search-close"><i class="bi bi-x-lg"></i></span>
+    <div class="search-form-container text-center">
+      <form action="services.html" method="GET">
+        <input type="text" name="query" class="search-input" placeholder="Search for car services, parts..." required>
+        <span class="search-sub-info">Press Enter to Search or ESC to Close</span>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Offcanvas Menu Drawer -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo-brand m-0">
+        <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+      </a>
+      <span class="mobile-close-btn"><i class="bi bi-x-lg"></i></span>
+    </div>
+
+    <!-- Mobile Nav List -->
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+      </li>
+
+      <!-- Pages Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Pages</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="about.html" class="dropdown-item-custom">About Us</a></li>
+          <li><a href="team.html" class="dropdown-item-custom">Our Team</a></li>
+          <li><a href="team-details.html" class="dropdown-item-custom">Team Details</a></li>
+          <li><a href="pricing.html" class="dropdown-item-custom">Pricing Plan</a></li>
+          <li><a href="appointment.html" class="dropdown-item-custom">Book Appointment</a></li>
+          <li><a href="gallery.html" class="dropdown-item-custom">Gallery</a></li>
+          <li><a href="faq.html" class="dropdown-item-custom">FAQs</a></li>
+          <li><a href="career.html" class="dropdown-item-custom">Careers</a></li>
+          <li><a href="privacy-policy.html" class="dropdown-item-custom">Privacy Policy</a></li>
+          <li><a href="terms.html" class="dropdown-item-custom">Terms of Service</a></li>
+        </ul>
+      </li>
+
+      <!-- Services Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Services</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="services.html" class="dropdown-item-custom">All Auto Services</a></li>
+          <li><a href="service-details.html" class="dropdown-item-custom">Service Details Page</a></li>
+        </ul>
+      </li>
+
+      <!-- Projects Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Projects</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="projects.html" class="dropdown-item-custom">Our Projects</a></li>
+          <li><a href="project-details.html" class="dropdown-item-custom">Project Details</a></li>
+        </ul>
+      </li>
+
+      <!-- Shop Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Shop</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="shop.html" class="dropdown-item-custom">Spare Parts Shop</a></li>
+          <li><a href="product-details.html" class="dropdown-item-custom">Product Details</a></li>
+          <li><a href="cart.html" class="dropdown-item-custom">Shopping Cart</a></li>
+          <li><a href="checkout.html" class="dropdown-item-custom">Checkout</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog Mobile Dropdown -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link">
+          <span>Blog</span>
+          <span class="mobile-dropdown-btn"><i class="bi bi-chevron-down"></i></span>
+        </div>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="blog.html" class="dropdown-item-custom">Auto News Grid</a></li>
+          <li><a href="blog-details.html" class="dropdown-item-custom">Article Details</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Quick Contact info inside drawer -->
+    <div class="mt-5 p-4 bg-light-gray rounded">
+      <h6 class="text-charcoal mb-3 fw-bold">Active Service Hours</h6>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+      <p class="fs-xs text-gray mb-2"><i class="bi bi-telephone"></i> Support: +1 (555) 123-4567</p>
+      <a href="appointment.html" class="btn-premium btn-orange btn-ripple w-100 text-center mt-3 py-2 fs-xs">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Primary Page Body Layout -->
+  <main>
+    <!-- SECTION 01: PAGE HERO / BANNER -->
+    <section class="services-hero-section position-relative d-flex align-items-center" style="background-image: url('/src/assets/images/auto_maintenance_1783597122508.jpg');">
+      <!-- Floating Elements for Parallax Mouse Move Effect -->
+      <div class="services-hero-deco services-hero-1" style="top: 15%; left: 8%;">
+        <i class="bi bi-gear-fill fs-1" style="animation: rotate-clockwise 20s linear infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-2" style="bottom: 15%; right: 8%;">
+        <i class="bi bi-wrench fs-2" style="animation: float-slow 8s ease-in-out infinite;"></i>
+      </div>
+      <div class="services-hero-deco services-hero-3" style="top: 45%; right: 18%;">
+        <i class="bi bi-gear fs-3" style="animation: rotate-counter 12s linear infinite;"></i>
+      </div>
+      
+      <div class="container services-hero-content text-center">
+        <span class="font-mono-sub text-primary-orange mb-3 d-inline-block text-uppercase tracking-wider" data-aos="fade-down" style="letter-spacing: 2px;">Premium Diagnostics & Repair</span>
+        <h1 class="text-white fw-extrabold display-3 mb-4" data-aos="fade-up" data-aos-delay="100">Our Auto Services</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+          <ol class="breadcrumb justify-content-center m-0">
+            <li class="breadcrumb-item"><a href="index.html" class="text-white opacity-75 text-decoration-none hover-orange">Home</a></li>
+            <li class="breadcrumb-item active text-primary-orange" aria-current="page">Services</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- SECTION 02: SERVICE CATEGORIES -->
+    <section class="section-spacing bg-cream">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5" style="max-width: 720px;">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider" data-aos="fade-down">Expertise Divisions</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mt-2 mb-3" data-aos="fade-up" data-aos-delay="100">Service Categories</h2>
+          <p class="text-gray fs-sm" data-aos="fade-up" data-aos-delay="150">Explore our specialized mechanical divisions designed to address every nuance of high-performance and daily vehicle preservation.</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Card 01: Mechanical Repair -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-tools"></i>
+              </div>
+              <h4 class="category-title">Mechanical Repair</h4>
+              <p class="category-desc">From complex engine blocks to steering gearboxes, our mechanics restore complete physical integrity.</p>
+            </div>
+          </div>
+          
+          <!-- Card 02: Engine Service -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-activity"></i>
+              </div>
+              <h4 class="category-title">Engine Service</h4>
+              <p class="category-desc">Comprehensive rebuilds, valvetrain fine-tuning, carbon flushing, and complete valve replacements.</p>
+            </div>
+          </div>
+          
+          <!-- Card 03: Electrical Care -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <h4 class="category-title">Electrical Care</h4>
+              <p class="category-desc">Custom sensor retrofits, battery testing, wire trace analysis, and complex control unit mappings.</p>
+            </div>
+          </div>
+          
+          <!-- Card 04: Transmission Care -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-gear-wide-connected"></i>
+              </div>
+              <h4 class="category-title">Transmission Care</h4>
+              <p class="category-desc">Precision gear lash adjustment, torque converter flushing, clutch pack fits, and rebuilds.</p>
+            </div>
+          </div>
+          
+          <!-- Card 05: Braking Systems -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-disc-fill"></i>
+              </div>
+              <h4 class="category-title">Brake System</h4>
+              <p class="category-desc">Performance pads bedding, rotor surfacing, hydraulic vacuum checks, and ABS sensors repair.</p>
+            </div>
+          </div>
+          
+          <!-- Card 06: Suspension Systems -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-sliders"></i>
+              </div>
+              <h4 class="category-title">Suspension</h4>
+              <p class="category-desc">Coilover damper installs, rubber bushing pressings, active shock tuning, and anti-roll updates.</p>
+            </div>
+          </div>
+          
+          <!-- Card 07: Climate Control -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-wind"></i>
+              </div>
+              <h4 class="category-title">Air Conditioning</h4>
+              <p class="category-desc">Environmentally-compliant eco refrigerants, UV leak testing, blower rebuilds, and odor treatment.</p>
+            </div>
+          </div>
+          
+          <!-- Card 08: ECU Diagnostics -->
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
+            <div class="category-card">
+              <div class="category-icon-wrapper">
+                <i class="bi bi-speedometer"></i>
+              </div>
+              <h4 class="category-title">Diagnostics</h4>
+              <p class="category-desc">O-Scope analysis, millisecond-level telemetry scans, fuel trim logs, and electronic ECU coding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: SERVICES GRID -->
+    <section class="section-spacing bg-white">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5" style="max-width: 720px;">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider" data-aos="fade-down">Premium Selection</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mt-2 mb-3" data-aos="fade-up" data-aos-delay="100">Our Automotive Services</h2>
+          <p class="text-gray fs-sm" data-aos="fade-up" data-aos-delay="150">Discover our comprehensive suite of 12 luxury-tier automotive care programs, executed with meticulous precision and factory-grade parts.</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Card 01: Engine Diagnostics -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Diagnostics</span>
+                <img src="/src/assets/images/engine_diagnostics_1783597108235.jpg" alt="Engine Diagnostics" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-cpu"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Engine Diagnostics</h4>
+                <p class="service-card-desc">Advanced computerized scans to decode ECU faults, telemetry errors, and engine sensor irregularities for complete powertrain optimization.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.0 - 1.5 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$120</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 02: Brake Repair -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Brake System</span>
+                <img src="/src/assets/images/service_brake_1783597442158.jpg" alt="Brake Repair & Service" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-disc-fill"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Brake Repair & Service</h4>
+                <p class="service-card-desc">Complete high-performance pad replacements, rotor resurfacing, brake hydraulic flushes, and full ABS electronic calibration.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.5 - 2.0 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$180</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 03: Synthetic Oil Change -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Maintenance</span>
+                <img src="/src/assets/images/service_oil_change_1783601073592.jpg" alt="Synthetic Oil Change" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-droplet-fill"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Synthetic Oil Change</h4>
+                <p class="service-card-desc">Premium full-synthetic oil replacement, OEM filtration system swap, fluid level top-off, and a multi-point engine safety screening.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 30 - 45 Mins</span>
+                  <span class="service-price-tag">Starting at <span>$89</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 04: Precision Wheel Alignment -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Suspension</span>
+                <img src="/src/assets/images/service_wheel_1783597455828.jpg" alt="Precision Wheel Alignment" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-crosshair"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Precision Wheel Alignment</h4>
+                <p class="service-card-desc">Advanced 3D laser wheel tracking to correct steering pull, reduce tire wear patterns, and secure straight freeway stability.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.0 Hour</span>
+                  <span class="service-price-tag">Starting at <span>$149</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 05: Battery & Electrical Care -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Electrical</span>
+                <img src="/src/assets/images/service_battery_1783601090413.jpg" alt="Battery & Electrical Care" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-lightning-fill"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Battery & Electrical Care</h4>
+                <p class="service-card-desc">Digital battery state of health testing, alternator charging capacity verification, terminal restoration, and OEM battery installations.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 30 - 60 Mins</span>
+                  <span class="service-price-tag">Starting at <span>$95</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 06: Climate Control / AC Service -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Climate Control</span>
+                <img src="/src/assets/images/service_ac_1783601105104.jpg" alt="Climate Control / AC Service" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-wind"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Climate Control / AC Service</h4>
+                <p class="service-card-desc">System evacuation, high-purity R134a/YF refrigerant charging, cabin filter replacements, and specialized UV leak trace testing.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.0 - 1.5 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$160</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 07: High-Performance Suspension -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Suspension</span>
+                <img src="/src/assets/images/proj_suspension_1783598541459.jpg" alt="High-Performance Suspension" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-sliders"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">High-Performance Suspension</h4>
+                <p class="service-card-desc">Professional strut and shock absorber swaps, control arm alignment, polyurethane bushing fittings, and customized corner balancing.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 2.0 - 3.0 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$250</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 08: Transmission Repair -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="450">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Drivetrain</span>
+                <img src="/src/assets/images/proj_transmission_1783598524986.jpg" alt="Transmission Diagnostics & Repair" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-gear-wide-connected"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Transmission Repair</h4>
+                <p class="service-card-desc">Automatic and manual gearbox fluid exchanges, electronic solenoid shifts testing, clutch repairs, and full transmission overhauls.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 2.0 - 4.0 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$350</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 09: Fuel System Service -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Engine Service</span>
+                <img src="/src/assets/images/about_workshop_sub_1783598282107.jpg" alt="Fuel System Tuning" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-fuel-pump-fill"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Fuel System Service</h4>
+                <p class="service-card-desc">Professional high-pressure fuel injector cleaning, fuel delivery pump diagnostics, tank filters, and deep intake carbon cleaning.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.5 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$199</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 10: Steering System Overhaul -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="550">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Steering</span>
+                <img src="/src/assets/images/general_repair_1783597094763.jpg" alt="Steering System Overhaul" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-compass-fill"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Steering System Overhaul</h4>
+                <p class="service-card-desc">Power steering pump restorations, electronic rack and pinion adjustments, hydraulic fluid flushes, and tie rod replacements.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.5 - 2.5 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$220</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 11: Cooling & Radiator Service -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Cooling System</span>
+                <img src="/src/assets/images/service_cooling_system_1783601120316.jpg" alt="Cooling & Radiator Service" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-thermometer-half"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Cooling & Radiator Service</h4>
+                <p class="service-card-desc">Thermostat replacements, high-pressure radiator cap leak audits, premium OEM coolant flushing, and cooling fan electronic testing.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 1.0 - 1.5 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$135</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 12: Performance Tuning -->
+          <div class="col-xl-4 col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="650">
+            <div class="service-grid-card">
+              <div class="service-img-wrapper">
+                <span class="service-badge">Performance</span>
+                <img src="/src/assets/images/blog_tuning_1783599028879.jpg" alt="Dyno & Performance Tuning" loading="lazy">
+                <span class="service-card-icon"><i class="bi bi-speedometer2"></i></span>
+              </div>
+              <div class="service-card-body">
+                <h4 class="service-card-title">Performance Tuning</h4>
+                <p class="service-card-desc">Custom engine fuel trim modifications, ignition timing calibration, dyno-tuned fuel maps, and real-time electronic parameter logging.</p>
+                <div class="service-card-meta">
+                  <span class="service-meta-item"><i class="bi bi-clock"></i> 2.0 - 4.0 Hours</span>
+                  <span class="service-price-tag">Starting at <span>$450</span></span>
+                </div>
+                <div class="service-card-actions">
+                  <a href="service-details.html" class="btn-premium btn-outline-charcoal">Learn More</a>
+                  <a href="appointment.html" class="btn-premium btn-orange">Book Slot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: SERVICE PROCESS -->
+    <section class="section-spacing bg-cream border-top">
+      <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5" style="max-width: 720px;">
+          <span class="font-mono-sub text-primary-orange text-uppercase tracking-wider" data-aos="fade-down">How We Work</span>
+          <h2 class="text-charcoal fw-extrabold display-5 mt-2 mb-3" data-aos="fade-up" data-aos-delay="100">Service Process</h2>
+          <p class="text-gray fs-sm" data-aos="fade-up" data-aos-delay="150">From initial scheduling to final handover, discover our streamlined six-step precision pipeline built to respect your time and safety.</p>
+        </div>
+        
+        <div class="timeline-wrapper">
+          <div class="row g-4 justify-content-center">
+            <!-- Step 01 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-calendar2-week"></i>
+                  <span class="timeline-number">01</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Book Service</h5>
+                  <p class="timeline-step-desc">Schedule your maintenance slot online or via call in seconds.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 02 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="150">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-clipboard-check"></i>
+                  <span class="timeline-number">02</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Inspection</h5>
+                  <p class="timeline-step-desc">Master technicians conduct a robust physical inspection.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 03 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-laptop"></i>
+                  <span class="timeline-number">03</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Diagnostics</h5>
+                  <p class="timeline-step-desc">Computerized ECU scans decode deep telemetry logs.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 04 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="250">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-wrench-adjustable"></i>
+                  <span class="timeline-number">04</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Repair</h5>
+                  <p class="timeline-step-desc">Precision mechanical adjustments using certified OEM components.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 05 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-shield-fill-check"></i>
+                  <span class="timeline-number">05</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Quality Check</h5>
+                  <p class="timeline-step-desc">Rigorous post-service road checks and diagnostic safety clears.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 06 -->
+            <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+              <div class="timeline-step" data-aos="fade-up" data-aos-delay="355">
+                <div class="timeline-icon-box">
+                  <i class="bi bi-key-fill"></i>
+                  <span class="timeline-number">06</span>
+                </div>
+                <div class="timeline-step-content">
+                  <h5 class="timeline-step-title">Delivery</h5>
+                  <p class="timeline-step-desc">Keys handed back with a clean car and a detailed report.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Skeleton Section -->
+  <footer class="footer-wrapper">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row g-4">
+          
+          <!-- Column 1: Brand Info -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="index.html" class="footer-logo">
+              <i class="bi bi-wrench-adjustable-circle"></i> Auto<span>Care</span>
+            </a>
+            <p class="footer-desc">
+              Premium automotive diagnostics and repair facilities built to deliver unmatched mechanical precision, quality parts, and professional care.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://x.com" class="footer-social-btn" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com" class="footer-social-btn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+              <li><a href="services.html"><i class="bi bi-chevron-right"></i> Our Services</a></li>
+              <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Portfolio</a></li>
+              <li><a href="faq.html"><i class="bi bi-chevron-right"></i> Helpful FAQs</a></li>
+              <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact Support</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Contact Info -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <h5 class="footer-title">Store Location</h5>
+            <div class="footer-contact-item">
+              <i class="bi bi-geo-alt-fill"></i>
+              <p>123 Performance Parkway, Racing District, NY 10001</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-telephone-fill"></i>
+              <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+            </div>
+            <div class="footer-contact-item">
+              <i class="bi bi-envelope-open-fill"></i>
+              <p>support@autocare-theme.com<br>info@autocare-theme.com</p>
+            </div>
+          </div>
+
+          <!-- Column 4: Newsletter -->
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <h5 class="footer-title">Newsletter</h5>
+            <p class="fs-xs text-gray mb-3">Subscribe to receive exclusive tuning tips, discounts, and latest mechanic arrivals.</p>
+            <div class="newsletter-form-container">
+              <form action="index.html" method="POST" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                <button type="submit" class="newsletter-btn"><i class="bi bi-arrow-right-short"></i></button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="container d-md-flex justify-content-between align-items-center">
+        <p class="m-0">© 2026 AutoCare. Designed with premium craft. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="career.html">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Mouse Move Parallax script for Hero section -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.querySelector('.services-hero-section');
+      const decoElements = document.querySelectorAll('.services-hero-deco');
+      
+      if (banner && decoElements.length > 0) {
+        banner.addEventListener('mousemove', (e) => {
+          const rect = banner.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          decoElements.forEach((el, index) => {
+            const factor = (index + 1) * 0.03;
+            const moveX = x * factor;
+            const moveY = y * factor;
+            
+            el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+          });
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+          decoElements.forEach((el) => {
+            el.style.transform = 'translate(0px, 0px)';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
