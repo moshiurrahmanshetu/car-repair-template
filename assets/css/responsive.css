@@ -6,10 +6,15 @@
 */
 
 /* Extra Large screens */
-@media (min-width: 1400px) {
-  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-    max-width: 1320px;
-  }
+@media screen and (min-width: 1100px) and (max-width: 3000px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1200px;
+    }
+}
+@media screen and (min-width: 778px) and (max-width: 1100px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 1020px;
+    }
 }
 
 /* Notebook & Desktop (lg) breakpoint */
